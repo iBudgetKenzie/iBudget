@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import Routes from "./Routes/index";
 
 
 import GlobalStyle from './styles/global';
@@ -10,8 +11,9 @@ function App() {
     <>  
       <GlobalStyle/>
       <Login/>
+      <Routes />
     </>
   );
-}                                                                              
+}
 
 export default App;

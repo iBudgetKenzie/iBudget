@@ -1,4 +1,3 @@
-
 import LoginModal from "../../components/Login";
 
 const Login = () => <LoginModal/>
