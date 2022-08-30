@@ -102,7 +102,13 @@ const GlobalStyle = createGlobalStyle`
     } */
 
     button {
-        border: none
+        border: none;
+        cursor: pointer;
+    }
+
+    html, body, #root {
+        height: 100vh;
+        width: 100vw;
     }
 `;
 
