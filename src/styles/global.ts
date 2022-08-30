@@ -45,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         border: 0;
         font-size: 100%;
-        font-family: var(--font-base);
+        /* font-family: var(--font-base); */
         vertical-align: baseline;
         box-sizing: border-box;
         text-decoration: none;
@@ -53,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
 
     article, aside, details, figcaption, figure, 
     footer, header, hgroup, menu, nav, section {
-        display: block;
+        /* display: block; */
     }
 
     body {
@@ -100,6 +100,10 @@ const GlobalStyle = createGlobalStyle`
     /* * {
         outline: 1px solid red;
     } */
+
+    button {
+        border: none
+    }
 `;
 
 export default GlobalStyle;
