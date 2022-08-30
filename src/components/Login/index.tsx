@@ -8,8 +8,7 @@ import { useContext } from 'react';
 import iBudgetApi from "../../services/iBudgetApi";
 import { AxiosError, AxiosResponse } from 'axios';
 
-import { StyledLogin } from '../Login/styles';
-import "./container.css";
+import { StyledContainer, StyledLogin } from '../Login/styles';
 import {ILoginData , IUser, useUserContext} from "../../contexts/UserContext";
 
 interface IData {
@@ -46,7 +45,7 @@ const LoginModal = () => {
     };
 
     return (
-        <div className="container">
+        <StyledContainer>
             <StyledLogin>
                 <h4>Login</h4>
                 <form action="submit" onSubmit={handleSubmit(submitFunction)}>
@@ -61,7 +60,7 @@ const LoginModal = () => {
                 </form>
             </StyledLogin>
             <p>Não possui cadastro? <a href="/register">Clique aqui</a></p>
-        </div>
+        </StyledContainer>
     );
 
 };
