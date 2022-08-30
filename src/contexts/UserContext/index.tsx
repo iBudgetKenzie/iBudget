@@ -46,7 +46,7 @@ interface IUserProviderData {
 }
 
 export interface ILoginData {
-  token: string | number;
+  accessToken: string | number;
   user: IUser;
 }
 
