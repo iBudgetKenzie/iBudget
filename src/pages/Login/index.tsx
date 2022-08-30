@@ -1,5 +1,5 @@
-const Login = () => {
-  return <div>Login</div>;
-};
+import LoginModal from "../../components/Login";
+
+const Login = () => <LoginModal/>
 
 export default Login;
