@@ -8,8 +8,8 @@ const RoutesMain = () => (
   <Routes>
     <Route path="/home" element={<Home />} />
     <Route path="/login" element={<Login />} />
-    <Route path="/register" element={<Register />} />
-    <Route path=":name" element={<Dashboard />} />
+    <Route path="/register" element={<Register/>} />
+    <Route path="/dashboard" element={<Dashboard />} />
     <Route path="*" element={<Navigate to="/home" />} />
   </Routes>
 );

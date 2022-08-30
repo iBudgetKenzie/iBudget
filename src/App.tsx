@@ -1,17 +1,25 @@
-import React from "react";
-import Routes from "./Routes/index";
-
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 import GlobalStyle from './styles/global';
-import Login from './pages/Login';
-
+import Routes from "./Routes/index";
 
 function App() {
   return (
     <>  
       <GlobalStyle/>
-      <Login/>
-      <Routes />
+      <ToastContainer
+        position="top-right"
+        autoClose={3500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <Routes/>
     </>
   );
 }

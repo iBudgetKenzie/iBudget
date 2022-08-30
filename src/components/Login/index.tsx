@@ -1,37 +1,39 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { toast } from 'react-toastify'
+import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 import iBudgetApi from "../../services/iBudgetApi";
 import { AxiosError, AxiosResponse } from 'axios';
 
 import { StyledLogin } from '../Login/styles';
 import "./container.css";
+import {ILoginData , IUser} from "../../contexts/UserContext";
 
 interface IData {
     email:    string
     password: string
 }
 
-interface IUser {
-    email: string
-    name: string
-    username: string
-    position: string
-    imagemUrl: string
-    id: number
-}
+// interface IUser {
+//     email: string
+//     name: string
+//     username: string
+//     position: string
+//     imagemUrl: string
+//     id: number
+// }
 
-interface IResponse {
-    accessToken: string | number
-    user: IUser
-}
-
-
+// interface IResponse {
+//     accessToken: string | number
+//     user: IUser
+// }
 
 
 const LoginModal = () => {
+
+    const navigate = useNavigate()
 
     const schema = yup.object().shape({
         email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -49,11 +51,11 @@ const LoginModal = () => {
             localStorage.clear()
             localStorage.setItem("@token", response.data.accessToken)
             // const futuroEstadoUser = response.data.user.username
+            navigate("/dashboard")
+            toast.success("Login realizado com sucesso")
         } catch (error) {
-            
+            toast.error("Usuário não encontrado")
         }
-
-        
     };
 
     return (
@@ -71,7 +73,7 @@ const LoginModal = () => {
                     <button type="submit">Entrar</button>
                 </form>
             </StyledLogin>
-            <p>Não possui cadastro? <a href="">Clique aqui</a></p>
+            <p>Não possui cadastro? <a href="/register">Clique aqui</a></p>
         </div>
     );
 
