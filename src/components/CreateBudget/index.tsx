@@ -1,23 +1,17 @@
-// import { useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FaRegEdit } from "react-icons/fa";
 import { ContainerCreateBudget } from "./styles";
+import { IBudget } from "../../contexts/UserContext/index";
+import { BudgetContext } from "../../contexts/BudgetContext/index";
 
-interface IBudget {
-  projectName: string;
-  projectTime: number;
-  fixedCost: number;
-  variableCost: number;
-}
-
-// interface IFixedCost {
-//     value: number;
-//     costDescription: string;
-// };
+type IBudgetOmitId = Omit<IBudget, "id">
 
 export const CreateBudget = () => {
+  const { setModalFixedCost, setModalVariableCost, fixedCost, variableCost } = useContext(BudgetContext)
+
   const formSchema = yup.object().shape({
     projectName: yup.string().required("Necessário nome do projeto"),
     projectTime: yup.number().typeError("O campo só aceita números").required("Duração do projeto necessária"),
@@ -29,14 +23,12 @@ export const CreateBudget = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IBudget>({
+  } = useForm<IBudgetOmitId>({
     resolver: yupResolver(formSchema),
   });
 
-  const sendBudget = (data: IBudget) => {
-    const { fixedCost, projectTime, variableCost } = data;
-    // const hourValue = (fixedCost + variableCost)/projectTime
-    // console.log(hourValue)
+  const sendBudget = (data: IBudgetOmitId) => {
+    
   };
 
   return (
@@ -68,7 +60,7 @@ export const CreateBudget = () => {
             placeholder="Ex: 2000,00R$"
             {...register("fixedCost")}
           />
-          <FaRegEdit onClick={() => {}}/> 
+          <FaRegEdit onClick={() => {setModalFixedCost(false)}}/> 
         </div>
         <span>{errors.fixedCost?.message}</span>
 
@@ -80,7 +72,7 @@ export const CreateBudget = () => {
             placeholder="Ex: 1000,00R$"
             {...register("variableCost")}
           />
-          <FaRegEdit onClick={() => {}}/>
+          <FaRegEdit onClick={() => {setModalVariableCost(false)}}/>
         </div>
         <span>{errors.variableCost?.message}</span>
 
