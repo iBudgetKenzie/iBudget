@@ -17,7 +17,7 @@ export const StyledLogin = styled.div`
     flex-direction: column;
     align-items: center;
     margin: auto;
-    gap: 20px;
+    gap: 16px;
     
     margin-top: 100px;
     
@@ -54,6 +54,11 @@ export const StyledLogin = styled.div`
                 height: 30px;
                 width: 200px;
             }
+        }
+
+        span {
+            font-size: 13px;
+            color: #F61818;
         }
 
         button {
