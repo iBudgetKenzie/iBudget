@@ -37,6 +37,8 @@ export interface IRegisterForm {}
 
 interface IUserProviderData {
   user: IUser;
+  isAuthenticated: boolean;
+  setIsAuthenticated: (isAuthenticated: boolean) => void;
   setUser: (user: IUser) => void;
   onSubmitLogin: (loginFormData: ILoginForm) => void;
   onSubmitRegister: (registerFormData: IRegisterForm) => void;
@@ -48,7 +50,7 @@ export interface ILoginData {
   user: IUser;
 }
 
-const UserContext = createContext<IUserProviderData>({} as IUserProviderData);
+export const UserContext = createContext<IUserProviderData>({} as IUserProviderData);
 
 export const useUserContext = (): IUserProviderData => {
   const context = useContext(UserContext);
@@ -58,6 +60,7 @@ export const useUserContext = (): IUserProviderData => {
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const [user, setUser] = useState<IUser>({} as IUser);
+  const [isAuthenticated , setIsAuthenticated] = useState<boolean>(false)
 
   useEffect((): void => {
     // function to get the user here
@@ -80,6 +83,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       value={{
         user,
         setUser,
+        isAuthenticated,
+        setIsAuthenticated,
         onSubmitLogin,
         onSubmitRegister,
         handleSignOut,
@@ -90,4 +95,4 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   );
 };
 
-export default UserContext;
+// export default UserContext;

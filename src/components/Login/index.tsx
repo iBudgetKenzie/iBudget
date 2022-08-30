@@ -3,37 +3,24 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { useContext } from 'react';
 
 import iBudgetApi from "../../services/iBudgetApi";
 import { AxiosError, AxiosResponse } from 'axios';
 
 import { StyledLogin } from '../Login/styles';
 import "./container.css";
-import {ILoginData , IUser} from "../../contexts/UserContext";
+import {ILoginData , IUser, useUserContext} from "../../contexts/UserContext";
 
 interface IData {
     email:    string
     password: string
 }
 
-// interface IUser {
-//     email: string
-//     name: string
-//     username: string
-//     position: string
-//     imagemUrl: string
-//     id: number
-// }
-
-// interface IResponse {
-//     accessToken: string | number
-//     user: IUser
-// }
-
-
 const LoginModal = () => {
 
     const navigate = useNavigate()
+    const { onSubmitLogin, setIsAuthenticated } = useUserContext()
 
     const schema = yup.object().shape({
         email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -45,7 +32,6 @@ const LoginModal = () => {
     })
 
     const submitFunction = async (data: IData) => {
-        
         try {
             const response = await iBudgetApi.post("/login", data)
             localStorage.clear()
@@ -53,6 +39,7 @@ const LoginModal = () => {
             // const futuroEstadoUser = response.data.user.username
             navigate("/dashboard")
             toast.success("Login realizado com sucesso")
+            setIsAuthenticated(true)
         } catch (error) {
             toast.error("Usuário não encontrado")
         }
