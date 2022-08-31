@@ -1,5 +1,4 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import { useContext } from "react";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -10,14 +9,14 @@ import { useUserContext } from "../contexts/UserContext";
 const RoutesMain = () => { 
 
   const { isAuthenticated } = useUserContext()
+  const token = localStorage.getItem("@token")
 
+  console.log(token)
   return (
     <Routes>
       <Route path="/home" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register/>} />
       <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> 
-      : <Navigate replace to="/home" />} />
+      : token !== null ? <Dashboard /> : <Navigate replace to="/home" />} />
       <Route path="*" element={<Navigate to="/home" />} />
     </Routes>
   )
