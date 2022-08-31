@@ -4,6 +4,7 @@ import { MoreExpenses } from "../MoreExpenses";
 import { ConteinerModalFixedCost, Modal } from "./style";
 import { IMoreExpenses } from "../../contexts/BudgetContext";
 
+
 export const ModalFixedCost = () => {
   const { setOnModalFixedCost, fixedCost, addFixedValue } = useContext(BudgetContext);
   return (

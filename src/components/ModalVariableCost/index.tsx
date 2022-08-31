@@ -4,6 +4,7 @@ import { MoreExpenses } from "../MoreExpenses";
 import { ConteinerModalVariableCost, Modal } from "./style";
 import { IMoreExpenses } from "../../contexts/BudgetContext";
 
+
 export const ModalVariableCost = () => {
   const { setOnModalVariableCost, addVariableValue, variableCost } = useContext(BudgetContext);
   return (
