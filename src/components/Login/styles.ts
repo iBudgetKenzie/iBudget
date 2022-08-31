@@ -3,10 +3,11 @@ import styled from "styled-components";
 
 export const StyledLogin = styled.div`
 
-    background-color: rgba(217, 217, 217, 1);
+    background-color: rgba(255,255,255, 1);
+    color: black;
 
     height: 280px;
-    width: 250px;
+    width: 300px;
     left: -796px;
     top: -267px;
     border-radius: 7px;
@@ -16,10 +17,10 @@ export const StyledLogin = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: auto;
+    /* margin: auto; */
     gap: 16px;
     
-    margin-top: 100px;
+    margin-top: 30px;
     
     @media screen and (min-width: 700px) {
         height: 350px;
@@ -43,12 +44,14 @@ export const StyledLogin = styled.div`
         }
 
         input {
-            height: 26px;
-            width: 175px;
+            height: 30px;
+            width: 240px;
             left: -774px;
             top: -215px;
             border-radius: 5px;
             padding: 10px;
+
+            border: solid 1px rgb(188,176,255);
 
             @media screen and (min-width: 700px) {
                 height: 30px;
@@ -61,9 +64,19 @@ export const StyledLogin = styled.div`
             color: #F61818;
         }
 
-        button {
+        p {
+            font-size: 14px;
+            margin-left: 16px;
+        }
+
+        .cadastro{
+            background-color: white;
+            color: rgb(122,99,255);
+        }
+
+        .login {
             height: 32px;
-            width: 76px;
+            width: 80px;
             left: -729px;
             top: -126px;
             border-radius: 8px;
@@ -77,7 +90,7 @@ export const StyledLogin = styled.div`
 
             align-self: center;
 
-            background-color: rgba(26, 126, 158, 1);
+            background-color: rgb(122,99,255);
             color:  rgba(217, 217, 217, 1);
 
         }
