@@ -4,27 +4,34 @@ const GlobalStyle = createGlobalStyle`
 
     :root {
 
-    /* Primary palette: */
+    /* Primary palette */
 
-    /* --color-primary: 30, 144, 255;
-    --color-primary-focus: 65, 105, 225;
-    --color-primary-negative: 100, 149, 237; */
-
-    /* Grey scale palette: */
-
-    /* --color-grey-4: 18, 18, 20;
-    --color-grey-3: 33, 37, 41;
-    --color-grey-2: 52, 59, 65;
-    --color-grey-1: 134, 142, 150;
-    --color-grey-0: 248, 249, 250;
-    --color-white: 255, 255, 255; */
+    --color-purple: 122, 99,  255;
+    --color-purple-light: 188, 176, 255;
+    --color-purple-dark: 61, 50, 128;
+    --color-black: 30, 30, 30;
+    --color-white: 255, 255, 255;
 
     /* Feeback pallete: */
 
-    /* --color-success-green: 63, 232, 100; 
-    --color-negative-pink: 232, 63, 91; 
+    --color-success-green: 63, 232, 100; 
+    --color-negative-pink: 241, 41, 41; 
 
-    --font-base: 'Roboto', sans-serif; */
+    /* Text colors: */
+
+    --color-text-black: 0, 0, 0;
+    --color-text-white: 255, 255, 255;
+
+    /* Grey scale palette: */
+
+    --color-grey-4: 18, 18, 20;
+    --color-grey-3: 33, 37, 41;
+    --color-grey-2: 52, 59, 65;
+    --color-grey-1: 134, 142, 150;
+
+
+    --font-forms-base: 'Inter', sans-serif;
+    --font-menu-base: 'Montserrat', sans-serif;
 
     }
 
