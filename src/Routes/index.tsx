@@ -11,7 +11,6 @@ const RoutesMain = () => {
   const { isAuthenticated } = useUserContext()
   const token = localStorage.getItem("@token")
 
-  console.log(token)
   return (
     <Routes>
       <Route path="/home" element={<Home />} />

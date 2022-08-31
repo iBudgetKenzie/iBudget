@@ -1,4 +1,5 @@
 import { useUserContext } from "../../contexts/UserContext";
+import HomeComponent from "../../components/Home";
 import LoginModal from "../../components/Login";
 
 import { StyledBody } from "./styles";
@@ -62,9 +63,8 @@ const Home = () => {
         </header>
 
         <div className="content">
-          {
-            isLogin && <LoginModal/>
-          }
+          { isHome && <HomeComponent/> }
+          { isLogin && <LoginModal/> }
         </div>
       </section>
     </StyledBody>
