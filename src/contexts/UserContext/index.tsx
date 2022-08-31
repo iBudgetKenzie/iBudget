@@ -27,9 +27,9 @@ export interface IUser {
 
 export interface IBudget {
   projectName: string;
-  projectTime: string;
-  fixedCost: string;
-  variableCost: string;
+  projectTime: number;
+  fixedCost: number;
+  variableCost: number;
   userId: string | number;
 }
 
