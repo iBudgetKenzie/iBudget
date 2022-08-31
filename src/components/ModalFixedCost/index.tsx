@@ -1,18 +1,27 @@
-export const ModalFixedCost = () => {
-  return (
-    <div>
-      <div>
-        <h2>Custo fixo</h2>
-        <form action="">
-            <label htmlFor="value">Valor:</label>
-            <input type="text" 
-            placeholder="Ex: 1,00R$"/>
+import { useContext } from "react";
+import { BudgetContext } from "../../contexts/BudgetContext";
+import { MoreExpenses } from "../MoreExpenses";
+import { ConteinerModalFixedCost, Modal } from "./style";
+import { IMoreExpenses } from "../../contexts/BudgetContext";
 
-            <label htmlFor="description">Descrição custo:</label>
-            <input type="text" 
-            placeholder="Ex: Aluguel"/>
-        </form>
-      </div>
-    </div>
+export const ModalFixedCost = () => {
+  const { setOnModalFixedCost, fixedCost, addFixedValue } = useContext(BudgetContext);
+  return (
+    <ConteinerModalFixedCost>
+      <Modal>
+        <div>
+          <h2>Custo fixo</h2>
+          <span onClick={() => setOnModalFixedCost(false)}>X</span>
+        </div>
+        <div>
+          {
+            fixedCost.map(({ costDescription, value }: IMoreExpenses, index) => {
+              return <MoreExpenses key={index} costDescription={costDescription} value={value}/>
+            })
+          }
+        </div>
+        <button onClick={() => addFixedValue()}>Mais gastos</button>
+      </Modal>
+    </ConteinerModalFixedCost>
   );
 };

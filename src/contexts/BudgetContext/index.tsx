@@ -1,53 +1,97 @@
-import { createContext, ReactNode, useState, useContext } from "react";
+import { createContext, ReactNode, useState } from "react";
 
 interface IBudgetProvider {
-    children: ReactNode;
+  children: ReactNode;
 }
 
-interface IFixedCost {
-    value: number;
-    costDescription: string;
-}
-
-interface IVariableCost {
-    value: number;
-    costDescription: string;
+export interface IMoreExpenses {
+  value: string;
+  costDescription: string;
 }
 
 interface IBudgetContext {
-    // addFixedValue: () => void;
-    // addVariableValue: () => void;
-    fixedCost: number;
-    variableCost: number;
-    modalFixedCost: boolean;
-    modalVariableCost: boolean;
-    setModalFixedCost: (modalFixedValue: boolean) => void;
-    setModalVariableCost: (modalVariableValue: boolean) => void;
+  addFixedValue: () => void;
+  addVariableValue: () => void;
+  fixedCost: IMoreExpenses[];
+  variableCost: IMoreExpenses[];
+  onModalFixedCost: boolean;
+  onModalVariableCost: boolean;
+  setOnModalFixedCost: (modalFixedValue: boolean) => void;
+  setOnModalVariableCost: (modalVariableValue: boolean) => void;
 }
 
-export const BudgetContext = createContext<IBudgetContext>({} as IBudgetContext);
+export const BudgetContext = createContext<IBudgetContext>(
+  {} as IBudgetContext
+);
 
-export const BudgetProvider = ({children}: IBudgetProvider) => {
-    // const [fixedCost, setFixedCost] = useState<IFixedCost[]>([]);
-    // const [variableCost, setVariableCost] = useState<IVariableCost[]>([]);
+export const BudgetProvider = ({ children }: IBudgetProvider) => {
+  const [fixedCost, setFixedCost] = useState<IMoreExpenses[]>([
+    {
+      value: "100",
+      costDescription: "Água",
+    },
+    {
+      value: "100",
+      costDescription: "Energia",
+    },
+    {
+      value: "100",
+      costDescription: "Internet",
+    },
+  ]);
+  const [variableCost, setVariableCost] = useState<IMoreExpenses[]>([
+    {
+      value: "100",
+      costDescription: "Água",
+    },
+    {
+      value: "100",
+      costDescription: "Energia",
+    },
+    {
+      value: "100",
+      costDescription: "Internet",
+    },
+  ]);
 
-    const [fixedCost, setFixedCost] = useState(0);
-    const [variableCost, setVariableCost] = useState(0);
+  // const [fixedCost, setFixedCost] = useState(0);
+  // const [variableCost, setVariableCost] = useState(0);
 
-    const [modalFixedCost, setModalFixedCost] = useState(false);
-    const [modalVariableCost, setModalVariableCost] = useState(false);
-    
-    // const addFixedValue = (): void => {
-        
-    // }
+  const [onModalFixedCost, setOnModalFixedCost] = useState(false);
+  const [onModalVariableCost, setOnModalVariableCost] = useState(false);
 
-    // const addVariableValue = (): void => {
+  const addFixedValue = (): void => {
+    const newDate = {
+      value: "100",
+      costDescription: "",
+    };
+    setFixedCost([...fixedCost, newDate]);
+    console.log(fixedCost)
+  };
 
-    // }
+  const addVariableValue = (): void => {
+    const newDate = {
+      value: "100",
+      costDescription: "",
+    };
+    setVariableCost([...variableCost, newDate]);
+    console.log(variableCost)
+  };
 
-    return (
-        <BudgetContext.Provider value={{ modalFixedCost, modalVariableCost, fixedCost, variableCost, setModalFixedCost, setModalVariableCost }}>
-            {children}
-        </BudgetContext.Provider>
-    )
-}
+  return (
+    <BudgetContext.Provider
+      value={{
+        onModalFixedCost,
+        onModalVariableCost,
+        setOnModalFixedCost,
+        setOnModalVariableCost,
+        addFixedValue,
+        addVariableValue,
+        fixedCost,
+        variableCost,
+      }}
+    >
+      {children}
+    </BudgetContext.Provider>
+  );
+};

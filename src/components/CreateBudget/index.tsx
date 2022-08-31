@@ -10,7 +10,7 @@ import { BudgetContext } from "../../contexts/BudgetContext/index";
 type IBudgetOmitId = Omit<IBudget, "id">
 
 export const CreateBudget = () => {
-  const { setModalFixedCost, setModalVariableCost, fixedCost, variableCost } = useContext(BudgetContext)
+  const { setOnModalFixedCost, setOnModalVariableCost, fixedCost, variableCost } = useContext(BudgetContext)
 
   const formSchema = yup.object().shape({
     projectName: yup.string().required("Necessário nome do projeto"),
@@ -28,7 +28,7 @@ export const CreateBudget = () => {
   });
 
   const sendBudget = (data: IBudgetOmitId) => {
-    
+
   };
 
   return (
@@ -60,7 +60,7 @@ export const CreateBudget = () => {
             placeholder="Ex: 2000,00R$"
             {...register("fixedCost")}
           />
-          <FaRegEdit onClick={() => {setModalFixedCost(false)}}/> 
+          <FaRegEdit onClick={() => {setOnModalFixedCost(true)}}/> 
         </div>
         <span>{errors.fixedCost?.message}</span>
 
@@ -72,7 +72,7 @@ export const CreateBudget = () => {
             placeholder="Ex: 1000,00R$"
             {...register("variableCost")}
           />
-          <FaRegEdit onClick={() => {setModalVariableCost(false)}}/>
+          <FaRegEdit onClick={() => {setOnModalVariableCost(true)}}/>
         </div>
         <span>{errors.variableCost?.message}</span>
 
