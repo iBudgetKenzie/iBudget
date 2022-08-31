@@ -44,7 +44,7 @@ export const ModalFixedCost = () => {
                   />
                 </MoreExpenses>
               );
-            })};
+            })}
             <button type="submit">Calcular custos</button>
           </form>
         </div>

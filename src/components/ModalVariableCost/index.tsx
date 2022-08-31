@@ -40,7 +40,7 @@ export const ModalVariableCost = () => {
                   />
                 </MoreExpenses>
               );
-            })};
+            })}
             <button type="submit">Calcular custos</button>
           </form>
         </div>

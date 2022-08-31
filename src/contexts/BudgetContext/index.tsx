@@ -1,4 +1,14 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, useEffect } from "react";
+
+// import { IBudget } from "../UserContext/index"
+
+export interface IBudgetOmitId {
+  projectName: string;
+  fixedCost: number;
+  variableCost: number;
+  startDate: string;
+  endDate: string;
+}
 
 interface IBudgetProvider {
   children: ReactNode;
@@ -14,6 +24,7 @@ interface IBudgetContext {
   inputs: string[];
   fixedCost: number;
   variableCost: number;
+  sendBudget: (data: IBudgetOmitId) => void
 }
 
 export const BudgetContext = createContext<IBudgetContext>(
@@ -67,9 +78,17 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     console.log(reduceArray)
   };
 
+  const sendBudget = (data: IBudgetOmitId): void => {
+    console.log(data)
+    // const {fixedCost, variableCost} = data
+
+    // const preview = (fixedCost + variableCost) 
+  };
+
   return (
     <BudgetContext.Provider
       value={{
+        sendBudget,
         fixedCost,
         variableCost,
         inputs,
