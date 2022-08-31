@@ -14,7 +14,7 @@ export const ConteinerModalVariableCost = styled.div`
 `
 
 export const Modal = styled.div`
-    width: 400px;
-    height: 350px;
+    width: 45rem;
+    height: 30rem;
     background-color: green;
 `

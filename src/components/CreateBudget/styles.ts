@@ -19,7 +19,7 @@ export const ContainerCreateBudget = styled.div`
             padding-left: 6px;
             font-family: "Inter";
             font-size: 15px;
-
+            color: green;
         }
 
         & label {
