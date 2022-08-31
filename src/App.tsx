@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import Header from './components/Header';
-
-function App() {
-  return (
-    <div className="App">
-      <Header/>
-    </div>
-=======
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -38,7 +28,6 @@ function App() {
         </BudgetProvider>
       </UserProvider>
     </>
->>>>>>> 31cd6b44a9126c20f29d8e716e83dc21ac12f2f9
   );
 }
 
