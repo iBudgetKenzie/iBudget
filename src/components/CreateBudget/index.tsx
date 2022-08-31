@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FaRegEdit } from "react-icons/fa";
-import { ContainerCreateBudget } from "./styles";
+
 import { IBudget } from "../../contexts/UserContext/index";
 import { BudgetContext } from "../../contexts/BudgetContext/index";
+
+import { ContainerCreateBudget } from "./styles";
 
 type IBudgetOmitId = Omit<IBudget, "id">
 
@@ -18,6 +20,9 @@ export const CreateBudget = () => {
     fixedCost: yup.number().typeError("O campo só aceita números").required("Custos fixos necessário"),
     variableCost: yup.number().typeError("O campo só aceita números"),
   });
+
+  // const [valueFixedCost, setValueFixedCost] = useState(0);
+  // const [valueVariableCost, setValueVariableCost] = useState(0);
 
   const {
     register,
@@ -57,6 +62,8 @@ export const CreateBudget = () => {
           <input
             type="text"
             id="fixedCost"
+            value={fixedCost}
+            disabled
             placeholder="Ex: 2000,00R$"
             {...register("fixedCost")}
           />
@@ -69,6 +76,8 @@ export const CreateBudget = () => {
           <input
             type="text"
             id="variableCost"
+            value={variableCost}
+            disabled
             placeholder="Ex: 1000,00R$"
             {...register("variableCost")}
           />
