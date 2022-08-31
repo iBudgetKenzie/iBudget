@@ -1,6 +1,8 @@
+import { StyledBody } from "./styles";
+
 const Home = () => {
   return (
-    <div className="body">
+    <StyledBody>
       <section className="logo">
         IBudget
         <p className="logo-paragraph">
@@ -14,9 +16,11 @@ const Home = () => {
           <p className="header-menu">Cadastro</p>
           <p className="header-menu">Sobre nós</p>
         </header>
-        
+        {/* <div className="quadrado">
+
+        </div> */}
       </section>
-    </div>
+    </StyledBody>
   );
 };
 
