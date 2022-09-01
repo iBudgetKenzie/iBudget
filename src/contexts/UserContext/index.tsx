@@ -81,10 +81,15 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     // function to get the user here
   });
 
+  console.log(user)
+
   const onSubmitLogin = async (loginFormData: ILoginForm) => {
     try {
       const response = await iBudgetApi.post("/login", loginFormData);
       localStorage.clear();
+
+      console.log(response.data.user)
+      setUser(response.data.user)
       localStorage.setItem("@token", response.data.accessToken);
       navigate("/dashboard");
       toast.success("Login realizado com sucesso");
