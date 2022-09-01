@@ -5,6 +5,7 @@ import { CreateBudget } from "../../components/CreateBudget";
 import { BudgetContext } from "../../contexts/BudgetContext";
 import HeaderLogged from "../../components/HeaderLogged";
 
+
 const Dashboard = () => {
   const { onModalFixedCost, onModalVariableCost } = useContext(BudgetContext);
 
@@ -13,7 +14,6 @@ const Dashboard = () => {
     <HeaderLogged/>
     <div>
       <CreateBudget />
-
       {onModalFixedCost ? <ModalFixedCost /> : null}
       {onModalVariableCost ? <ModalVariableCost /> : null}
     </div>

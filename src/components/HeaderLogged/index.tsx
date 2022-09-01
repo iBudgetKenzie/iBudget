@@ -12,7 +12,8 @@ const HeaderL = () => {
         <Header>
             <img src={logo} alt="Logo ibudget"/>
             <div>
-                <p>Olá Dev!</p>
+                
+                <p>Olá Dev!</p>s
             <img src={user.imageUrl} alt=""/> 
             <a onClick={handleSignOut}>Sair</a> 
             </div>
