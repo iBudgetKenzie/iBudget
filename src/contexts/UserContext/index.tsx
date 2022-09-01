@@ -8,6 +8,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+
+
 import iBudgetApi from "../../services/iBudgetApi";
 
 interface IUserProviderProps {
@@ -104,7 +106,13 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   };
 
   const handleSignOut = (): void => {
-    // function to logout
+    setIsAuthenticated(false)
+    setIsLogin(false)
+    setIsHome(true)
+    localStorage.clear();
+    navigate("/home")
+    window.location.reload();
+    
   };
 
   return (
