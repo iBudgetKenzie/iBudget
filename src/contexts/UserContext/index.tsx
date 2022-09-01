@@ -86,20 +86,21 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   useEffect((): void => {
     async function loadUser () {
-      const token = localStorage.getItem("@token")
+      const token: string | null = localStorage.getItem("@token")
+      const id: string | null = localStorage.getItem("@id")
       
-      if(!token) {
-        navigate("/home")
-      } else {
-        const userStorage: string | null = localStorage.getItem("@user")
-        if(userStorage && typeof userStorage === "string") {
-          setUser(JSON.parse(userStorage))    
+        if(typeof token === "string" && typeof id === "string"){
+          try {
+            iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`
+            const userResponse = await iBudgetApi.get(`/users/${id}?_embed=budgets`)
+            console.log(userResponse.data)
+            setUser(userResponse.data)
+          } catch (error) {
+            console.log("erro")
+          }
         }
-      }
       setLoading(false)
-      
     }
-    
     loadUser();
   }, [navigate]);
   
@@ -108,17 +109,16 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const onSubmitLogin = async (loginFormData: ILoginForm) => {
     try {
       const response = await iBudgetApi.post<ILoginData>("/login", loginFormData);
-      // localStorage.clear();
+      localStorage.clear();
 
-      // console.log(response.data.user)
-      localStorage.setItem("@user", JSON.stringify(response.data.user))
       localStorage.setItem("@token", response.data.accessToken);
       localStorage.setItem("@id", JSON.stringify(response.data.user.id))
-      // userStorage ? setUser(JSON.parse(userStorage)) : 
+      
       setUser(response.data.user)
       navigate("/dashboard");
       toast.success("Login realizado com sucesso");
       setIsAuthenticated(true);
+
     } catch (error) {
       toast.error("Usuário não encontrado");
     }
