@@ -7,7 +7,11 @@ import { FaRegEdit } from "react-icons/fa";
 import { BudgetContext } from "../../contexts/BudgetContext/index";
 import { IBudgetOmitId } from "../../contexts/BudgetContext/index";
 
-import { ContainerCreateBudget } from "./styles";
+import {
+  ContainerCreateBudget,
+  ConteinerDate,
+  ConteinerWorkTime,
+} from "./styles";
 
 export const CreateBudget = () => {
   const {
@@ -47,6 +51,7 @@ export const CreateBudget = () => {
 
   return (
     <ContainerCreateBudget>
+      <h1>Preencha os dados</h1>
       <form onSubmit={handleSubmit(sendBudget)}>
         <label htmlFor="projectName">
           Nome do projeto: <span>*</span>
@@ -97,31 +102,43 @@ export const CreateBudget = () => {
         </div>
         <span>{errors.variableCost?.message}</span>
 
-        <div>
-          <label htmlFor="startDate">
-            Tempo do projeto: <span>*</span>
-          </label>
-          <input
-            type="date"
-            id="startDate"
-            placeholder="Ex: 15"
-            {...register("startDate")}
-          />
-          <span>{errors.startDate?.message}</span>
+        <ConteinerDate>
+          <div>
+            <label htmlFor="startDate">
+              Tempo do projeto: <span>*</span>
+            </label>
+            <input
+              type="date"
+              id="startDate"
+              placeholder="Ex: 15"
+              {...register("startDate")}
+            />
+            <span>{errors.startDate?.message}</span>
+          </div>
 
-          <label htmlFor="endDate">
-            Tempo do projeto: <span>*</span>
-          </label>
-          <input
-            type="date"
-            id="endDate"
-            placeholder="Ex: 15"
-            {...register("endDate")}
-          />
-          <span>{errors.endDate?.message}</span>
-        </div>
+          <div>
+            <label htmlFor="endDate">
+              Tempo do projeto: <span>*</span>
+            </label>
+            <input
+              type="date"
+              id="endDate"
+              placeholder="Ex: 15"
+              {...register("endDate")}
+            />
+            <span>{errors.endDate?.message}</span>
+          </div>
+        </ConteinerDate>
 
-        <button type="submit">Pré-visualizar</button>
+        <ConteinerWorkTime>
+          <div>
+            <h2>Hora de trabalho:</h2>
+            <input type="text" 
+            disabled/>
+          </div>
+        </ConteinerWorkTime>
+
+        <button type="submit">Gerar Orçamento</button>
       </form>
     </ContainerCreateBudget>
   );
