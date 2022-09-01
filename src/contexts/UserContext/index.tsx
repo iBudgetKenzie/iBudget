@@ -10,8 +10,6 @@ import { BsYoutube } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-
-
 import iBudgetApi from "../../services/iBudgetApi";
 
 interface IUserProviderProps {
@@ -64,9 +62,9 @@ export interface ILoginData {
   user: IUser;
 }
 
-
-
-export const UserContext = createContext<IUserProviderData>({} as IUserProviderData);
+export const UserContext = createContext<IUserProviderData>(
+  {} as IUserProviderData,
+);
 
 export const useUserContext = (): IUserProviderData => {
   const context = useContext(UserContext);
@@ -76,49 +74,53 @@ export const useUserContext = (): IUserProviderData => {
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const [user, setUser] = useState<IUser>({} as IUser);
-  const [isAuthenticated , setIsAuthenticated] = useState<boolean>(false);
-  const [isHome, setIsHome]         = useState<boolean>(true);
-  const [isLogin, setIsLogin]       = useState<boolean>(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isHome, setIsHome] = useState<boolean>(true);
+  const [isLogin, setIsLogin] = useState<boolean>(false);
   const [isCadastro, setIsCadastro] = useState<boolean>(false);
-  const [isSobre, setIsSobre]       = useState<boolean>(false);
-  const [loading, setLoading]       = useState<boolean>(false);
+  const [isSobre, setIsSobre] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect((): void => {
-    async function loadUser () {
-      const token: string | null = localStorage.getItem("@token")
-      const id: string | null = localStorage.getItem("@id")
-      
-        if(typeof token === "string" && typeof id === "string"){
-          try {
-            iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`
-            const userResponse = await iBudgetApi.get(`/users/${id}?_embed=budgets`)
-            console.log(userResponse.data)
-            setUser(userResponse.data)
-          } catch (error) {
-            console.log("erro")
-          }
+    async function loadUser() {
+      const token: string | null = localStorage.getItem("@token");
+      const id: string | null = localStorage.getItem("@id");
+
+      if (typeof token === "string" && typeof id === "string") {
+        try {
+          iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`;
+          const userResponse = await iBudgetApi.get(
+            `/users/${id}?_embed=budgets`,
+          );
+          console.log(userResponse.data);
+          setUser(userResponse.data);
+        } catch (error) {
+          console.log("erro");
         }
-      setLoading(false)
+      }
+      setLoading(false);
     }
     loadUser();
   }, [navigate]);
-  
-  console.log(user)
-  
+
+  console.log(user);
+
   const onSubmitLogin = async (loginFormData: ILoginForm) => {
     try {
-      const response = await iBudgetApi.post<ILoginData>("/login", loginFormData);
+      const response = await iBudgetApi.post<ILoginData>(
+        "/login",
+        loginFormData,
+      );
       localStorage.clear();
 
       localStorage.setItem("@token", response.data.accessToken);
-      localStorage.setItem("@id", JSON.stringify(response.data.user.id))
-      
-      setUser(response.data.user)
+      localStorage.setItem("@id", JSON.stringify(response.data.user.id));
+
+      setUser(response.data.user);
       navigate("/dashboard");
       toast.success("Login realizado com sucesso");
       setIsAuthenticated(true);
-
     } catch (error) {
       toast.error("Usuário não encontrado");
     }
@@ -129,13 +131,12 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   };
 
   const handleSignOut = (): void => {
-    setIsAuthenticated(false)
-    setIsLogin(false)
-    setIsHome(true)
+    setIsAuthenticated(false);
+    setIsLogin(false);
+    setIsHome(true);
     localStorage.clear();
-    navigate("/home")
+    navigate("/home");
     window.location.reload();
-    
   };
 
   return (
