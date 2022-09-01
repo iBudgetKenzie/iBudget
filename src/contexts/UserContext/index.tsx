@@ -1,3 +1,4 @@
+import { appendFile } from "fs";
 import {
   createContext,
   useContext,
@@ -5,6 +6,7 @@ import {
   useEffect,
   ReactNode,
 } from "react";
+import { BsYoutube } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -16,13 +18,13 @@ interface IUserProviderProps {
 
 export interface IUser {
   email: string;
-  password: string;
+  password?: string;
   name: string;
   username: string;
   position: string;
   imageUrl: string;
   id: string | number;
-  budgets: IBudget[];
+  budgets?: IBudget[];
 }
 
 export interface IBudget {
@@ -56,9 +58,11 @@ interface IUserProviderData {
 }
 
 export interface ILoginData {
-  accessToken: string | number;
+  accessToken: string;
   user: IUser;
 }
+
+
 
 export const UserContext = createContext<IUserProviderData>({} as IUserProviderData);
 
@@ -75,22 +79,41 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const [isLogin, setIsLogin]       = useState<boolean>(false);
   const [isCadastro, setIsCadastro] = useState<boolean>(false);
   const [isSobre, setIsSobre]       = useState<boolean>(false);
+  const [loading, setLoading]       = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect((): void => {
-    // function to get the user here
-  });
-
+    async function loadUser () {
+      const token = localStorage.getItem("@token")
+      
+      if(!token) {
+        navigate("/home")
+      } else {
+        const userStorage: string | null = localStorage.getItem("@user")
+        if(userStorage && typeof userStorage === "string") {
+          setUser(JSON.parse(userStorage))    
+        }
+      }
+      setLoading(false)
+      
+    }
+    
+    loadUser();
+  }, [navigate]);
+  
   console.log(user)
-
+  
   const onSubmitLogin = async (loginFormData: ILoginForm) => {
     try {
-      const response = await iBudgetApi.post("/login", loginFormData);
-      localStorage.clear();
+      const response = await iBudgetApi.post<ILoginData>("/login", loginFormData);
+      // localStorage.clear();
 
-      console.log(response.data.user)
-      setUser(response.data.user)
+      // console.log(response.data.user)
+      localStorage.setItem("@user", JSON.stringify(response.data.user))
       localStorage.setItem("@token", response.data.accessToken);
+      localStorage.setItem("@id", JSON.stringify(response.data.user.id))
+      // userStorage ? setUser(JSON.parse(userStorage)) : 
+      setUser(response.data.user)
       navigate("/dashboard");
       toast.success("Login realizado com sucesso");
       setIsAuthenticated(true);
