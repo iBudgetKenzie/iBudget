@@ -22,23 +22,16 @@ export const ModalVariableCost = () => {
         </div>
         <ConteinerFormModal>
           <form onSubmit={handleSubmit(addVariableValue)}>
-            {inputs.map(({ example, name, title }: IInputs, index) => {
+            {inputs.map(({ example, name }: IInputs, index) => {
               return (
                 <MoreExpenses key={index}>
-                  <label htmlFor="value">{title}</label>
+                  <label htmlFor="value">{`Valor${index + 1}`}</label>
                   <input
                     type="number"
                     id="value"
                     placeholder={example}
                     {...register(name)}
                   />
-
-                  {/* <label htmlFor="description">Descrição custo:</label>
-                  <input
-                    type="text"
-                    placeholder="Ex: Aluguel"
-                    id="description"
-                  /> */}
                 </MoreExpenses>
               );
             })}

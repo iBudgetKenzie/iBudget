@@ -25,4 +25,8 @@ export const InputMoreExpenses = styled.div`
         line-height: 12px;
         padding: 17px 0px 17px 10px;
     }
+
+    @media (max-width: 480px) {
+        width: 47%;
+    }
 `

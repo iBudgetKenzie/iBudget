@@ -48,6 +48,7 @@ export const Modal = styled.div`
             font-family: "Inter";
             font-weight: 600;
             font-size: 21px;
+            cursor: pointer;
         }
     }
 `
@@ -74,6 +75,12 @@ export const ConteinerFormModal = styled.div`
             font-size: 14px;
             line-height: 17px;
             color: rgba(var(--color-white), 1);
+
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(var(--color-purple-light), 1);
+            }
         }
     } 
 `
