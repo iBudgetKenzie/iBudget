@@ -17,6 +17,13 @@ export const Header = styled.header`
 
         margin-left:1.438rem;
         margin-top:0.625rem;
+
+        @media (min-width:320px)  { 
+            & {
+                
+                margin-left:1rem;
+            }
+        }
     }
 
     div {
@@ -31,7 +38,8 @@ export const Header = styled.header`
         
         @media (min-width:320px)  { 
             & {
-                background-color:red;
+                gap:5px;;
+                margin-left:-1rem;
             }
         }
 
@@ -50,6 +58,8 @@ export const Header = styled.header`
             height:54px;
             margin-left:0px;
             margin-top:0px;
+
+            border-radius:50px;
         }
 
         a {

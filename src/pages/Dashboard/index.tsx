@@ -3,14 +3,14 @@ import { ModalFixedCost } from "../../components/ModalFixedCost";
 import { ModalVariableCost } from "../../components/ModalVariableCost";
 import { CreateBudget } from "../../components/CreateBudget";
 import { BudgetContext } from "../../contexts/BudgetContext";
-import HeaderL from "../../components/HeaderL";
+import HeaderLogged from "../../components/HeaderLogged";
 
 const Dashboard = () => {
   const { onModalFixedCost, onModalVariableCost } = useContext(BudgetContext);
 
   return (
     <>
-    <HeaderL/>
+    <HeaderLogged/>
     <div>
       <CreateBudget />
 
