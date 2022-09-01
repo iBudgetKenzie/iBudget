@@ -1,3 +1,4 @@
+import { appendFile } from "fs";
 import {
   createContext,
   useContext,
@@ -5,10 +6,9 @@ import {
   useEffect,
   ReactNode,
 } from "react";
+import { BsYoutube } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
-
 
 import iBudgetApi from "../../services/iBudgetApi";
 
@@ -18,13 +18,13 @@ interface IUserProviderProps {
 
 export interface IUser {
   email: string;
-  password: string;
+  password?: string;
   name: string;
   username: string;
   position: string;
   imageUrl: string;
   id: string | number;
-  budgets: IBudget[];
+  budgets?: IBudget[];
 }
 
 export interface IBudget {
@@ -58,11 +58,13 @@ interface IUserProviderData {
 }
 
 export interface ILoginData {
-  accessToken: string | number;
+  accessToken: string;
   user: IUser;
 }
 
-export const UserContext = createContext<IUserProviderData>({} as IUserProviderData);
+export const UserContext = createContext<IUserProviderData>(
+  {} as IUserProviderData,
+);
 
 export const useUserContext = (): IUserProviderData => {
   const context = useContext(UserContext);
@@ -72,27 +74,50 @@ export const useUserContext = (): IUserProviderData => {
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const [user, setUser] = useState<IUser>({} as IUser);
-  const [isAuthenticated , setIsAuthenticated] = useState<boolean>(false);
-  const [isHome, setIsHome]         = useState<boolean>(true);
-  const [isLogin, setIsLogin]       = useState<boolean>(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isHome, setIsHome] = useState<boolean>(true);
+  const [isLogin, setIsLogin] = useState<boolean>(false);
   const [isCadastro, setIsCadastro] = useState<boolean>(false);
-  const [isSobre, setIsSobre]       = useState<boolean>(false);
+  const [isSobre, setIsSobre] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect((): void => {
-    // function to get the user here
-  });
+    async function loadUser() {
+      const token: string | null = localStorage.getItem("@token");
+      const id: string | null = localStorage.getItem("@id");
 
-  console.log(user)
+      if (typeof token === "string" && typeof id === "string") {
+        try {
+          iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`;
+          const userResponse = await iBudgetApi.get(
+            `/users/${id}?_embed=budgets`,
+          );
+          console.log(userResponse.data);
+          setUser(userResponse.data);
+        } catch (error) {
+          console.log("erro");
+        }
+      }
+      setLoading(false);
+    }
+    loadUser();
+  }, [navigate]);
+
+  console.log(user);
 
   const onSubmitLogin = async (loginFormData: ILoginForm) => {
     try {
-      const response = await iBudgetApi.post("/login", loginFormData);
+      const response = await iBudgetApi.post<ILoginData>(
+        "/login",
+        loginFormData,
+      );
       localStorage.clear();
 
-      console.log(response.data.user)
-      setUser(response.data.user)
       localStorage.setItem("@token", response.data.accessToken);
+      localStorage.setItem("@id", JSON.stringify(response.data.user.id));
+
+      setUser(response.data.user);
       navigate("/dashboard");
       toast.success("Login realizado com sucesso");
       setIsAuthenticated(true);
@@ -106,13 +131,12 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   };
 
   const handleSignOut = (): void => {
-    setIsAuthenticated(false)
-    setIsLogin(false)
-    setIsHome(true)
+    setIsAuthenticated(false);
+    setIsLogin(false);
+    setIsHome(true);
     localStorage.clear();
-    navigate("/home")
+    navigate("/home");
     window.location.reload();
-    
   };
 
   return (
