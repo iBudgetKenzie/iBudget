@@ -21,7 +21,7 @@ interface IBudgetContext {
   onModalVariableCost: boolean;
   setOnModalFixedCost: (modalFixedValue: boolean) => void;
   setOnModalVariableCost: (modalVariableValue: boolean) => void;
-  inputs: string[];
+  inputs: IInputs[];
   fixedCost: number;
   variableCost: number;
   sendBudget: (data: IBudgetOmitId) => void
@@ -31,31 +31,33 @@ export const BudgetContext = createContext<IBudgetContext>(
   {} as IBudgetContext
 );
 
+export interface IInputs {
+  title: string;
+  example: string;
+  name: string;
+}
+
 export interface IFixedCost {
-  input0: string;
-  input1: string;
-  input2: string;
-  input3: string;
-  input4: string;
-  input5: string;
-  input6: string;
-  input7: string;
-  input8: string;
-  input9: string;
+  input0: IInputs;
+  input1: IInputs;
+  input2: IInputs;
+  input3: IInputs;
+  input4: IInputs;
+  input5: IInputs;
+  input6: IInputs;
+  input7: IInputs;
 }
 
 export const BudgetProvider = ({ children }: IBudgetProvider) => {
-  const [inputs] = useState<string[]>([
-    "input0",
-    "input1",
-    "input2",
-    "input3",
-    "input4",
-    "input5",
-    "input6",
-    "input7",
-    "input8",
-    "input9",
+  const [inputs] = useState<IInputs[]>([
+    {title: "Moradia:",example: "Ex: Aluguel, condomínio...",name: "option0"},
+    {title: "Moradia:",example: "Ex: Aluguel, condomínio...",name: "option1"},
+    {title: "Moradia:",example: "Ex: Aluguel, condomínio...",name: "option2"},
+    {title: "Moradia:",example: "Ex: Aluguel, condomínio...",name: "option3"},
+    {title: "Moradia:",example: "Ex: Aluguel, condomínio...",name: "option4"},
+    {title: "Moradia:",example: "Ex: Aluguel, condomínio...",name: "option5"},
+    {title: "Moradia:",example: "Ex: Aluguel, condomínio...",name: "option6"},
+    {title: "Moradia:",example: "Ex: Aluguel, condomínio...",name: "option7"},
   ]);
 
   const [fixedCost, setFixedCost] = useState(0);
