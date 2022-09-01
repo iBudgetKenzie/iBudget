@@ -64,7 +64,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         /* line-height: 1;
-        overflow-y: scroll; */
+        overflow-y: scroll;;;;;;; */
         overflow-x: hidden;
         background-color: rgba(var(--color-grey-4));
 
