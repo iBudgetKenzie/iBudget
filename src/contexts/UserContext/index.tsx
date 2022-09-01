@@ -40,8 +40,16 @@ export interface IRegisterForm {}
 interface IUserProviderData {
   user: IUser;
   isAuthenticated: boolean;
-  setIsAuthenticated: (isAuthenticated: boolean) => void;
+  isHome: boolean;
+  isLogin: boolean;
+  isCadastro: boolean;
+  isSobre: boolean;
   setUser: (user: IUser) => void;
+  setIsAuthenticated: (isAuthenticated: boolean) => void;
+  setIsHome: (isHome: boolean) => void;
+  setIsLogin: (isLogin: boolean) => void;
+  setIsSobre: (isSobre: boolean) => void;
+  setIsCadastro: (isCadastro: boolean) => void;
   onSubmitLogin: (loginFormData: ILoginForm) => void;
   onSubmitRegister: (registerFormData: IRegisterForm) => void;
   handleSignOut: () => void;
@@ -62,7 +70,11 @@ export const useUserContext = (): IUserProviderData => {
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const [user, setUser] = useState<IUser>({} as IUser);
-  const [isAuthenticated , setIsAuthenticated] = useState<boolean>(false)
+  const [isAuthenticated , setIsAuthenticated] = useState<boolean>(false);
+  const [isHome, setIsHome]         = useState<boolean>(true);
+  const [isLogin, setIsLogin]       = useState<boolean>(false);
+  const [isCadastro, setIsCadastro] = useState<boolean>(false);
+  const [isSobre, setIsSobre]       = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect((): void => {
@@ -97,6 +109,14 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         setUser,
         isAuthenticated,
         setIsAuthenticated,
+        isHome,
+        setIsHome,
+        isLogin,
+        setIsLogin,
+        isCadastro,
+        setIsCadastro,
+        isSobre,
+        setIsSobre,
         onSubmitLogin,
         onSubmitRegister,
         handleSignOut,
