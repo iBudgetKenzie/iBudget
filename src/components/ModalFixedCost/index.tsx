@@ -35,12 +35,6 @@ export const ModalFixedCost = () => {
                     placeholder={example}
                     {...register(name)}
                   />
-                  {/* <label htmlFor="description">Descrição custo:</label>
-                  <input
-                    type="text"
-                    placeholder="Ex: Aluguel"
-                    id="description"
-                  /> */}
                 </MoreExpenses>
               );
             })}

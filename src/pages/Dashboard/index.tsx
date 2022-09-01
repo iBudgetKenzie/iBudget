@@ -11,8 +11,8 @@ const Dashboard = () => {
     <div>
       <CreateBudget />
 
-      {onModalFixedCost ? <ModalFixedCost /> : null}
-      {onModalVariableCost ? <ModalVariableCost /> : null}
+      {onModalFixedCost && <ModalFixedCost />}
+      {onModalVariableCost && <ModalVariableCost />}
     </div>
   );
 };

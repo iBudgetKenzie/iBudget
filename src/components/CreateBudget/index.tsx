@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -17,20 +17,19 @@ export const CreateBudget = () => {
   const {
     setOnModalFixedCost,
     setOnModalVariableCost,
-    fixedCost,
-    variableCost,
+    fixedValue,
+    variableValue,
     sendBudget,
+    totalDays,
   } = useContext(BudgetContext);
 
   const formSchema = yup.object().shape({
     projectName: yup.string().required("Necessário nome do projeto"),
-    fixedCost: yup
-      .number()
-      .typeError("O campo só aceita números")
-      .required("Custos fixos necessário"),
-    variableCost: yup.number().typeError("O campo só aceita números"),
-    // startDate: yup.string().required("Data de início necessária"),
-    // endDate: yup.string().required("Data de término necessária"),
+    fixedCost: yup.number().required("Custos fixos necessário"),
+    variableValue: yup.number(),
+    startDate: yup.string().required("Data de início necessária"),
+    endDate: yup.string().required("Data de término necessária"),
+    workHours: yup.number().required("Horas trabalhadas por dia necessária"),
   });
 
   // const [valueFixedCost, setValueFixedCost] = useState(0);
@@ -69,10 +68,9 @@ export const CreateBudget = () => {
         </label>
         <div>
           <input
-            type="text"
+            type="number"
             id="fixedCost"
-            value={fixedCost}
-            placeholder="Ex: R$ 2000,00"
+            value={fixedValue}
             {...register("fixedCost")}
           />
           <FaRegEdit
@@ -88,10 +86,9 @@ export const CreateBudget = () => {
         </label>
         <div>
           <input
-            type="text"
+            type="number"
             id="variableCost"
-            value={variableCost}
-            placeholder="Ex: 1000,00R$"
+            value={variableValue}
             {...register("variableCost")}
           />
           <FaRegEdit
@@ -105,7 +102,7 @@ export const CreateBudget = () => {
         <ConteinerDate>
           <div>
             <label htmlFor="startDate">
-              Tempo do projeto: <span>*</span>
+              Data de início: <span>*</span>
             </label>
             <input
               type="date"
@@ -118,7 +115,7 @@ export const CreateBudget = () => {
 
           <div>
             <label htmlFor="endDate">
-              Tempo do projeto: <span>*</span>
+              Data de término: <span>*</span>
             </label>
             <input
               type="date"
@@ -132,9 +129,20 @@ export const CreateBudget = () => {
 
         <ConteinerWorkTime>
           <div>
-            <h2>Hora de trabalho:</h2>
-            <input type="text" 
-            disabled/>
+            <label htmlFor="workHours">
+              Horas de trabalho: <span>*</span>
+            </label>
+            <input
+              type="number"
+              id="workHours"
+              placeholder="Ex: 4h"
+              {...register("workHours")}
+            />
+          </div>
+
+          <div>
+            <label>Valor por hora:</label>
+            <input type="text" value={totalDays} disabled />
           </div>
         </ConteinerWorkTime>
 

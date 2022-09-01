@@ -99,6 +99,8 @@ export const ContainerCreateBudget = styled.div`
                 top: 10px;
                 width: 16px;
                 height: 16px;
+
+                cursor: pointer;
             }
         }
 
@@ -106,7 +108,7 @@ export const ContainerCreateBudget = styled.div`
             background-color: rgba(var(--color-purple), 1);
             border-radius: 8px;
             height: 48px;
-            margin-top: 10px;
+            margin-top: 22px;
             border: none;
 
             font-family: 'Inter';
@@ -116,6 +118,11 @@ export const ContainerCreateBudget = styled.div`
             line-height: 17px;
 
             color: aliceblue;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(var(--color-purple-light), 1);
+            }
       } 
     } 
 
@@ -125,7 +132,7 @@ export const ContainerCreateBudget = styled.div`
 `
 
 export const ConteinerDate = styled.div`
-    margin-top: 9px;
+    margin-top: 8px;
     display: flex;
     justify-content: space-between;
 
@@ -154,28 +161,37 @@ export const ConteinerDate = styled.div`
 `
 
 export const ConteinerWorkTime = styled.div`
-    margin-top: 42px;
-    margin-bottom: 20px;
+    margin-top: 23px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 
-    & div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    & > div {
+        height: 55px;
+        width: 140px;
 
-        & h2 {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 19px;
-
-            padding-bottom: 10px;
+        & label {
+            padding-bottom: 5px;
         }
 
-        & input {
-            width: 210px;
+        & > input {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+            padding: 0 6px;
+        }
+    }
+
+    & > div + div {
+        & > input {
+            padding-left: 2.9rem;
+        }
+    }
+
+    @media (max-width: 375px) {
+        & div {
+            width: 38vw;
         }
     }
 `
