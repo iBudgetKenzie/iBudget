@@ -32,7 +32,8 @@ export interface IBudget {
   projectTime: number;
   fixedCost: number;
   variableCost: number;
-  userId: string | number;
+  budget: string;
+  userId: string | number | null;
 }
 
 export interface ILoginForm {}

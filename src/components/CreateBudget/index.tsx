@@ -29,11 +29,12 @@ export const CreateBudget = () => {
     projectName: yup.string().required("Necessário nome do projeto"),
     fixedCost: yup.number().required("Custos fixos necessário"),
     variableValue: yup.number(),
+    hoursDay: yup.number().required("Horas trabalhadas por dia necessária"),
+    daysWeek: yup.number().required("Dias por semana necessária"),
     startDate: yup.string().required("Data de início necessária"),
     endDate: yup.string().required("Data de término necessária"),
-    workHours: yup.number().required("Horas trabalhadas por dia necessária"),
-    daysWeek: yup.number(),
-    estimatedSalary: yup.number()
+    estimatedSalary: yup.number(),
+    // workHours: yup.number().required("Horas trabalhadas por dia necessária"),
   });
 
   // const [valueFixedCost, setValueFixedCost] = useState(0);
@@ -109,7 +110,7 @@ export const CreateBudget = () => {
               id="hoursDay"
               placeholder="Ex: 10h"
               register={register}
-              error={errors.workHours?.message}
+              error={errors.hoursDay?.message}
             />
           </div>
 

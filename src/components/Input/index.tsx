@@ -4,7 +4,7 @@ import { IBudgetOmitId } from "../../contexts/BudgetContext";
 
 interface InputProps {
   type: string;
-  id: "projectName" | "fixedCost" | "variableCost" | "startDate" | "endDate" | "workHours" | "daysWeek" | "estimatedSalary" | "hoursDay";
+  id: "projectName" | "fixedCost" | "variableCost" | "startDate" | "endDate" | "daysWeek" | "estimatedSalary" | "hoursDay";
   value?: number;
   title: string;
   error: string | undefined;
