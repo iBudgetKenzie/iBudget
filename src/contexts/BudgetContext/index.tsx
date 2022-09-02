@@ -1,6 +1,9 @@
-import { createContext, ReactNode, useState, useEffect } from "react";
+import { createContext, ReactNode, useState, useEffect, useContext } from "react";
+// import { UserContext } from "../UserContext/index";
 
-import { IBudget } from "../UserContext/index";
+import { IBudget, IUser } from "../UserContext/index";
+import { inputsBase, IInputs } from "../../components/InputsBase";
+
 import iBudgetApi from "../../services/iBudgetApi";
 
 export interface IBudgetOmitId {
@@ -25,22 +28,17 @@ interface IBudgetContext {
   onModalVariableCost: boolean;
   setOnModalFixedCost: (modalFixedValue: boolean) => void;
   setOnModalVariableCost: (modalVariableValue: boolean) => void;
-  inputs: IInputs[];
+  inputsBase: IInputs[];
   fixedValue: number;
   variableValue: number;
   sendBudget: (data: IBudgetOmitId) => void;
   totalDays: string;
+  budgetHistory: IBudget[];
 }
 
 export const BudgetContext = createContext<IBudgetContext>(
   {} as IBudgetContext,
 );
-
-export interface IInputs {
-  title: string;
-  example: string;
-  name: string;
-}
 
 export interface IFixedCost {
   input0: IInputs;
@@ -54,56 +52,28 @@ export interface IFixedCost {
 }
 
 export const BudgetProvider = ({ children }: IBudgetProvider) => {
-  const [inputs] = useState<IInputs[]>([
-    {
-      title: "Moradia:",
-      example: "Ex: 1000",
-      name: "option0",
-    },
-    {
-      title: "Alimentação:",
-      example: "Ex: 1000",
-      name: "option1",
-    },
-    {
-      title: "Consumo:",
-      example: "Ex: 1000",
-      name: "option2",
-    },
-    {
-      title: "Saúde:",
-      example: "Ex: 1000",
-      name: "option3",
-    },
-    {
-      title: "Transporte:",
-      example: "Ex: 1000",
-      name: "option4",
-    },
-    {
-      title: "Educação:",
-      example: "Ex: 1000",
-      name: "option5",
-    },
-    {
-      title: "Outros:",
-      example: "Ex: 1000",
-      name: "option6",
-    },
-    {
-      title: "Outros:",
-      example: "Ex: 1000",
-      name: "option7",
-    },
-  ]);
-
-  const [fixedValue, setFixedCost] = useState<number>(0);
-  const [variableValue, setVariableCost] = useState<number>(0);
+  const [fixedValue, setFixedCost] = useState(0);
+  const [variableValue, setVariableCost] = useState(0);
+  
+  const [totalDays, setTotalDays] = useState<string>("");
 
   const [onModalFixedCost, setOnModalFixedCost] = useState(false);
   const [onModalVariableCost, setOnModalVariableCost] = useState(false);
 
-  const [totalDays, setTotalDays] = useState<string>("");
+  const [budgetHistory, setBudgetHistory] = useState<IBudget[]>([])
+
+  useEffect(() => {
+    async function budgets() {
+      const id = localStorage.getItem("@id")
+      try {
+        const {data} = await iBudgetApi.get<IUser>(`/users/${id}?_embed=budgets`);
+        console.log(data.budgets)
+      } catch (error) {
+        
+      }
+    }
+    budgets()
+  }, [])
 
   const addFixedValue = (data: any): void => {
     const array = Object.values(data).filter((elemnt) => !!elemnt);
@@ -191,11 +161,12 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   return (
     <BudgetContext.Provider
       value={{
+        budgetHistory,
         totalDays,
         sendBudget,
         fixedValue,
         variableValue,
-        inputs,
+        inputsBase,
         onModalFixedCost,
         onModalVariableCost,
         setOnModalFixedCost,
@@ -208,17 +179,3 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     </BudgetContext.Provider>
   );
 };
-
-// const newEndDate = endDate.split("-");
-//     const yearEndDate = Number(newEndDate[0]);
-//     const mouthEndDate = Number(newEndDate[1]);
-//     const dayEndDate = Number(newEndDate[2]);
-
-//     const newStartDate = startDate.split("-");
-//     const yearStartDate = Number(newStartDate[0]);
-//     const mouthStartDate = Number(newStartDate[1]);
-//     const dayStartDate = Number(newStartDate[2]);
-
-// const days = ((yearEndDate * 365) - (yearStartDate * 365)) + ((mouthEndDate * 30) - (mouthStartDate * 30)) + (dayEndDate - dayStartDate);
-// const valueHours = (fixedCost + variableCost) / (days * workHours);
-// console.log(valueHours);

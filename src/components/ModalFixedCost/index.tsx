@@ -5,10 +5,10 @@ import { BudgetContext } from "../../contexts/BudgetContext";
 import { MoreExpenses } from "../MoreExpenses";
 
 import { ConteinerModalFixedCost, Modal, ConteinerFormModal } from "./style";
-import { IInputs } from "../../contexts/BudgetContext/index";
+import { IInputs } from "../InputsBase";
 
 export const ModalFixedCost = () => {
-  const { setOnModalFixedCost, addFixedValue, inputs } =
+  const { setOnModalFixedCost, addFixedValue, inputsBase } =
     useContext(BudgetContext);
 
   const {
@@ -25,7 +25,7 @@ export const ModalFixedCost = () => {
         </div>
         <ConteinerFormModal>
           <form onSubmit={handleSubmit(addFixedValue)}>
-            {inputs.map(({example, title, name}: IInputs, index) => {
+            {inputsBase.map(({example, title, name}: IInputs, index) => {
               return (
                 <MoreExpenses key={index}>
                   <label htmlFor="value">{title}</label>

@@ -47,6 +47,9 @@ export const ConteinerCardBudgetHistory = styled.li`
     & > svg {
       width: 20px;
       height: 20px;
+
+      cursor: pointer;
     }
   }
 `;
+
