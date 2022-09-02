@@ -26,7 +26,6 @@ export const ContainerCreateBudget = styled.div`
     & > form {
         display: flex;
         flex-direction: column;
-        /* justify-content: space-between; */
 
         width: 100%;
         height: 100%;
@@ -118,6 +117,7 @@ export const ContainerCreateBudget = styled.div`
             line-height: 17px;
 
             color: aliceblue;
+
             cursor: pointer;
 
             &:hover {
