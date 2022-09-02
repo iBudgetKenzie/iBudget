@@ -9,10 +9,11 @@ import { IBudgetOmitId } from "../../contexts/BudgetContext/index";
 
 import {
   ContainerCreateBudget,
-  ConteinerDate,
-  ConteinerWorkTime,
+  // ConteinerDate,
+  // ConteinerWorkTime,
 } from "./styles";
 import { useUserContext } from "../../contexts/UserContext";
+import { Input } from "../Input";
 
 export const CreateBudget = () => {
   const {
@@ -31,6 +32,8 @@ export const CreateBudget = () => {
     startDate: yup.string().required("Data de início necessária"),
     endDate: yup.string().required("Data de término necessária"),
     workHours: yup.number().required("Horas trabalhadas por dia necessária"),
+    daysWeek: yup.number(),
+    estimatedSalary: yup.number()
   });
 
   // const [valueFixedCost, setValueFixedCost] = useState(0);
@@ -64,80 +67,95 @@ export const CreateBudget = () => {
         />
         <span>{errors.projectName?.message}</span>
 
-        <label htmlFor="fixedCost">
-          Custo fixo: <span>*</span>
-        </label>
         <div>
-          <input
-            type="number"
-            id="fixedCost"
-            value={fixedValue}
-            {...register("fixedCost")}
-          />
-          <FaRegEdit
-            onClick={() => {
-              setOnModalFixedCost(true);
-            }}
-          />
-        </div>
-        <span>{errors.fixedCost?.message}</span>
-
-        <label htmlFor="variableCost">
-          Custo variável: <span>*</span>
-        </label>
-        <div>
-          <input
-            type="number"
-            id="variableCost"
-            value={variableValue}
-            {...register("variableCost")}
-          />
-          <FaRegEdit
-            onClick={() => {
-              setOnModalVariableCost(true);
-            }}
-          />
-        </div>
-        <span>{errors.variableCost?.message}</span>
-
-        <ConteinerDate>
           <div>
-            <label htmlFor="startDate">
-              Data de início: <span>*</span>
-            </label>
-            <input
+            <Input
+              title="Custo fixo:"
+              type="number"
+              id="fixedCost"
+              value={fixedValue}
+              register={register}
+              error={errors.fixedCost?.message}
+            />
+            <FaRegEdit
+              onClick={() => {
+                setOnModalFixedCost(true);
+              }}
+            />
+          </div>
+
+          <div>
+            <Input
+              title="Custo variável:"
+              type="number"
+              id="variableCost"
+              value={variableValue}
+              register={register}
+              error={errors.variableCost?.message}
+            />
+            <FaRegEdit
+              onClick={() => {
+                setOnModalVariableCost(true);
+              }}
+            />
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <Input
+              title="Horas por dia:"
+              type="number"
+              id="hoursDay"
+              placeholder="Ex: 10h"
+              register={register}
+              error={errors.workHours?.message}
+            />
+          </div>
+
+          <div>
+            <Input
+              title="Dias por semana:"
+              type="number"
+              id="daysWeek"
+              placeholder="Ex: 10h"
+              register={register}
+              error={errors.daysWeek?.message}
+            />
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <Input
+              title="Data de ínicio:"
               type="date"
               id="startDate"
-              placeholder="Ex: 15"
-              {...register("startDate")}
+              register={register}
+              error={errors.startDate?.message}
             />
-            <span>{errors.startDate?.message}</span>
           </div>
 
           <div>
-            <label htmlFor="endDate">
-              Data de término: <span>*</span>
-            </label>
-            <input
+            <Input
+              title="Data de término:"
               type="date"
               id="endDate"
-              placeholder="Ex: 15"
-              {...register("endDate")}
+              register={register}
+              error={errors.endDate?.message}
             />
-            <span>{errors.endDate?.message}</span>
           </div>
-        </ConteinerDate>
+        </div>
 
-        <ConteinerWorkTime>
+        <div>
           <div>
-            <label htmlFor="workHours">
-              Horas de trabalho: <span>*</span>
-            </label>
-            <input
+            <Input
+              title="Salário estimado:"
               type="number"
-              id="workHours"
-              placeholder="Ex: 4h"
-              {...register("workHours")}
+              id="estimatedSalary"
+              placeholder="Ex: R$: 3000,00"
+              register={register}
+              error={errors.estimatedSalary?.message}
             />
           </div>
 
@@ -145,7 +163,7 @@ export const CreateBudget = () => {
             <label>Valor por hora:</label>
             <input type="text" value={totalDays} disabled />
           </div>
-        </ConteinerWorkTime>
+        </div>
 
         <button type="submit">Gerar Orçamento</button>
       </form>

@@ -9,6 +9,9 @@ export interface IBudgetOmitId {
   startDate: string;
   endDate: string;
   workHours: number;
+  daysWeek: number;
+  estimatedSalary: number;
+  hoursDay: number;
 }
 
 interface IBudgetProvider {

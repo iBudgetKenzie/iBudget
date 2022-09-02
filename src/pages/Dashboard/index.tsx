@@ -17,7 +17,7 @@ const Dashboard = () => {
       <div>
         <SoParaVisualizar>
           <CreateBudget />
-          <BudgetHistory />
+          {/* <BudgetHistory /> */}
         </SoParaVisualizar>
 
         {onModalFixedCost && <ModalFixedCost />}
