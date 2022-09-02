@@ -1,6 +1,9 @@
-import { createContext, ReactNode, useState, useEffect } from "react";
+import { createContext, ReactNode, useState, useEffect, useContext } from "react";
+
+import { UserContext } from "../UserContext/index";
 
 import { IBudget } from "../UserContext/index";
+import { inputsBase, IInputs } from "../../components/InputsBase";
 
 export interface IBudgetOmitId {
   projectName: string;
@@ -22,7 +25,7 @@ interface IBudgetContext {
   onModalVariableCost: boolean;
   setOnModalFixedCost: (modalFixedValue: boolean) => void;
   setOnModalVariableCost: (modalVariableValue: boolean) => void;
-  inputs: IInputs[];
+  inputsBase: IInputs[];
   fixedValue: number;
   variableValue: number;
   sendBudget: (data: IBudgetOmitId) => void;
@@ -32,12 +35,6 @@ interface IBudgetContext {
 export const BudgetContext = createContext<IBudgetContext>(
   {} as IBudgetContext,
 );
-
-export interface IInputs {
-  title: string;
-  example: string;
-  name: string;
-}
 
 export interface IFixedCost {
   input0: IInputs;
@@ -51,48 +48,7 @@ export interface IFixedCost {
 }
 
 export const BudgetProvider = ({ children }: IBudgetProvider) => {
-  const [inputs] = useState<IInputs[]>([
-    {
-      title: "Moradia:",
-      example: "Ex: 1000",
-      name: "option0",
-    },
-    {
-      title: "Alimentação:",
-      example: "Ex: 1000",
-      name: "option1",
-    },
-    {
-      title: "Consumo:",
-      example: "Ex: 1000",
-      name: "option2",
-    },
-    {
-      title: "Saúde:",
-      example: "Ex: 1000",
-      name: "option3",
-    },
-    {
-      title: "Transporte:",
-      example: "Ex: 1000",
-      name: "option4",
-    },
-    {
-      title: "Educação:",
-      example: "Ex: 1000",
-      name: "option5",
-    },
-    {
-      title: "Outros:",
-      example: "Ex: 1000",
-      name: "option6",
-    },
-    {
-      title: "Outros:",
-      example: "Ex: 1000",
-      name: "option7",
-    },
-  ]);
+  const {user} = useContext(UserContext);
 
   const [fixedValue, setFixedCost] = useState(0);
   const [variableValue, setVariableCost] = useState(0);
@@ -160,7 +116,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
         sendBudget,
         fixedValue,
         variableValue,
-        inputs,
+        inputsBase,
         onModalFixedCost,
         onModalVariableCost,
         setOnModalFixedCost,

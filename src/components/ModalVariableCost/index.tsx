@@ -3,12 +3,12 @@ import { useForm } from "react-hook-form";
 
 import { BudgetContext } from "../../contexts/BudgetContext";
 import { MoreExpenses } from "../MoreExpenses";
-import { IInputs } from "../../contexts/BudgetContext/index";
+import { IInputs } from "../InputsBase";
 
 import { ConteinerModalVariableCost, Modal, ConteinerFormModal } from "./style";
 
 export const ModalVariableCost = () => {
-  const { setOnModalVariableCost, addVariableValue, inputs } =
+  const { setOnModalVariableCost, addVariableValue, inputsBase } =
     useContext(BudgetContext);
 
   const { register, handleSubmit } = useForm();
@@ -22,7 +22,7 @@ export const ModalVariableCost = () => {
         </div>
         <ConteinerFormModal>
           <form onSubmit={handleSubmit(addVariableValue)}>
-            {inputs.map(({ example, name }: IInputs, index) => {
+            {inputsBase.map(({ example, name }: IInputs, index) => {
               return (
                 <MoreExpenses key={index}>
                   <label htmlFor="value">{`Valor${index + 1}`}</label>
