@@ -12,56 +12,66 @@ import { toast } from "react-toastify";
 
 import iBudgetApi from "../../services/iBudgetApi";
 
+import userPng from "../../assets/img/user.png";
+
 interface IUserProviderProps {
   children: ReactNode;
 }
 
 export interface IUser {
-  email:        string;
-  password?:    string;
-  name:         string;
-  username:     string;
-  position:     string;
-  imageUrl:     string;
-  id:           string | number;
-  budgets?:     IBudget[];
+  email: string;
+  password?: string;
+  name: string;
+  username: string;
+  position: string;
+  imageUrl: string;
+  id: string | number;
+  budgets?: IBudget[];
 }
 
 export interface IBudget {
-  projectName:      string;
-  projectTime:      number;
-  fixedCost:        number;
-  variableCost:     number;
-  userId:           string | number;
+  projectName: string;
+  projectTime: number;
+  fixedCost: number;
+  variableCost: number;
+  userId: string | number;
 }
 
 export interface ILoginForm {}
 
-export interface IRegisterForm {}
+export interface IRegisterForm {
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
+  position?: string;
+  imageUrl?: string;
+}
 
 interface IUserProviderData {
-  user:                      IUser;
-  isAuthenticated:           boolean;
-  isHome:                    boolean;
-  isLogin:                   boolean;
-  isRegister:                boolean;
-  isSobre:                   boolean;
-  isImage:                   string;
-  setUser:                   (user: IUser) => void;
-  setIsAuthenticated:        (isAuthenticated: boolean) => void;
-  setIsHome:                 (isHome: boolean) => void;
-  setIsLogin:                (isLogin: boolean) => void;
-  setIsSobre:                (isSobre: boolean) => void;
-  setIsRegister:             (isRegister: boolean) => void;
-  setIsImage:                (isImage: string) => void;
-  onSubmitLogin:             (loginFormData: ILoginForm) => void;
-  onSubmitRegister:          (registerFormData: IRegisterForm) => void;
-  handleSignOut:             () => void;
+  user: IUser;
+  isAuthenticated: boolean;
+  isHome: boolean;
+  isLogin: boolean;
+  isRegister: boolean;
+  isSobre: boolean;
+  isImage: string;
+  setUser: (user: IUser) => void;
+  setIsAuthenticated: (isAuthenticated: boolean) => void;
+  setIsHome: (isHome: boolean) => void;
+  setIsLogin: (isLogin: boolean) => void;
+  setIsSobre: (isSobre: boolean) => void;
+  setIsRegister: (isRegister: boolean) => void;
+  setIsImage: (isImage: string) => void;
+  onSubmitLogin: (loginFormData: ILoginForm) => void;
+  onSubmitRegister: (registerFormData: IRegisterForm) => void;
+  handleSignOut: () => void;
 }
 
 export interface ILoginData {
   accessToken: string;
-  user:        IUser;
+  user: IUser;
 }
 
 export const UserContext = createContext<IUserProviderData>(
@@ -129,8 +139,31 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     }
   };
 
-  const onSubmitRegister = (registerFormData: IRegisterForm): void => {
-    // function to register new user here
+  const onSubmitRegister = async (registerFormData: IRegisterForm) => {
+    const cadastro = {
+      name: registerFormData.name,
+      username: registerFormData.username,
+      email: registerFormData.email,
+      password: registerFormData.password,
+      position: registerFormData.position,
+      imageUrl: registerFormData.imageUrl,
+    };
+    if (registerFormData.imageUrl === "" && isImage === "") {
+      cadastro.imageUrl = userPng;
+    } else if (registerFormData.imageUrl === "" && isImage !== "") {
+      cadastro.imageUrl = isImage;
+    }
+    try {
+      const response = await iBudgetApi.post("/register", cadastro);
+      // console.log(response)
+      toast.success("Cadastro realizado com sucesso");
+      setIsRegister(false);
+      setIsLogin(true);
+
+      // console.log(response)
+    } catch (error) {
+      toast.error("Cadastro não realizado");
+    }
   };
 
   const handleSignOut = (): void => {

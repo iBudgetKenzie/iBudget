@@ -26,11 +26,11 @@ export const StyledRegister = styled.div`
     width: 350px;
     /* margin-bottom: -30px; */
     justify-content: space-evenly;
-  }
+  };
 
   h4 {
     font-size: 20px;
-  }
+  };
 
   form {
     max-height: 390px;
@@ -44,25 +44,25 @@ export const StyledRegister = styled.div`
     @media screen and (min-width: 700px) {
       max-height: 490px;
       gap: 5px;
-    }
+    };
 
     .div--label {
       display: flex;
       flex-direction: column;
       /* gap: 1px; */
-    }
+    };
 
     label {
       font-size: 14px;
-    }
+    };
 
     span {
       color: rgba(var(--color-negative-pink), 1);
-    }
+    };
 
     .span--error {
       font-size: 13px;
-    }
+    };
 
     input {
       height: 27px;
@@ -72,12 +72,12 @@ export const StyledRegister = styled.div`
 
       ::placeholder {
         font-size: 14px;
-      }
+      };
 
       @media screen and (min-width: 700px) {
         height: 30px;
-      }
-    }
+      };
+    };
 
     .div--senhas {
       display: flex;
@@ -86,8 +86,8 @@ export const StyledRegister = styled.div`
 
       input {
         width: 120px;
-      }
-    }
+      };
+    };
 
     .div--images {
       display: flex;
@@ -96,7 +96,7 @@ export const StyledRegister = styled.div`
 
       label {
         font-size: 13px;
-      }
+      };
 
       .div--avatars {
         display: flex;
@@ -109,15 +109,20 @@ export const StyledRegister = styled.div`
           border-radius: 50%;
 
           margin-top: 2px;
-        }
-      }
+
+          img {
+            width: 28px;
+            height: 30px;
+          };
+        };
+      };
 
       input {
         width: 120px;
-      }
+      };
 
       margin-bottom: 1px;
-    }
+    };
 
     .register {
       height: 32px;
@@ -132,6 +137,6 @@ export const StyledRegister = styled.div`
       font-size: 14px;
 
       margin-top: 10px;
-    }
-  }
+    };
+  };
 `;

@@ -9,6 +9,8 @@ import { StyledRegister } from "./styles";
 import lion from "../../assets/img/lion.png";
 import rex from "../../assets/img/trex.png";
 import userPng from "../../assets/img/user.png";
+import iBudgetApi from "../../services/iBudgetApi";
+import { toast } from "react-toastify";
 
 interface IData {
   name: string;
@@ -45,31 +47,14 @@ const Register = () => {
     resolver: yupResolver(schema),
   });
 
-  const cadastroSubmit = (data: IData) => {
-    const cadastro = {
-      name: data.name,
-      username: data.username,
-      email: data.email,
-      password: data.password,
-      position: data.position,
-      imageUrl: data.imageUrl,
-    };
-    if (data.imageUrl === "" && isImage === "") {
-      cadastro.imageUrl = userPng
-    } else if (data.imageUrl === "" && isImage !== "") {
-      cadastro.imageUrl = isImage
-    };
-    
-  };
-
   const chooseAvatar = (png: string) => {
     setIsImage(png)
-  }
+  };
 
   return (
     <StyledRegister>
       <h4>Cadastro</h4>
-      <form action="submit" onSubmit={handleSubmit(cadastroSubmit)}>
+      <form action="submit" onSubmit={handleSubmit(onSubmitRegister)}>
         <div className="div--label">
           <label htmlFor="">
             Nome: <span>*</span>
