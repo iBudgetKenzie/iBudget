@@ -101,7 +101,7 @@ export const ContainerCreateBudget = styled.div`
         height: 16px;
 
         cursor: pointer;
-      }  
+      }
     }
 
     & button {
