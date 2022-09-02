@@ -4,6 +4,7 @@ import LoginModal from "../../components/Login";
 
 import { StyledBody } from "./styles";
 import logo from "../../assets/img/logo.svg";
+import Register from "../../components/Register";
 
 
 
@@ -12,37 +13,37 @@ const Home = () => {
   const {
     isHome,
     isLogin,
-    isCadastro,
+    isRegister,
     isSobre,
     setIsHome,
     setIsLogin,
-    setIsCadastro,
+    setIsRegister,
     setIsSobre,
   } = useUserContext();
 
   const handleHome = () => {
     setIsHome(true)
     setIsLogin(false)
-    setIsCadastro(false)
+    setIsRegister(false)
     setIsSobre(false)
   };
 
   const handleLogin = () => {
     setIsHome(false)
     setIsLogin(true)
-    setIsCadastro(false)
+    setIsRegister(false)
     setIsSobre(false)
   };
   const handleCadastro = () => {
     setIsHome(false)
     setIsLogin(false)
-    setIsCadastro(true)
+    setIsRegister(true)
     setIsSobre(false)
   };
   const handleSobre = () => {
     setIsHome(false)
     setIsLogin(false)
-    setIsCadastro(false)
+    setIsRegister(false)
     setIsSobre(true)
   };
   
@@ -65,6 +66,7 @@ const Home = () => {
         <div className="content">
           { isHome && <HomeComponent/> }
           { isLogin && <LoginModal/> }
+          { isRegister && <Register/>}
         </div>
       </section>
     </StyledBody>

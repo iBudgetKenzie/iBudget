@@ -2,7 +2,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { StyledContainer, StyledLogin } from "../Login/styles";
+import { StyledContainer, StyledLogin } from "./styles";
 import { useUserContext } from "../../contexts/UserContext";
 
 interface IData {
@@ -12,7 +12,7 @@ interface IData {
 
 const LoginModal = () => {
 
-  const { onSubmitLogin, setIsCadastro, setIsLogin } = useUserContext();
+  const { onSubmitLogin, setIsRegister, setIsLogin } = useUserContext();
 
   const schema = yup.object().shape({
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -28,7 +28,7 @@ const LoginModal = () => {
   });
 
   const toCadastro = () => {
-    setIsCadastro(true)
+    setIsRegister(true)
     setIsLogin(false)
   };
 

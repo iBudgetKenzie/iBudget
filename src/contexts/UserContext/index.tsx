@@ -17,22 +17,22 @@ interface IUserProviderProps {
 }
 
 export interface IUser {
-  email: string;
-  password?: string;
-  name: string;
-  username: string;
-  position: string;
-  imageUrl: string;
-  id: string | number;
-  budgets?: IBudget[];
+  email:        string;
+  password?:    string;
+  name:         string;
+  username:     string;
+  position:     string;
+  imageUrl:     string;
+  id:           string | number;
+  budgets?:     IBudget[];
 }
 
 export interface IBudget {
-  projectName: string;
-  projectTime: number;
-  fixedCost: number;
-  variableCost: number;
-  userId: string | number;
+  projectName:      string;
+  projectTime:      number;
+  fixedCost:        number;
+  variableCost:     number;
+  userId:           string | number;
 }
 
 export interface ILoginForm {}
@@ -40,26 +40,28 @@ export interface ILoginForm {}
 export interface IRegisterForm {}
 
 interface IUserProviderData {
-  user: IUser;
-  isAuthenticated: boolean;
-  isHome: boolean;
-  isLogin: boolean;
-  isCadastro: boolean;
-  isSobre: boolean;
-  setUser: (user: IUser) => void;
-  setIsAuthenticated: (isAuthenticated: boolean) => void;
-  setIsHome: (isHome: boolean) => void;
-  setIsLogin: (isLogin: boolean) => void;
-  setIsSobre: (isSobre: boolean) => void;
-  setIsCadastro: (isCadastro: boolean) => void;
-  onSubmitLogin: (loginFormData: ILoginForm) => void;
-  onSubmitRegister: (registerFormData: IRegisterForm) => void;
-  handleSignOut: () => void;
+  user:                      IUser;
+  isAuthenticated:           boolean;
+  isHome:                    boolean;
+  isLogin:                   boolean;
+  isRegister:                boolean;
+  isSobre:                   boolean;
+  isImage:                   string;
+  setUser:                   (user: IUser) => void;
+  setIsAuthenticated:        (isAuthenticated: boolean) => void;
+  setIsHome:                 (isHome: boolean) => void;
+  setIsLogin:                (isLogin: boolean) => void;
+  setIsSobre:                (isSobre: boolean) => void;
+  setIsRegister:             (isRegister: boolean) => void;
+  setIsImage:                (isImage: string) => void;
+  onSubmitLogin:             (loginFormData: ILoginForm) => void;
+  onSubmitRegister:          (registerFormData: IRegisterForm) => void;
+  handleSignOut:             () => void;
 }
 
 export interface ILoginData {
   accessToken: string;
-  user: IUser;
+  user:        IUser;
 }
 
 export const UserContext = createContext<IUserProviderData>(
@@ -77,9 +79,10 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isHome, setIsHome] = useState<boolean>(true);
   const [isLogin, setIsLogin] = useState<boolean>(false);
-  const [isCadastro, setIsCadastro] = useState<boolean>(false);
+  const [isRegister, setIsRegister] = useState<boolean>(false);
   const [isSobre, setIsSobre] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const [isImage, setIsImage] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect((): void => {
@@ -150,10 +153,12 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         setIsHome,
         isLogin,
         setIsLogin,
-        isCadastro,
-        setIsCadastro,
+        isRegister,
+        setIsRegister,
         isSobre,
         setIsSobre,
+        isImage,
+        setIsImage,
         onSubmitLogin,
         onSubmitRegister,
         handleSignOut,
