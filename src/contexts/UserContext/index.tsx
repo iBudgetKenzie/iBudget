@@ -12,6 +12,8 @@ import { toast } from "react-toastify";
 
 import iBudgetApi from "../../services/iBudgetApi";
 
+import userPng from "../../assets/img/user.png";
+
 interface IUserProviderProps {
   children: ReactNode;
 }
@@ -37,21 +39,31 @@ export interface IBudget {
 
 export interface ILoginForm {}
 
-export interface IRegisterForm {}
+export interface IRegisterForm {
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
+  position?: string;
+  imageUrl?: string;
+}
 
 interface IUserProviderData {
   user: IUser;
   isAuthenticated: boolean;
   isHome: boolean;
   isLogin: boolean;
-  isCadastro: boolean;
+  isRegister: boolean;
   isSobre: boolean;
+  isImage: string;
   setUser: (user: IUser) => void;
   setIsAuthenticated: (isAuthenticated: boolean) => void;
   setIsHome: (isHome: boolean) => void;
   setIsLogin: (isLogin: boolean) => void;
   setIsSobre: (isSobre: boolean) => void;
-  setIsCadastro: (isCadastro: boolean) => void;
+  setIsRegister: (isRegister: boolean) => void;
+  setIsImage: (isImage: string) => void;
   onSubmitLogin: (loginFormData: ILoginForm) => void;
   onSubmitRegister: (registerFormData: IRegisterForm) => void;
   handleSignOut: () => void;
@@ -77,9 +89,10 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isHome, setIsHome] = useState<boolean>(true);
   const [isLogin, setIsLogin] = useState<boolean>(false);
-  const [isCadastro, setIsCadastro] = useState<boolean>(false);
+  const [isRegister, setIsRegister] = useState<boolean>(false);
   const [isSobre, setIsSobre] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const [isImage, setIsImage] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect((): void => {
@@ -126,8 +139,31 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     }
   };
 
-  const onSubmitRegister = (registerFormData: IRegisterForm): void => {
-    // function to register new user here
+  const onSubmitRegister = async (registerFormData: IRegisterForm) => {
+    const cadastro = {
+      name: registerFormData.name,
+      username: registerFormData.username,
+      email: registerFormData.email,
+      password: registerFormData.password,
+      position: registerFormData.position,
+      imageUrl: registerFormData.imageUrl,
+    };
+    if (registerFormData.imageUrl === "" && isImage === "") {
+      cadastro.imageUrl = userPng;
+    } else if (registerFormData.imageUrl === "" && isImage !== "") {
+      cadastro.imageUrl = isImage;
+    }
+    try {
+      const response = await iBudgetApi.post("/register", cadastro);
+      // console.log(response)
+      toast.success("Cadastro realizado com sucesso");
+      setIsRegister(false);
+      setIsLogin(true);
+
+      // console.log(response)
+    } catch (error) {
+      toast.error("Cadastro não realizado");
+    }
   };
 
   const handleSignOut = (): void => {
@@ -150,10 +186,12 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         setIsHome,
         isLogin,
         setIsLogin,
-        isCadastro,
-        setIsCadastro,
+        isRegister,
+        setIsRegister,
         isSobre,
         setIsSobre,
+        isImage,
+        setIsImage,
         onSubmitLogin,
         onSubmitRegister,
         handleSignOut,

@@ -20,11 +20,12 @@ export const StyledLogin = styled.div`
     /* margin: auto; */
     gap: 16px;
     
-    margin-top: 30px;
+    margin-top: 70px;
     
     @media screen and (min-width: 700px) {
         height: 350px;
         width: 330px;
+        margin-top: 0px;
 
         h4 {
             margin-top: 25px;

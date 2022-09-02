@@ -14,7 +14,7 @@ export const StyledBody = styled.div`
 
     .logo-div{
         width: 100%;
-        height: 20%;
+        height: 15%;
         padding: 50px;
 
         background-color: rgb(30,30,30);
@@ -51,7 +51,7 @@ export const StyledBody = styled.div`
 
     .header{
         width: 100%;
-        height: 80%;
+        height: 85%;
         background-color: rgb(122,99,255);
 
         display: flex;
@@ -88,6 +88,10 @@ export const StyledBody = styled.div`
 
         display: flex;
         justify-content: center;
+
+        @media screen and (min-width: 700px) {
+            align-items: center;
+        };
     }
 
 `;
