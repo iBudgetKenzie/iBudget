@@ -15,10 +15,11 @@ const Dashboard = () => {
     <>
       <HeaderLogged />
       <div>
-        {/* <SoParaVisualizar> */}
+        <div>
           <CreateBudget />
+
           <BudgetHistory />
-        {/* </SoParaVisualizar> */}
+        </div>
 
         {onModalFixedCost && <ModalFixedCost />}
         {onModalVariableCost && <ModalVariableCost />}

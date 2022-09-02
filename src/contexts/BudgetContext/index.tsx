@@ -12,7 +12,9 @@ export interface IBudgetOmitId {
   variableCost: number;
   startDate: string;
   endDate: string;
-  workHours: number;
+  daysWeek: number;
+  estimatedSalary: number;
+  hoursDay: number;
 }
 
 interface IBudgetProvider {
@@ -30,7 +32,7 @@ interface IBudgetContext {
   fixedValue: number;
   variableValue: number;
   sendBudget: (data: IBudgetOmitId) => void;
-  totalDays: number;
+  totalDays: string;
   budgetHistory: IBudget[];
 }
 
@@ -52,8 +54,8 @@ export interface IFixedCost {
 export const BudgetProvider = ({ children }: IBudgetProvider) => {
   const [fixedValue, setFixedCost] = useState(0);
   const [variableValue, setVariableCost] = useState(0);
-
-  const [totalDays, setTotalDays] = useState<number>(0);
+  
+  const [totalDays, setTotalDays] = useState<string>("");
 
   const [onModalFixedCost, setOnModalFixedCost] = useState(false);
   const [onModalVariableCost, setOnModalVariableCost] = useState(false);
@@ -93,38 +95,67 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     setOnModalVariableCost(false);
   };
 
-  const priceFormated = new Intl.NumberFormat("pt-BR", {style: "currency", currency: "BRL"})
+  const priceFormated = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
 
   const sendBudget = (data: IBudgetOmitId): void => {
+    const {
+      fixedCost,
+      variableCost,
+      endDate,
+      startDate,
+      daysWeek,
+      estimatedSalary,
+      hoursDay,
+      ...rest
+    } = data;
 
-    // setBudgetHistory()
+    if (startDate < endDate) {
+      const allValues = fixedValue + variableValue + estimatedSalary;
+      const weekHours = hoursDay * daysWeek;
+      const monthHours = weekHours * 4;
+      const hoursCost = allValues / monthHours;
 
-    // const { fixedCost, variableCost, endDate, startDate, workHours, ...rest } = data;
-    // const newEndDate = endDate.split("-");
-    // const yearEndDate = Number(newEndDate[0]);
-    // const mouthEndDate = Number(newEndDate[1]);
-    // const dayEndDate = Number(newEndDate[2]);
+      setTotalDays(priceFormated.format(Math.floor(hoursCost)));
 
-    // const newStartDate = startDate.split("-");
-    // const yearStartDate = Number(newStartDate[0]);
-    // const mouthStartDate = Number(newStartDate[1]);
-    // const dayStartDate = Number(newStartDate[2]);
-    // const days = ((yearEndDate * 365) - (yearStartDate * 365)) + ((mouthEndDate * 30) - (mouthStartDate * 30)) + (dayEndDate - dayStartDate);
-    // const valueHours = (fixedCost + variableCost) / (days * workHours);
-    // console.log(valueHours);
-    // if (startDate < endDate) {
-    //   // setTotalDays(valueHours);
+      const newEndDate = endDate.split("-");
+      const yearEndDate = Number(newEndDate[0]);
+      const mouthEndDate = Number(newEndDate[1]);
+      const dayEndDate = Number(newEndDate[2]);
+      const newStartDate = startDate.split("-");
+      const yearStartDate = Number(newStartDate[0]);
+      const mouthStartDate = Number(newStartDate[1]);
+      const dayStartDate = Number(newStartDate[2]);
 
-    //   // const newData: IBudget = {
-    //   //   fixedCost: fixedValue,
-    //   //   variableCost: variableValue,
-    //   //   projectTime: days,
-    //   //   userId: 1,
-    //   //   ...rest,
-    //   // };
-      
-    //   // console.log(days * workHours)
-    // }
+      const days =
+        yearEndDate * 365 -
+        yearStartDate * 365 +
+        (mouthEndDate * 30 - mouthStartDate * 30) +
+        (dayEndDate - dayStartDate);
+
+      const deadLine = days * hoursDay;
+      const finalBudget = hoursCost * deadLine;
+      const id = localStorage.getItem("@id")
+
+      const newData: IBudget = {
+        fixedCost: fixedValue,
+        variableCost: variableValue,
+        projectTime: days,
+        budget: priceFormated.format(finalBudget),
+        userId: id,
+        ...rest
+      }
+
+      iBudgetApi.post<IBudget>("/budgets").then((res) => {
+        console.log(res)
+      }).catch((err) => {
+        console.log(err)
+      })
+
+      console.log(newData)
+    }
   };
 
   return (
