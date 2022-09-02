@@ -1,9 +1,10 @@
 import { createContext, ReactNode, useState, useEffect, useContext } from "react";
+// import { UserContext } from "../UserContext/index";
 
-import { UserContext } from "../UserContext/index";
-
-import { IBudget } from "../UserContext/index";
+import { IBudget, IUser } from "../UserContext/index";
 import { inputsBase, IInputs } from "../../components/InputsBase";
+
+import iBudgetApi from "../../services/iBudgetApi";
 
 export interface IBudgetOmitId {
   projectName: string;
@@ -30,6 +31,7 @@ interface IBudgetContext {
   variableValue: number;
   sendBudget: (data: IBudgetOmitId) => void;
   totalDays: number;
+  budgetHistory: IBudget[];
 }
 
 export const BudgetContext = createContext<IBudgetContext>(
@@ -48,15 +50,28 @@ export interface IFixedCost {
 }
 
 export const BudgetProvider = ({ children }: IBudgetProvider) => {
-  const {user} = useContext(UserContext);
-
   const [fixedValue, setFixedCost] = useState(0);
   const [variableValue, setVariableCost] = useState(0);
+
+  const [totalDays, setTotalDays] = useState<number>(0);
 
   const [onModalFixedCost, setOnModalFixedCost] = useState(false);
   const [onModalVariableCost, setOnModalVariableCost] = useState(false);
 
-  const [totalDays, setTotalDays] = useState<number>(0);
+  const [budgetHistory, setBudgetHistory] = useState<IBudget[]>([])
+
+  useEffect(() => {
+    async function budgets() {
+      const id = localStorage.getItem("@id")
+      try {
+        const {data} = await iBudgetApi.get<IUser>(`/users/${id}?_embed=budgets`);
+        console.log(data.budgets)
+      } catch (error) {
+        
+      }
+    }
+    budgets()
+  }, [])
 
   const addFixedValue = (data: any): void => {
     const array = Object.values(data).filter((elemnt) => !!elemnt);
@@ -81,37 +96,41 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   const priceFormated = new Intl.NumberFormat("pt-BR", {style: "currency", currency: "BRL"})
 
   const sendBudget = (data: IBudgetOmitId): void => {
-    const { fixedCost, variableCost, endDate, startDate, workHours, ...rest } = data;
-    const newEndDate = endDate.split("-");
-    const yearEndDate = Number(newEndDate[0]);
-    const mouthEndDate = Number(newEndDate[1]);
-    const dayEndDate = Number(newEndDate[2]);
 
-    const newStartDate = startDate.split("-");
-    const yearStartDate = Number(newStartDate[0]);
-    const mouthStartDate = Number(newStartDate[1]);
-    const dayStartDate = Number(newStartDate[2]);
-    const days = ((yearEndDate * 365) - (yearStartDate * 365)) + ((mouthEndDate * 30) - (mouthStartDate * 30)) + (dayEndDate - dayStartDate);
-    const valueHours = (fixedCost + variableCost) / (days * workHours);
-    console.log(valueHours);
-    if (startDate < endDate) {
-      // setTotalDays(valueHours);
+    // setBudgetHistory()
 
-      const newData: IBudget = {
-        fixedCost: fixedValue,
-        variableCost: variableValue,
-        projectTime: days,
-        userId: 1,
-        ...rest,
-      };
+    // const { fixedCost, variableCost, endDate, startDate, workHours, ...rest } = data;
+    // const newEndDate = endDate.split("-");
+    // const yearEndDate = Number(newEndDate[0]);
+    // const mouthEndDate = Number(newEndDate[1]);
+    // const dayEndDate = Number(newEndDate[2]);
+
+    // const newStartDate = startDate.split("-");
+    // const yearStartDate = Number(newStartDate[0]);
+    // const mouthStartDate = Number(newStartDate[1]);
+    // const dayStartDate = Number(newStartDate[2]);
+    // const days = ((yearEndDate * 365) - (yearStartDate * 365)) + ((mouthEndDate * 30) - (mouthStartDate * 30)) + (dayEndDate - dayStartDate);
+    // const valueHours = (fixedCost + variableCost) / (days * workHours);
+    // console.log(valueHours);
+    // if (startDate < endDate) {
+    //   // setTotalDays(valueHours);
+
+    //   // const newData: IBudget = {
+    //   //   fixedCost: fixedValue,
+    //   //   variableCost: variableValue,
+    //   //   projectTime: days,
+    //   //   userId: 1,
+    //   //   ...rest,
+    //   // };
       
-      // console.log(days * workHours)
-    }
+    //   // console.log(days * workHours)
+    // }
   };
 
   return (
     <BudgetContext.Provider
       value={{
+        budgetHistory,
         totalDays,
         sendBudget,
         fixedValue,

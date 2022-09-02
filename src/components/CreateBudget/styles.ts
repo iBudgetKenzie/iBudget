@@ -99,6 +99,8 @@ export const ContainerCreateBudget = styled.div`
         top: 10px;
         width: 16px;
         height: 16px;
+
+        cursor: pointer;
       }  
     }
 
