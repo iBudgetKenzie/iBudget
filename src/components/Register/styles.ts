@@ -101,12 +101,22 @@ export const StyledRegister = styled.div`
       .div--avatars {
         display: flex;
         justify-content: space-around;
-        gap: 20px;
+        gap: 9px;
 
         .avatar {
           width: 30px;
           height: 30px;
           border-radius: 50%;
+
+          & :active {
+            border: solid 2px rgb(var(--color-negative-pink), 2); 
+            border-radius: 50%;
+          }
+
+          & :hover {
+            box-shadow: 1px 1px 5px 0px;
+            border-radius: 50%;
+          }
 
           margin-top: 2px;
 
@@ -115,6 +125,8 @@ export const StyledRegister = styled.div`
             height: 30px;
           };
         };
+        .avatar:
+
       };
 
       input {

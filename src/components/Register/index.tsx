@@ -6,8 +6,11 @@ import { useUserContext } from "../../contexts/UserContext";
 
 import { StyledRegister } from "./styles";
 
-import lion from "../../assets/img/lion.png";
-import rex from "../../assets/img/trex.png";
+import penguin from "../../assets/img/penguin.png";
+import dog from "../../assets/img/dog.png";
+import cat from "../../assets/img/cat.png";
+import bear from "../../assets/img/bear.png";
+import brownBear from "../../assets/img/bear2.png";
 import userPng from "../../assets/img/user.png";
 import iBudgetApi from "../../services/iBudgetApi";
 import { toast } from "react-toastify";
@@ -30,7 +33,12 @@ const Register = () => {
     name: yup.string().required("Nome obrigatório"),
     username: yup.string().required("Username obrigatório"),
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
-    password: yup.string().required("Senha obrigatória"),
+    password: yup.string().required("Senha obrigatória")
+    .matches(/[A-Z]/, "Deve conter ao menos 1 letra maiúscula")
+    .matches(/([a-z])/, "Deve conter ao menos 1 letra minúscula")
+    .matches(/(\d)/, "Deve conter ao menos 1 número")
+    .matches(/(\W)|_/, "Deve conter ao menos 1 caracter especial")
+    .matches(/.{8,}/, "Deve conter ao menos 8 dígitos"),
     passwordConfirm: yup
       .string()
       .oneOf([yup.ref("password")], "Senhas não conferem")
@@ -124,11 +132,14 @@ const Register = () => {
           <div className="div--label">
             <label htmlFor="">Escolha seu Avatar:</label>
             <div className="div--avatars">
-              <button className="avatar" onClick={() => chooseAvatar(lion)} type="button">
-                <img src={lion} alt="" />
+              <button className="avatar" onClick={() => chooseAvatar(dog)} type="button">
+                <img src={dog} alt="" />
               </button>
-              <button className="avatar" onClick={() => chooseAvatar(rex)} type="button">
-                <img src={rex} alt="" />
+              <button className="avatar" onClick={() => chooseAvatar(penguin)} type="button">
+                <img src={penguin} alt="" />
+              </button>
+              <button className="avatar" onClick={() => chooseAvatar(brownBear)} type="button">
+                <img src={brownBear} alt="" />
               </button>
             </div>
           </div>

@@ -6,12 +6,12 @@ export const StyledLogin = styled.div`
     background-color: rgba(255,255,255, 1);
     color: black;
 
-    height: 280px;
+    height: 330px;
     width: 300px;
     left: -796px;
     top: -267px;
     border-radius: 7px;
-    padding: 30px;
+    padding: 25px;
 
     
     display: flex;
@@ -21,6 +21,11 @@ export const StyledLogin = styled.div`
     gap: 16px;
     
     margin-top: 70px;
+
+    h4 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
     
     @media screen and (min-width: 700px) {
         height: 350px;
@@ -56,7 +61,6 @@ export const StyledLogin = styled.div`
 
             @media screen and (min-width: 700px) {
                 height: 30px;
-                width: 200px;
             }
         }
 
@@ -84,8 +88,10 @@ export const StyledLogin = styled.div`
             margin-top: 10px;
             font-size: 14px;
 
+            color: rgba(217, 217, 217, 1);
+
             @media screen and (min-width: 700px) {
-                height: 35px;
+                min-height: 35px;
                 width: 85px;
             }
 
