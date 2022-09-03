@@ -3,18 +3,18 @@ import jsPDF from "jspdf";
 import ibudget_logo_pdf from "../assets/img/ibudget_logo_pdf.png";
 import qrcode from "../assets/img/qrcode.png";
 
-interface IGeneratePdfProps {
+export interface IGeneratePdfProps {
   projectName: string;
   projectId: string | number;
-  budget: string | number;
-  conclusionDays: string | number;
+  budget: string | number | undefined;
+  projectTime: string | number | undefined;
 }
 
 export const generatePdf = ({
   projectName,
   projectId,
   budget,
-  conclusionDays,
+  projectTime,
 }: IGeneratePdfProps) => {
   const doc = new jsPDF({
     unit: "cm",
@@ -34,7 +34,7 @@ export const generatePdf = ({
       `Nome do projeto: ${projectName}`,
       `N° do projeto: ${projectId}`,
       `Orçamento: RS ${budget}`,
-      `Conclusão em: ${conclusionDays} dias`,
+      `Conclusão em: ${projectTime} dias`,
     ],
     2,
     8
