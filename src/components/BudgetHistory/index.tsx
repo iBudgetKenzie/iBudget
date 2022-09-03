@@ -1,10 +1,14 @@
-import { IoSearch } from "react-icons/io5";
-
 import { CardBudgetHistory } from "../CardBudgetHistory";
+import { useUserContext } from "../../contexts/UserContext/index";
+import { IBudget } from "../../contexts/UserContext/index";
+
+import { IoSearch } from "react-icons/io5";
 
 import { ContainerBudgetHistory, FilterBar } from "./style";
 
 export const BudgetHistory = () => {
+  const { budgetHistory } = useUserContext()
+
   return (
     <ContainerBudgetHistory>
       <FilterBar>
@@ -18,14 +22,19 @@ export const BudgetHistory = () => {
       </FilterBar>
 
       <ul>
-        <CardBudgetHistory />
-        <CardBudgetHistory />
-        <CardBudgetHistory />
-        <CardBudgetHistory />
-        <CardBudgetHistory />
-        <CardBudgetHistory />
-        <CardBudgetHistory />
+        {
+          budgetHistory && budgetHistory.length === 0 ? 
+          (
+            <p>Ops, não existe orçamento ainda aqui!</p>
+          ): (
+            budgetHistory?.map(({budget, projectName, id}: IBudget) => {
+              return <CardBudgetHistory key={id} projectName={projectName} budget={budget} id={id}/>
+            })
+          ) 
+        }
       </ul>
     </ContainerBudgetHistory>
   );
 };
+
+// , fixedCost, projectTime, userId, variableCost

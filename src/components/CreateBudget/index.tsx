@@ -34,16 +34,7 @@ export const CreateBudget = () => {
     startDate: yup.string().required("Data de início necessária"),
     endDate: yup.string().required("Data de término necessária"),
     estimatedSalary: yup.number(),
-    // workHours: yup.number().required("Horas trabalhadas por dia necessária"),
   });
-
-  // const [valueFixedCost, setValueFixedCost] = useState(0);
-  // const [valueVariableCost, setValueVariableCost] = useState(0);
-
-  // useEffect(() => {
-  //   setValueFixedCost(fixedCost);
-  //   setValueVariableCost(variableCost);
-  // }, [fixedCost, variableCost])
 
   const {
     register,

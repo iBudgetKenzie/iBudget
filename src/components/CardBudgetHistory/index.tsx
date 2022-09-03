@@ -1,14 +1,16 @@
 import { MdOutlinePictureAsPdf } from "react-icons/md";
 import { GoTrashcan } from "react-icons/go";
+import { IBudget } from "../../contexts/UserContext/index";
+
 
 import { ConteinerCardBudgetHistory } from "./style";
 
-export const CardBudgetHistory = () => {
+export const CardBudgetHistory = ({ projectName, budget, id }: IBudget) => {
   return (
     <ConteinerCardBudgetHistory>
-      <h2>Nome do Projeto</h2>
-      <span>Valor: R$ 2.350,00</span>
-      <span>N°:0001</span>
+      <h2>{projectName}</h2>
+      <span>Valor: {budget}</span>
+      <span>N°:{id}</span>
       <div>
         <MdOutlinePictureAsPdf />
         <GoTrashcan />

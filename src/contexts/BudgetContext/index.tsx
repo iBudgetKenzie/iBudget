@@ -1,7 +1,7 @@
-import { createContext, ReactNode, useState, useEffect, useContext } from "react";
-// import { UserContext } from "../UserContext/index";
+import { createContext, ReactNode, useState, useContext, useEffect } from "react";
+import { UserContext } from "../UserContext/index";
 
-import { IBudget, IUser } from "../UserContext/index";
+import { IBudget } from "../UserContext/index";
 import { inputsBase, IInputs } from "../../components/InputsBase";
 
 import iBudgetApi from "../../services/iBudgetApi";
@@ -16,6 +16,8 @@ export interface IBudgetOmitId {
   estimatedSalary: number;
   hoursDay: number;
 }
+
+export type IBudgetOmitIdProps = Omit<IBudget, "id"> 
 
 interface IBudgetProvider {
   children: ReactNode;
@@ -34,11 +36,8 @@ interface IBudgetContext {
   sendBudget: (data: IBudgetOmitId) => void;
   totalDays: string;
   budgetHistory: IBudget[];
+  setBudgetHistory: (budgetHistory: IBudget[]) => void;
 }
-
-export const BudgetContext = createContext<IBudgetContext>(
-  {} as IBudgetContext,
-);
 
 export interface IFixedCost {
   input0: IInputs;
@@ -51,7 +50,12 @@ export interface IFixedCost {
   input7: IInputs;
 }
 
+export const BudgetContext = createContext<IBudgetContext>(
+  {} as IBudgetContext,
+);
+
 export const BudgetProvider = ({ children }: IBudgetProvider) => {
+  const {budgetHistory, setBudgetHistory} = useContext(UserContext)
   const [fixedValue, setFixedCost] = useState(0);
   const [variableValue, setVariableCost] = useState(0);
   
@@ -60,20 +64,27 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   const [onModalFixedCost, setOnModalFixedCost] = useState(false);
   const [onModalVariableCost, setOnModalVariableCost] = useState(false);
 
-  const [budgetHistory, setBudgetHistory] = useState<IBudget[]>([])
+  // useEffect(() => {
+  //   async function loadUser() {
+  //     const token: string | null = localStorage.getItem("@token");
+  //     const id: string | null = localStorage.getItem("@id");
 
-  useEffect(() => {
-    async function budgets() {
-      const id = localStorage.getItem("@id")
-      try {
-        const {data} = await iBudgetApi.get<IUser>(`/users/${id}?_embed=budgets`);
-        console.log(data.budgets)
-      } catch (error) {
-        
-      }
-    }
-    budgets()
-  }, [])
+  //     if (typeof token === "string" && typeof id === "string") {
+  //       try {
+  //         iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`;
+  //         const userResponse = await iBudgetApi.get(
+  //           `/users/${id}?_embed=budgets`,
+  //         );
+          
+  //         setBudgetHistory(userResponse.data.budgets)
+  //         console.log(budgetHistory)
+  //       } catch (error) {
+  //         console.log("erro");
+  //       }
+  //     }
+  //   }
+  //   loadUser()
+  // },[])
 
   const addFixedValue = (data: any): void => {
     const array = Object.values(data).filter((elemnt) => !!elemnt);
@@ -137,9 +148,10 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
 
       const deadLine = days * hoursDay;
       const finalBudget = hoursCost * deadLine;
-      const id = localStorage.getItem("@id")
 
-      const newData: IBudget = {
+      const id = Number(localStorage.getItem("@id"))
+
+      const newData: IBudgetOmitIdProps = {
         fixedCost: fixedValue,
         variableCost: variableValue,
         projectTime: days,
@@ -148,19 +160,28 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
         ...rest
       }
 
-      iBudgetApi.post<IBudget>("/budgets").then((res) => {
-        console.log(res)
-      }).catch((err) => {
-        console.log(err)
-      })
+      const request = async () => {
+        try {
+          await iBudgetApi.post<IBudget>("/budgets", newData);
+          const { data: { budgets } } = await iBudgetApi.get(`/users/${id}?_embed=budgets`);
 
-      console.log(newData)
+          console.log(budgetHistory)
+
+          setBudgetHistory(budgets)
+
+        } catch (error) {
+          console.log(error)
+        }
+
+      }
+      request()
     }
   };
 
   return (
     <BudgetContext.Provider
       value={{
+        setBudgetHistory,
         budgetHistory,
         totalDays,
         sendBudget,
