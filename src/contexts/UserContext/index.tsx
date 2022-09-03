@@ -93,7 +93,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const [isRegister, setIsRegister] = useState<boolean>(false);
   const [isSobre, setIsSobre] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
   const [isImage, setIsImage] = useState<string>("");
   const [budgetHistory, setBudgetHistory] = useState<IBudget[]>([]);
   const navigate = useNavigate();
@@ -116,7 +115,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
           console.log("erro");
         }
       }
-      setLoading(false);
     }
     loadUser();
   }, [navigate]);
