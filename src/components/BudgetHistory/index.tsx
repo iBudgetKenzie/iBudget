@@ -1,13 +1,14 @@
 import { CardBudgetHistory } from "../CardBudgetHistory";
 import { IBudget } from "../../contexts/UserContext/index";
 import { useBudgetContext } from "../../contexts/BudgetContext";
+import { useUserContext } from "../../contexts/UserContext/index";
 
 import { IoSearch } from "react-icons/io5";
 
 import { ContainerBudgetHistory, FilterBar } from "./style";
 
 export const BudgetHistory = () => {
-  const { budgetHistory } = useBudgetContext();
+  const { budgetHistory } = useUserContext();
 
   return (
     <ContainerBudgetHistory>
@@ -36,7 +37,7 @@ export const BudgetHistory = () => {
                   projectTime={projectTime}
                 />
               );
-            },
+            }
           )
         )}
       </ul>

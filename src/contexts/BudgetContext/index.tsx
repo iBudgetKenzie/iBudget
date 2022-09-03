@@ -8,8 +8,8 @@ import {
 
 import { IBudget } from "../UserContext/index";
 import { inputsBase, IInputs } from "../../components/InputsBase";
-import { IUser } from "../UserContext/index";
 import { IGeneratePdfProps } from "../../services/generatePdf";
+import { useUserContext } from "../UserContext/index";
 
 import iBudgetApi from "../../services/iBudgetApi";
 import { generatePdf } from "../../services/generatePdf";
@@ -37,14 +37,14 @@ interface IBudgetContext {
   variableValue: number;
   onModalFixedCost: boolean;
   onModalVariableCost: boolean;
-  budgetHistory: IBudget[];
+  // budgetHistory: IBudget[];
   inputsBase: IInputs[];
   sendBudget: (data: IBudgetOmitId) => void;
   addFixedValue: (data: any) => void;
   addVariableValue: (data: any) => void;
   setOnModalFixedCost: (modalFixedValue: boolean) => void;
   setOnModalVariableCost: (modalVariableValue: boolean) => void;
-  setBudgetHistory: (budgetHistory: IBudget[]) => void;
+  // setBudgetHistory: (budgetHistory: IBudget[]) => void;
   deleteBudgetHistory: (id: number | string) => Promise<void>;
   generatePDF: (date: IGeneratePdfProps) => void;
 }
@@ -61,7 +61,7 @@ export interface IFixedCost {
 }
 
 export const BudgetContext = createContext<IBudgetContext>(
-  {} as IBudgetContext,
+  {} as IBudgetContext
 );
 
 export const useBudgetContext = (): IBudgetContext => {
@@ -75,7 +75,8 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   const [totalDays, setTotalDays] = useState<string>("");
   const [onModalFixedCost, setOnModalFixedCost] = useState(false);
   const [onModalVariableCost, setOnModalVariableCost] = useState(false);
-  const [budgetHistory, setBudgetHistory] = useState<IBudget[]>([]);
+
+  const { user } = useUserContext();
 
   const priceFormated = new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -83,19 +84,25 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   });
 
   useEffect(() => {
-    requestBudget();
+    // requestBudget();
+    // setBudgetHistory(user.budgets);
+    console.log(user.budgets);
   }, []);
 
   const requestBudget = async () => {
-    const id = localStorage.getItem("@id");
-    if (id) {
+    const token: string | null = localStorage.getItem("@token");
+    const id: string | null = localStorage.getItem("@id");
+
+    if (typeof token === "string" && typeof id === "string") {
       try {
+        iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`;
         const {
           data: { budgets },
         } = await iBudgetApi.get(`/users/${id}?_embed=budgets`);
-        setBudgetHistory(budgets);
-      } catch (erro) {
-        console.log(erro);
+        console.log(budgets);
+        // setBudgetHistory(userResponse.data);
+      } catch (error) {
+        console.log("erro");
       }
     }
   };
@@ -104,7 +111,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     const array = Object.values(data).filter((elemnt) => !!elemnt);
     const reduceArray = array.reduce(
       (acc: number, current) => acc + Number(current),
-      0,
+      0
     );
     setFixedCost(reduceArray);
     setOnModalFixedCost(false);
@@ -113,7 +120,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     const array = Object.values(data).filter((elemnt) => !!elemnt);
     const reduceArray = array.reduce(
       (acc: number, current) => acc + Number(current),
-      0,
+      0
     );
     setVariableCost(reduceArray);
     setOnModalVariableCost(false);
@@ -121,7 +128,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
 
   const deleteBudgetHistory = async (id: number | string) => {
     await iBudgetApi.delete(`/budgets/${id}`);
-    requestBudget()
+    requestBudget();
   };
 
   const generatePDF = (date: IGeneratePdfProps): void => {
@@ -192,7 +199,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   return (
     <BudgetContext.Provider
       value={{
-        budgetHistory,
+        // budgetHistory,
         totalDays,
         fixedValue,
         variableValue,
@@ -202,7 +209,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
         generatePDF,
         sendBudget,
         deleteBudgetHistory,
-        setBudgetHistory,
+        // setBudgetHistory,
         setOnModalFixedCost,
         setOnModalVariableCost,
         addFixedValue,
