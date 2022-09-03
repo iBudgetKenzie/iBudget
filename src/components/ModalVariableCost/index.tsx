@@ -1,7 +1,6 @@
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
 
-import { BudgetContext } from "../../contexts/BudgetContext";
+import { useBudgetContext } from "../../contexts/BudgetContext";
 import { MoreExpenses } from "../MoreExpenses";
 import { IInputs } from "../InputsBase";
 
@@ -9,7 +8,7 @@ import { ConteinerModalVariableCost, Modal, ConteinerFormModal } from "./style";
 
 export const ModalVariableCost = () => {
   const { setOnModalVariableCost, addVariableValue, inputsBase } =
-    useContext(BudgetContext);
+    useBudgetContext();
 
   const { register, handleSubmit } = useForm();
 
