@@ -6,7 +6,7 @@ import { BudgetContext } from "../../contexts/BudgetContext";
 import HeaderLogged from "../../components/HeaderLogged";
 import { BudgetHistory } from "../../components/BudgetHistory";
 
-// import { SoParaVisualizar } from "./styles"
+import { MainConteiner } from "./styles"
 
 const Dashboard = () => {
   const { onModalFixedCost, onModalVariableCost } = useContext(BudgetContext);
@@ -14,16 +14,19 @@ const Dashboard = () => {
   return (
     <>
       <HeaderLogged />
-      <div>
-        <div>
-          <CreateBudget />
-
-          <BudgetHistory />
-        </div>
+      <main>
+        <MainConteiner>
+          <section>
+            <CreateBudget />
+          </section>
+          <section>
+            <BudgetHistory />
+          </section>
+        </MainConteiner>
 
         {onModalFixedCost && <ModalFixedCost />}
         {onModalVariableCost && <ModalVariableCost />}
-      </div>
+      </main>
     </>
   );
 };
