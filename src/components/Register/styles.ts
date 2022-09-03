@@ -39,6 +39,7 @@ export const StyledRegister = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    /* align-items: center; */
     gap: 1px;
 
     @media screen and (min-width: 700px) {
@@ -101,12 +102,22 @@ export const StyledRegister = styled.div`
       .div--avatars {
         display: flex;
         justify-content: space-around;
-        gap: 20px;
+        gap: 9px;
 
         .avatar {
           width: 30px;
           height: 30px;
           border-radius: 50%;
+
+          & :active {
+            border: solid 2px rgb(var(--color-negative-pink), 2); 
+            border-radius: 50%;
+          }
+
+          & :hover {
+            box-shadow: 0px 0px 5px 0px;
+            border-radius: 50%;
+          }
 
           margin-top: 2px;
 
@@ -115,6 +126,7 @@ export const StyledRegister = styled.div`
             height: 30px;
           };
         };
+
       };
 
       input {
@@ -126,7 +138,7 @@ export const StyledRegister = styled.div`
 
     .register {
       height: 32px;
-      width: 250px;
+      /* width: 250px; */
       left: 41px;
       top: 520px;
       border-radius: 8px;
