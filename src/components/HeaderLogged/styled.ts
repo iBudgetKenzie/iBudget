@@ -7,7 +7,7 @@ export const Header = styled.header`
     display:flex;
     justify-content:space-between;
 
-    margin-bottom:2rem;
+    /* margin-bottom:2rem; */
 
     background-color:rgba(var(--color-purple-dark),1);
 

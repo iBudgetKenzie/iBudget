@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const ContainerBudgetHistory = styled.div`
   background-color: rgba(var(--color-purple), 1);
-  width: 35rem;
-  max-height: 30.8rem;
+  width: 37vw;
+  height: 74.5vh;
 
   & > ul {
     display: flex;
@@ -72,9 +72,10 @@ export const FilterBar = styled.div`
     height: 88%;
 
     & > input {
-      height: 24px;
+      height: 27px;
       width: 100%;
       border-radius: 8px;
+      border: 1px solid rgba(var(--color-purple), 1);
       padding: 3px 0px 3px 9px;
 
       position: absolute;

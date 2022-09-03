@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FaRegEdit } from "react-icons/fa";
 
-import { BudgetContext } from "../../contexts/BudgetContext/index";
+import { useBudgetContext } from "../../contexts/BudgetContext/index";
 import { IBudgetOmitId } from "../../contexts/BudgetContext/index";
 
 import {
@@ -23,7 +22,7 @@ export const CreateBudget = () => {
     variableValue,
     sendBudget,
     totalDays,
-  } = useContext(BudgetContext);
+  } = useBudgetContext();
 
   const formSchema = yup.object().shape({
     projectName: yup.string().required("Necessário nome do projeto"),
@@ -34,16 +33,7 @@ export const CreateBudget = () => {
     startDate: yup.string().required("Data de início necessária"),
     endDate: yup.string().required("Data de término necessária"),
     estimatedSalary: yup.number(),
-    // workHours: yup.number().required("Horas trabalhadas por dia necessária"),
   });
-
-  // const [valueFixedCost, setValueFixedCost] = useState(0);
-  // const [valueVariableCost, setValueVariableCost] = useState(0);
-
-  // useEffect(() => {
-  //   setValueFixedCost(fixedCost);
-  //   setValueVariableCost(variableCost);
-  // }, [fixedCost, variableCost])
 
   const {
     register,
@@ -70,99 +60,101 @@ export const CreateBudget = () => {
 
         <div>
           <div>
-            <Input
-              title="Custo fixo:"
-              type="number"
-              id="fixedCost"
-              value={fixedValue}
-              register={register}
-              error={errors.fixedCost?.message}
-            />
-            <FaRegEdit
-              onClick={() => {
-                setOnModalFixedCost(true);
-              }}
-            />
+            <div>
+              <Input
+                title="Custo fixo:"
+                type="number"
+                id="fixedCost"
+                value={fixedValue}
+                register={register}
+                error={errors.fixedCost?.message}
+              />
+              <FaRegEdit
+                onClick={() => {
+                  setOnModalFixedCost(true);
+                }}
+              />
+            </div>
+
+            <div>
+              <Input
+                title="Custo variável:"
+                type="number"
+                id="variableCost"
+                value={variableValue}
+                register={register}
+                error={errors.variableCost?.message}
+              />
+              <FaRegEdit
+                onClick={() => {
+                  setOnModalVariableCost(true);
+                }}
+              />
+            </div>
           </div>
 
           <div>
-            <Input
-              title="Custo variável:"
-              type="number"
-              id="variableCost"
-              value={variableValue}
-              register={register}
-              error={errors.variableCost?.message}
-            />
-            <FaRegEdit
-              onClick={() => {
-                setOnModalVariableCost(true);
-              }}
-            />
-          </div>
-        </div>
+            <div>
+              <Input
+                title="Horas por dia:"
+                type="number"
+                id="hoursDay"
+                placeholder="Ex: 10h"
+                register={register}
+                error={errors.hoursDay?.message}
+              />
+            </div>
 
-        <div>
-          <div>
-            <Input
-              title="Horas por dia:"
-              type="number"
-              id="hoursDay"
-              placeholder="Ex: 10h"
-              register={register}
-              error={errors.hoursDay?.message}
-            />
+            <div>
+              <Input
+                title="Dias por semana:"
+                type="number"
+                id="daysWeek"
+                placeholder="Ex: 5 dias"
+                register={register}
+                error={errors.daysWeek?.message}
+              />
+            </div>
           </div>
 
           <div>
-            <Input
-              title="Dias por semana:"
-              type="number"
-              id="daysWeek"
-              placeholder="Ex: 10h"
-              register={register}
-              error={errors.daysWeek?.message}
-            />
-          </div>
-        </div>
+            <div>
+              <Input
+                title="Data de ínicio:"
+                type="date"
+                id="startDate"
+                register={register}
+                error={errors.startDate?.message}
+              />
+            </div>
 
-        <div>
-          <div>
-            <Input
-              title="Data de ínicio:"
-              type="date"
-              id="startDate"
-              register={register}
-              error={errors.startDate?.message}
-            />
-          </div>
-
-          <div>
-            <Input
-              title="Data de término:"
-              type="date"
-              id="endDate"
-              register={register}
-              error={errors.endDate?.message}
-            />
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <Input
-              title="Salário estimado:"
-              type="number"
-              id="estimatedSalary"
-              placeholder="Ex: R$: 3000,00"
-              register={register}
-              error={errors.estimatedSalary?.message}
-            />
+            <div>
+              <Input
+                title="Data de término:"
+                type="date"
+                id="endDate"
+                register={register}
+                error={errors.endDate?.message}
+              />
+            </div>
           </div>
 
           <div>
-            <label>Valor por hora:</label>
-            <input type="text" value={totalDays} disabled />
+            <div>
+              <Input
+                title="Salário estimado:"
+                type="number"
+                id="estimatedSalary"
+                placeholder="Ex: R$: 3000.00"
+                register={register}
+                error={errors.estimatedSalary?.message}
+              />
+            </div>
+
+            <div>
+              <label>Valor por hora:</label>
+              <input type="text" value={totalDays} disabled />
+            </div>
           </div>
         </div>
 

@@ -6,7 +6,7 @@ export const ContainerCreateBudget = styled.div`
     align-items: center;
 
     width: 368px;
-    max-height: 540px;
+    max-height: 520px;
     padding: 21px 30px 30px 30px;
     background-color: rgba(var(--color-white), 1);
 
@@ -29,10 +29,10 @@ export const ContainerCreateBudget = styled.div`
 
         width: 100%;
         height: 100%;
-        gap: 5px;
+        gap: 7px;
         background-color: rgba(var(--color-white), 1);
 
-        border-radius: 8px;
+        border-radius: 9px;
 
         textarea:focus, input:focus {
             box-shadow: 0 0 0 0;
@@ -73,67 +73,44 @@ export const ContainerCreateBudget = styled.div`
 
         & > div {
             display: flex;
-            justify-content: space-between;
-            height: 60px;
+            flex-direction: column;
+            gap: 9px;
 
             & > div {
-                width: 140px;
-                position: relative;
-
-                & label {
-                    padding-bottom: 5px;
-                }
-
-                & > input {
-                    display: flex;
-                    align-items: center;
-
-                    width: 100%;
-                    padding: 0 6px;
-                }
-
-                & > svg {
-                    position: absolute;
-
-                    right: 10px;
-                    top: 31px;
-
-                    cursor: pointer;
-                }
-
-                @media (max-width: 375px) {
-                    width: 46%;
+                display: flex;
+                justify-content: space-between;
+                height: 60px;
+    
+                & > div {
+                    width: 140px;
+                    position: relative;
+    
+                    & label {
+                        padding-bottom: 5px;
+                    }
+    
+                    & > input {
+                        display: flex;
+                        align-items: center;
+    
+                        width: 100%;
+                        padding: 0 6px;
+                    }
+    
+                    & > svg {
+                        position: absolute;
+    
+                        right: 10px;
+                        top: 31px;
+    
+                        cursor: pointer;
+                    }
+    
+                    @media (max-width: 375px) {
+                        width: 46%;
+                    }
                 }
             }
-            /* height: 39px;
-            max-width: 100%;
-            display: flex;
-            align-items: center;
-            
-            font-family: "Inter";
-            font-size: 15px;
-
-            position: relative;
-
-            & > input {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-
-                border: 1px solid rgba(var(--color-purple), 1);
-                border-radius: 5px;
-                padding-left: 6px;
-            }
-
-            & > svg {
-                position: absolute;
-                right: 12px;
-                top: 10px;
-                width: 16px;
-                height: 16px;
-
-                cursor: pointer;
-            } */
         }
 
         & button {

@@ -31,11 +31,12 @@ export interface IUser {
 
 export interface IBudget {
   projectName: string;
-  projectTime: number;
-  fixedCost: number;
-  variableCost: number;
-  budget: string;
-  userId: string | number | null;
+  projectTime?: number;
+  fixedCost?: number;
+  variableCost?: number;
+  budget?: string;
+  id: string | number
+  userId?: string | number | null;
 }
 
 export interface ILoginForm {}
@@ -107,7 +108,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
           const userResponse = await iBudgetApi.get(
             `/users/${id}?_embed=budgets`,
           );
-          console.log(userResponse.data);
+          // console.log(userResponse.data);
           setUser(userResponse.data);
         } catch (error) {
           console.log("erro");

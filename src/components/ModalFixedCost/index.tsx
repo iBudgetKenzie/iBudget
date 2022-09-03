@@ -1,20 +1,15 @@
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
 
-import { BudgetContext } from "../../contexts/BudgetContext";
+import { useBudgetContext } from "../../contexts/BudgetContext";
 import { MoreExpenses } from "../MoreExpenses";
 
 import { ConteinerModalFixedCost, Modal, ConteinerFormModal } from "./style";
 import { IInputs } from "../InputsBase";
 
 export const ModalFixedCost = () => {
-  const { setOnModalFixedCost, addFixedValue, inputsBase } =
-    useContext(BudgetContext);
+  const { setOnModalFixedCost, addFixedValue, inputsBase } = useBudgetContext();
 
-  const {
-    register,
-    handleSubmit,
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   return (
     <ConteinerModalFixedCost>
@@ -25,7 +20,7 @@ export const ModalFixedCost = () => {
         </div>
         <ConteinerFormModal>
           <form onSubmit={handleSubmit(addFixedValue)}>
-            {inputsBase.map(({example, title, name}: IInputs, index) => {
+            {inputsBase.map(({ example, title, name }: IInputs, index) => {
               return (
                 <MoreExpenses key={index}>
                   <label htmlFor="value">{title}</label>
