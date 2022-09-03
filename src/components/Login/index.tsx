@@ -2,7 +2,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { StyledContainer, StyledLogin } from "./styles";
+import { StyledLogin } from "./styles";
 import { useUserContext } from "../../contexts/UserContext";
 
 interface IData {

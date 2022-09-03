@@ -1,16 +1,10 @@
 import { ReactNode } from "react";
-import { InputMoreExpenses } from "./style"
+import { InputMoreExpenses } from "./style";
 
 interface InputProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
-export const MoreExpenses = ({children}: InputProps) => {
-  return (
-    <InputMoreExpenses>
-      {children}
-    </InputMoreExpenses>
-  );
+export const MoreExpenses = ({ children }: InputProps) => {
+  return <InputMoreExpenses>{children}</InputMoreExpenses>;
 };
-
-

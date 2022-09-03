@@ -34,7 +34,7 @@ export interface IBudget {
   fixedCost?: number;
   variableCost?: number;
   budget?: string;
-  id: string | number
+  id: string | number;
   userId?: string | number | null;
 }
 
@@ -77,7 +77,7 @@ export interface ILoginData {
 }
 
 export const UserContext = createContext<IUserProviderData>(
-  {} as IUserProviderData,
+  {} as IUserProviderData
 );
 
 export const useUserContext = (): IUserProviderData => {
@@ -107,9 +107,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         try {
           iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`;
           const userResponse = await iBudgetApi.get(
-            `/users/${id}?_embed=budgets`,
+            `/users/${id}?_embed=budgets`
           );
-          // console.log(userResponse.data);
           setUser(userResponse.data);
           setBudgetHistory(userResponse.data.budgets);
           console.log(budgetHistory);
@@ -128,7 +127,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       const response = await iBudgetApi.post<ILoginData>(
         "/login",
-        loginFormData,
+        loginFormData
       );
       localStorage.clear();
 
@@ -153,27 +152,26 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       position: registerFormData.position,
       imageUrl: registerFormData.imageUrl,
     };
-    if(registerFormData.username){
-      const name = registerFormData.username.toLowerCase()
-      const firstLetter = name.split("").splice(0,1).toString().toUpperCase()
-      const otherLetters = name.split("").splice(1).join("")
-      const capitalLetter = firstLetter.concat(otherLetters)
+    if (registerFormData.username) {
+      const name = registerFormData.username.toLowerCase();
+      const firstLetter = name.split("").splice(0, 1).toString().toUpperCase();
+      const otherLetters = name.split("").splice(1).join("");
+      const capitalLetter = firstLetter.concat(otherLetters);
 
-      cadastro.username = capitalLetter
+      cadastro.username = capitalLetter;
     }
     if (registerFormData.imageUrl === "" && isImage === "") {
+      cadastro.imageUrl = userPng;
+    } else if (!registerFormData.imageUrl?.includes("http")) {
       cadastro.imageUrl = userPng;
     } else if (registerFormData.imageUrl === "" && isImage !== "") {
       cadastro.imageUrl = isImage;
     }
     try {
-      const response = await iBudgetApi.post("/register", cadastro);
-      // console.log(response)
+      await iBudgetApi.post("/register", cadastro);
       toast.success("Cadastro realizado com sucesso");
       setIsRegister(false);
       setIsLogin(true);
-
-      // console.log(response)
     } catch (error) {
       toast.error("Cadastro não realizado");
     }
@@ -215,5 +213,3 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     </UserContext.Provider>
   );
 };
-
-// export default UserContext;

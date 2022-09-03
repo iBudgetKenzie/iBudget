@@ -8,10 +8,7 @@ import { IBudgetOmitId } from "../../contexts/BudgetContext/index";
 
 import {
   ContainerCreateBudget,
-  // ConteinerDate,
-  // ConteinerWorkTime,
 } from "./styles";
-import { useUserContext } from "../../contexts/UserContext";
 import { Input } from "../Input";
 
 export const CreateBudget = () => {

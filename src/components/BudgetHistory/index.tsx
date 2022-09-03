@@ -1,6 +1,5 @@
 import { CardBudgetHistory } from "../CardBudgetHistory";
 import { IBudget } from "../../contexts/UserContext/index";
-import { useBudgetContext } from "../../contexts/BudgetContext";
 import { useUserContext } from "../../contexts/UserContext/index";
 
 import { IoSearch } from "react-icons/io5";
