@@ -39,6 +39,7 @@ export const StyledRegister = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    /* align-items: center; */
     gap: 1px;
 
     @media screen and (min-width: 700px) {
@@ -114,7 +115,7 @@ export const StyledRegister = styled.div`
           }
 
           & :hover {
-            box-shadow: 1px 1px 5px 0px;
+            box-shadow: 0px 0px 5px 0px;
             border-radius: 50%;
           }
 
@@ -125,7 +126,6 @@ export const StyledRegister = styled.div`
             height: 30px;
           };
         };
-        .avatar:
 
       };
 
@@ -138,7 +138,7 @@ export const StyledRegister = styled.div`
 
     .register {
       height: 32px;
-      width: 250px;
+      /* width: 250px; */
       left: 41px;
       top: 520px;
       border-radius: 8px;
