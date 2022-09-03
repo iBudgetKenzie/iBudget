@@ -1,4 +1,4 @@
-import { appendFile } from "fs";
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   createContext,
   useContext,
@@ -6,7 +6,6 @@ import {
   useEffect,
   ReactNode,
 } from "react";
-import { BsYoutube } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -52,6 +51,7 @@ export interface IRegisterForm {
 }
 
 interface IUserProviderData {
+  budgetHistory: IBudget[];
   user: IUser;
   isAuthenticated: boolean;
   isHome: boolean;
@@ -95,6 +95,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const [isSobre, setIsSobre] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [isImage, setIsImage] = useState<string>("");
+  const [budgetHistory, setBudgetHistory] = useState<IBudget[]>([]);
   const navigate = useNavigate();
 
   useEffect((): void => {
@@ -110,6 +111,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
           );
           // console.log(userResponse.data);
           setUser(userResponse.data);
+          setBudgetHistory(userResponse.data.budgets);
+          console.log(budgetHistory);
         } catch (error) {
           console.log("erro");
         }
@@ -188,6 +191,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   return (
     <UserContext.Provider
       value={{
+        budgetHistory,
         user,
         setUser,
         isAuthenticated,
