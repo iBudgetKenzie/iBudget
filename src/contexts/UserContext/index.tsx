@@ -59,7 +59,6 @@ interface IUserProviderData {
   isRegister: boolean;
   isSobre: boolean;
   isImage: string;
-  budgetHistory: IBudget[]
   setUser: (user: IUser) => void;
   setIsAuthenticated: (isAuthenticated: boolean) => void;
   setIsHome: (isHome: boolean) => void;
@@ -70,7 +69,6 @@ interface IUserProviderData {
   onSubmitLogin: (loginFormData: ILoginForm) => void;
   onSubmitRegister: (registerFormData: IRegisterForm) => void;
   handleSignOut: () => void;
-  setBudgetHistory: (budgetHistory: IBudget[]) => void;
 }
 
 export interface ILoginData {
@@ -97,7 +95,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const [isSobre, setIsSobre] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [isImage, setIsImage] = useState<string>("");
-  const [budgetHistory, setBudgetHistory] = useState<IBudget[]>([]);
   const navigate = useNavigate();
 
   useEffect((): void => {
@@ -113,7 +110,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
           );
           // console.log(userResponse.data);
           setUser(userResponse.data);
-          setBudgetHistory(userResponse.data.budget)
         } catch (error) {
           console.log("erro");
         }
@@ -184,8 +180,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   return (
     <UserContext.Provider
       value={{
-        setBudgetHistory,
-        budgetHistory,
         user,
         setUser,
         isAuthenticated,
