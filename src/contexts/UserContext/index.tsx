@@ -150,6 +150,14 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       position: registerFormData.position,
       imageUrl: registerFormData.imageUrl,
     };
+    if(registerFormData.username){
+      const name = registerFormData.username.toLowerCase()
+      const firstLetter = name.split("").splice(0,1).toString().toUpperCase()
+      const otherLetters = name.split("").splice(1).join("")
+      const capitalLetter = firstLetter.concat(otherLetters)
+
+      cadastro.username = capitalLetter
+    }
     if (registerFormData.imageUrl === "" && isImage === "") {
       cadastro.imageUrl = userPng;
     } else if (registerFormData.imageUrl === "" && isImage !== "") {

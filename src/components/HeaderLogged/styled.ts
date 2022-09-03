@@ -33,7 +33,7 @@ export const Header = styled.header`
 
         display:flex;
         align-items:center;
-        justify-content:center;
+        justify-content:space-evenly;
         gap:1rem;
         
         @media (min-width:320px)  { 
@@ -51,18 +51,20 @@ export const Header = styled.header`
           line-height: 17px;
 
           color:rgba(var(--color-white),1);
+
+          margin-right: -30px;
         }
 
         img {
-            width:54px;
-            height:54px;
+            width:40px;
+            height:40px;
             margin-left:0px;
             margin-top:0px;
 
             border-radius:50px;
         }
 
-        a {
+        button {
             border:none;
 
             background-color:transparent;
@@ -72,7 +74,7 @@ export const Header = styled.header`
             font-family: 'Inter';
             font-style: normal;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 15px;
             line-height: 17px;
 
             color:rgba(var(--color-purple-light),1);
