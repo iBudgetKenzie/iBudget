@@ -1,5 +1,4 @@
 import { IoLogoLinkedin, IoLogoGithub } from "react-icons/io";
-import { Link } from "react-router-dom";
 
 import { AboutUsDiv, EquipList, Dev } from "./styles";
 import alexandre from "../../assets/img/alexandre-borges-photo.png";
