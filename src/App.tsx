@@ -14,15 +14,17 @@ function App() {
         <BudgetProvider>
           <GlobalStyle />
           <ToastContainer
-            position="top-right"
-            autoClose={3500}
-            hideProgressBar={false}
+            position="bottom-right"
+            hideProgressBar={true}
             newestOnTop={false}
+            pauseOnFocusLoss
+            autoClose={3000}
+            theme={"dark"}
+            pauseOnHover
             closeOnClick
             rtl={false}
-            pauseOnFocusLoss
             draggable
-            pauseOnHover
+            limit={2}
           />
           <Routes />
         </BudgetProvider>
