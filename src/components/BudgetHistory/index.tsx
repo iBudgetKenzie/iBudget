@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 import { CardBudgetHistory } from "../CardBudgetHistory";
 import { IBudget } from "../../contexts/UserContext/index";
 import { useUserContext } from "../../contexts/UserContext/index";
@@ -21,7 +23,7 @@ export const BudgetHistory = () => {
         </div>
       </FilterBar>
 
-      <ul>
+      <motion.ul layout>
         {budgetHistory && budgetHistory.length === 0 ? (
           <p>Ops, não existe orçamento ainda aqui!</p>
         ) : (
@@ -39,7 +41,7 @@ export const BudgetHistory = () => {
             }
           )
         )}
-      </ul>
+      </motion.ul>
     </ContainerBudgetHistory>
   );
 };
