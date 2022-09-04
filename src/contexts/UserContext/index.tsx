@@ -69,6 +69,7 @@ interface IUserProviderData {
   onSubmitLogin: (loginFormData: ILoginForm) => void;
   onSubmitRegister: (registerFormData: IRegisterForm) => void;
   handleSignOut: () => void;
+  setBudgetHistory: (budgetHistory: IBudget[]) => void
 }
 
 export interface ILoginData {
@@ -187,6 +188,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   return (
     <UserContext.Provider
       value={{
+        setBudgetHistory,
         budgetHistory,
         user,
         setUser,
