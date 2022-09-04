@@ -1,3 +1,5 @@
+import { motion, AnimatePresence } from "framer-motion";
+
 import { useUserContext } from "../../contexts/UserContext";
 import HomeComponent from "../../components/Home";
 import LoginModal from "../../components/Login";
@@ -46,7 +48,13 @@ const Home = () => {
   };
 
   return (
-    <StyledBody>
+    <StyledBody
+      as={motion.div}
+      initial={{ opacity: 0.3 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0.3 }}
+      transition={{ duration: 0.3 }}
+    >
       <section className="logo-section">
         <img src={logo} alt="" />
         <p className="logo-paragraph">O orçamento que cabe no seu bolso</p>
@@ -65,14 +73,19 @@ const Home = () => {
           <button className="header-menu" onClick={handleSobre}>
             Sobre nós
           </button>
-        </header>
-
-        <div className="content">
-          {isHome && <HomeComponent />}
-          {isLogin && <LoginModal />}
-          {isRegister && <Register />}
-          {isSobre && <AboutUs />}
-        </div>
+        </motion.header>
+        <AnimatePresence>
+          <motion.div
+            className="content"
+            exit={{ x: "100vw" }}
+            transition={{ duration: 1 }}
+          >
+            {isHome && <HomeComponent />}
+            {isLogin && <LoginModal />}
+            {isRegister && <Register />}
+            {isSobre && <AboutUs />}
+          </motion.div>
+        </AnimatePresence>
       </section>
     </StyledBody>
   );

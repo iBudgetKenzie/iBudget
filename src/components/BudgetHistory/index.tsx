@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 import { CardBudgetHistory } from "../CardBudgetHistory";
 import { useUserContext } from "../../contexts/UserContext/index";
 import { IoSearch } from "react-icons/io5";
@@ -33,13 +35,13 @@ export const BudgetHistory = () => {
           </span>
         </div>
       </FilterBar>
-
+      
       {budgetHistory && budgetHistory.length === 0 ? (
-        <ul>
+        <motion.ul layout>
           <p>Ops, não existe orçamento ainda aqui!</p>
         </ul>
       ) : (
-        <ul>
+        <motion.ul>
           {filteredBudget.length > 0
             ? filteredBudget?.map(
                 ({ budget, projectName, id, projectTime }: IBudget) => {

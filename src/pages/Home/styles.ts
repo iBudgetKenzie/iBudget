@@ -54,7 +54,6 @@ export const StyledBody = styled.div`
     width: 100%;
     height: 85%;
     background-color: rgba(var(--color-purple));
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,7 +62,6 @@ export const StyledBody = styled.div`
       display: flex;
       justify-content: space-around;
       align-items: center;
-
       width: 70%;
       height: 40px;
       padding: 20px;
@@ -87,7 +85,6 @@ export const StyledBody = styled.div`
   .content {
     width: 100%;
     height: 100%;
-
     display: flex;
     justify-content: center;
 

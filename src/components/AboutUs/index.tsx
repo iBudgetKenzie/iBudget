@@ -1,4 +1,6 @@
 import { IoLogoLinkedin, IoLogoGithub } from "react-icons/io";
+import { motion } from "framer-motion";
+
 import { AboutUsDiv, EquipList, Dev } from "./styles";
 import alexandre from "../../assets/img/alexandre-borges-photo.png";
 import alvaro from "../../assets/img/alvaro-alencar-photo.jpg";
@@ -10,7 +12,13 @@ import rafael from "../../assets/img/rafael-grillo-photo.jpg";
 const AboutUs = () => {
   return (
     <>
-      <AboutUsDiv>
+      <AboutUsDiv
+        as={motion.div}
+        initial={{ y: -50, scale: 1, opacity: 0.5 }}
+        animate={{ y: 0, scale: 1, opacity: 1 }}
+        exit={{ y: 0, scale: 1, opacity: 0.5 }}
+        transition={{ duration: 0.3 }}
+      >
         <p>
           Este é o nosso <strong>Projeto final Front-End do M3</strong> da
           Kenzie Academy Brasil (turma 13). Nós do grupo 3 gostaríamos de

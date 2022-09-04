@@ -1,6 +1,7 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { motion } from "framer-motion";
 
 import { useUserContext } from "../../contexts/UserContext";
 
@@ -56,7 +57,13 @@ const Register = () => {
   };
 
   return (
-    <StyledRegister>
+    <StyledRegister
+      as={motion.div}
+      initial={{ y: -50, scale: 1, opacity: 0.5 }}
+      animate={{ y: 0, scale: 1, opacity: 1 }}
+      exit={{ y: 0, scale: 1, opacity: 0.5 }}
+      transition={{ duration: 0.3 }}
+    >
       <h4>Cadastro</h4>
       <form action="submit" onSubmit={handleSubmit(onSubmitRegister)}>
         <div className="div--label">

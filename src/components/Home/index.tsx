@@ -1,11 +1,20 @@
 import { BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
+import { IconType } from "react-icons/lib";
+import { motion, AnimatePresence } from "framer-motion";
+
 import { StyledContainer } from "./styles";
 
 const HomeComponent = () => {
   return (
-    <StyledContainer>
-      <h1>Bem Vindo.</h1>
-
+    <AnimatePresence>
+      <StyledContainer
+        as={motion.div}
+        initial={{ y: -50, scale: 1, opacity: 0.5 }}
+        animate={{ y: 0, scale: 1, opacity: 1 }}
+        exit={{ y: 0, scale: 1, opacity: 0.5 }}
+        transition={{ duration: 0.3 }}
+      >
+        <h1>Bem Vindo.</h1>
       <div className="main-text">
         <p>
           Dificuldades em gerar orçamentos mais precisos e profissionais para
@@ -33,8 +42,8 @@ const HomeComponent = () => {
             <BsTwitter />
           </a>
         </div>
-      </div>
-    </StyledContainer>
+      </StyledContainer>
+    </AnimatePresence>
   );
 };
 
