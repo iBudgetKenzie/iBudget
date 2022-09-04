@@ -1,107 +1,98 @@
 import styled from "styled-components";
 
 export const StyledLogin = styled.div`
-  background-color: rgba(255, 255, 255, 1);
-  color: black;
+  background-color: rgba(var(--color-white));
+  color: rgba(var(--color-text-black));
 
-  height: 330px;
-  width: 300px;
-  left: -796px;
-  top: -267px;
+  height: 60%;
+  width: 70%;
   border-radius: 7px;
-  padding: 25px;
+  padding: 20px 40px 40px;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   /* margin: auto; */
-  gap: 16px;
+  gap: 20px;
 
-  margin-top: 70px;
+  /* margin-top: 70px; */
 
   h4 {
     font-size: 20px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
   }
 
   @media screen and (min-width: 700px) {
-    height: 350px;
-    width: 330px;
+    height: 50%;
+    width: 50%;
     margin-top: 0px;
 
     h4 {
-      margin-top: 25px;
-      font-size: 20px;
+      font-size: 1.25rem;
     }
   }
 
   form {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
 
     @media screen and (min-width: 700px) {
-      height: 200px;
-      justify-content: space-around;
+      height: 100%;
+      width: 100%;
+      justify-content: center;
     }
 
     input {
-      height: 30px;
-      width: 240px;
-      left: -774px;
-      top: -215px;
+      width: 100%;
+      height: 15%;
       border-radius: 5px;
       padding: 10px;
 
-      border: solid 1px rgb(188, 176, 255);
+      border: solid 1px rgba(var(--color-purple));
 
-      @media screen and (min-width: 700px) {
+      /* @media screen and (min-width: 700px) {
         height: 30px;
-      }
+      } */
     }
 
     span {
-      font-size: 13px;
-      color: #f61818;
+      font-size: 0.8rem;
+      color: rgba(var(--color-negative-pink));
     }
 
     p {
-      font-size: 14px;
-      margin-left: 16px;
+      font-size: 0.88rem;
+      align-self: center;
     }
 
     .cadastro {
-      background-color: white;
-      color: rgb(122, 99, 255);
+      background-color: transparent;
+      color: rgba(var(--color-purple));
     }
 
     .login {
-      height: 32px;
-      width: 80px;
-      left: -729px;
-      top: -126px;
+      width: 100%;
+      height: 18%;
+      margin-top: 5px;
+
       border-radius: 8px;
-      margin-top: 10px;
-      font-size: 14px;
+      font-size: 1rem;
 
-      color: rgba(217, 217, 217, 1);
+      color: rgba(var(--color-text-white));
+      background-color: rgba(var(--color-purple));
 
-      @media screen and (min-width: 700px) {
+      /* @media screen and (min-width: 700px) {
         min-height: 35px;
-        width: 85px;
-      }
-
-      align-self: center;
-
-      background-color: rgb(122, 99, 255);
-      color: rgba(217, 217, 217, 1);
+      } */
     }
   }
 `;
 
-export const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-`;
+// export const StyledContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 20px;
+// `;

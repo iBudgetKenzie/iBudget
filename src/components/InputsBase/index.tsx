@@ -2,7 +2,7 @@ export interface IInputs {
   title: string;
   example: string;
   name: string;
-};
+}
 
 export const inputsBase: IInputs[] = [
   {

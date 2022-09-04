@@ -1,81 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
 import iBudgetApi from "../../services/iBudgetApi";
-
 import userPng from "../../assets/img/user.png";
 
-interface IUserProviderProps {
-  children: ReactNode;
-}
-
-export interface IUser {
-  email: string;
-  password?: string;
-  name: string;
-  username: string;
-  position: string;
-  imageUrl: string;
-  id: string | number;
-  budgets?: IBudget[];
-}
-
-export interface IBudget {
-  projectName: string;
-  projectTime?: number;
-  fixedCost?: number;
-  variableCost?: number;
-  budget?: string;
-  id: string | number;
-  userId?: string | number | null;
-}
-
-export interface ILoginForm {}
-
-export interface IRegisterForm {
-  name: string;
-  username: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
-  position?: string;
-  imageUrl?: string;
-}
-
-interface IUserProviderData {
-  budgetHistory: IBudget[];
-  user: IUser;
-  isAuthenticated: boolean;
-  isHome: boolean;
-  isLogin: boolean;
-  isRegister: boolean;
-  isSobre: boolean;
-  isImage: string;
-  setUser: (user: IUser) => void;
-  setIsAuthenticated: (isAuthenticated: boolean) => void;
-  setIsHome: (isHome: boolean) => void;
-  setIsLogin: (isLogin: boolean) => void;
-  setIsSobre: (isSobre: boolean) => void;
-  setIsRegister: (isRegister: boolean) => void;
-  setIsImage: (isImage: string) => void;
-  onSubmitLogin: (loginFormData: ILoginForm) => void;
-  onSubmitRegister: (registerFormData: IRegisterForm) => void;
-  handleSignOut: () => void;
-  setBudgetHistory: (budgetHistory: IBudget[]) => void
-}
-
-export interface ILoginData {
-  accessToken: string;
-  user: IUser;
-}
+import {
+  IBudget,
+  ILoginData,
+  ILoginForm,
+  IRegisterForm,
+  IUser,
+  IUserProviderData,
+  IUserProviderProps,
+} from "./interfaces";
 
 export const UserContext = createContext<IUserProviderData>(
   {} as IUserProviderData
@@ -111,7 +49,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
           );
           setUser(userResponse.data);
           setBudgetHistory(userResponse.data.budgets);
-          console.log(budgetHistory);
         } catch (error) {
           console.log("erro");
         }
@@ -119,8 +56,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     }
     loadUser();
   }, [navigate]);
-
-  console.log(user);
 
   const onSubmitLogin = async (loginFormData: ILoginForm) => {
     try {
@@ -167,7 +102,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       cadastro.imageUrl = isImage;
     }
     try {
-      await iBudgetApi.post("/register", cadastro);
+      await iBudgetApi.post<ILoginData>("/register", cadastro);
       toast.success("Cadastro realizado com sucesso");
       setIsRegister(false);
       setIsLogin(true);
@@ -190,6 +125,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       value={{
         setBudgetHistory,
         budgetHistory,
+        setBudgetHistory,
         user,
         setUser,
         isAuthenticated,

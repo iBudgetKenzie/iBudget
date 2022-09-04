@@ -2,30 +2,44 @@ import styled from "styled-components";
 
 export const StyledContainer = styled.div`
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
-  gap: 20px;
+  justify-content: space-around;
+  gap: 40px;
 
   padding: 40px;
 
   color: rgb(255, 255, 255);
 
   h1 {
-    font-size: 35px;
+    font-size: 2.5rem;
+    font-weight: 600;
   }
 
-  h1 + p {
-    font-size: 18px;
+  .main-text {
+    max-width: 650px;
   }
 
-  .contact {
+  .main-contact {
     display: flex;
     flex-direction: column;
-    gap: 9px;
+    gap: 20px;
+
+    .contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+
+      & > p:nth-child(1) {
+        font-weight: 800;
+      }
+      & > p:nth-child(2) {
+        font-weight: 300;
+      }
+    }
 
     .redes {
       display: flex;
-      gap: 10px;
+      gap: 20px;
 
       a {
         color: rgb(255, 255, 255);

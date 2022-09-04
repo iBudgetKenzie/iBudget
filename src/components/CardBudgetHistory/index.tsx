@@ -1,10 +1,9 @@
 import { MdOutlinePictureAsPdf } from "react-icons/md";
 import { GoTrashcan } from "react-icons/go";
-import { IBudget } from "../../contexts/UserContext/index";
-
 import { useBudgetContext } from "../../contexts/BudgetContext";
-
 import { ConteinerCardBudgetHistory } from "./style";
+import { useRef } from "react";
+import { IBudget } from "../../contexts/UserContext/interfaces";
 
 export const CardBudgetHistory = ({
   projectName,
@@ -12,13 +11,26 @@ export const CardBudgetHistory = ({
   id,
   projectTime,
 }: IBudget) => {
-  const { deleteBudgetHistory, generatePDF } = useBudgetContext();
+  const {
+    setClickedBudgetId,
+    deleteBudgetHistory,
+    generatePDF,
+    setEditModalCard,
+  } = useBudgetContext();
+  const ref = useRef<HTMLSpanElement>(null);
+
+  const openEditModal = (id: string | number) => {
+    setClickedBudgetId(id);
+    setEditModalCard(true);
+  };
+
   return (
     <ConteinerCardBudgetHistory>
       <h2>{projectName}</h2>
       <span>Valor: {budget}</span>
-      <span>N°:{id}</span>
+      <span ref={ref}>N°:{id}</span>
       <div>
+        <button onClick={() => openEditModal(id)}>editar</button>
         <MdOutlinePictureAsPdf
           onClick={() => {
             const newDate = {
@@ -28,7 +40,7 @@ export const CardBudgetHistory = ({
               projectTime,
             };
 
-            generatePDF(newDate)
+            generatePDF(newDate);
           }}
         />
         <GoTrashcan onClick={() => deleteBudgetHistory(id)} />

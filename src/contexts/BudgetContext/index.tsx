@@ -1,56 +1,20 @@
-import { createContext, ReactNode, useState, useContext } from "react";
-
+import { createContext, useState, useEffect, useContext } from "react";
+import { inputsBase } from "../../components/InputsBase";
 import { IBudget } from "../UserContext/index";
-import { inputsBase, IInputs } from "../../components/InputsBase";
-import { IGeneratePdfProps } from "../../services/generatePdf";
-import { useUserContext } from "../UserContext/index";
 
+import { IGeneratePdfProps } from "../../services/generatePdf";
+// import { useUserContext } from "../UserContext/index";
 import iBudgetApi from "../../services/iBudgetApi";
 import { generatePdf } from "../../services/generatePdf";
 
-export interface IBudgetOmitId {
-  projectName: string;
-  fixedCost: number;
-  variableCost: number;
-  startDate: string;
-  endDate: string;
-  daysWeek: number;
-  estimatedSalary: number;
-  hoursDay: number;
-}
-
-export type IBudgetOmitIdProps = Omit<IBudget, "id">;
-
-interface IBudgetProvider {
-  children: ReactNode;
-}
-
-interface IBudgetContext {
-  totalDays: string;
-  fixedValue: number;
-  variableValue: number;
-  onModalFixedCost: boolean;
-  onModalVariableCost: boolean;
-  inputsBase: IInputs[];
-  sendBudget: (data: IBudgetOmitId) => void;
-  addFixedValue: (data: any) => void;
-  addVariableValue: (data: any) => void;
-  setOnModalFixedCost: (modalFixedValue: boolean) => void;
-  setOnModalVariableCost: (modalVariableValue: boolean) => void;
-  deleteBudgetHistory: (id: number | string) => Promise<void>;
-  generatePDF: (date: IGeneratePdfProps) => void;
-}
-
-export interface IFixedCost {
-  input0: IInputs;
-  input1: IInputs;
-  input2: IInputs;
-  input3: IInputs;
-  input4: IInputs;
-  input5: IInputs;
-  input6: IInputs;
-  input7: IInputs;
-}
+import { toast } from "react-toastify";
+import {
+  IBudgetContext,
+  IBudgetOmitId,
+  IBudgetOmitIdProps,
+  IBudgetProvider,
+} from "./interfaces";
+import { UserContext } from "../UserContext";
 
 export const BudgetContext = createContext<IBudgetContext>(
   {} as IBudgetContext,
@@ -67,23 +31,33 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   const [totalDays, setTotalDays] = useState<string>("");
   const [onModalFixedCost, setOnModalFixedCost] = useState(false);
   const [onModalVariableCost, setOnModalVariableCost] = useState(false);
+  const [editModalCard, setEditModalCard] = useState(false);
+  const [clickedBudgetId, setClickedBudgetId] = useState<string | number>(0);
 
-  const { setBudgetHistory } = useUserContext();
+  const { setBudgetHistory } = useContext(UserContext);
 
   const priceFormated = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
   });
 
+  useEffect(() => {
+    requestBudget();
+  });
+
   const requestBudget = async () => {
     const id: string | null = localStorage.getItem("@id");
-    try {
-      const {
-        data: { budgets },
-      } = await iBudgetApi.get(`/users/${id}?_embed=budgets`);
-      setBudgetHistory(budgets);
-    } catch (error) {
-      console.log(error);
+
+    if (typeof token === "string" && typeof id === "string") {
+      try {
+        iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`;
+        const userResponse = await iBudgetApi.get<IBudget>(
+          `/users/${id}?_embed=budgets`
+        );
+        setBudgetHistory(userResponse.data.budgets);
+      } catch (error) {
+        console.error("Erro Request Budget");
+      }
     }
   };
 
@@ -104,6 +78,24 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     );
     setVariableCost(reduceArray);
     setOnModalVariableCost(false);
+  };
+
+  const addEditedValue = async (data: any): Promise<void> => {
+    const array = Object.values(data).filter((elemnt) => !!elemnt);
+
+    const editedValues = {
+      projectName: array[0],
+      projectTime: array[1],
+      budget: array[2],
+    };
+
+    try {
+      await iBudgetApi.patch(`/budgets/${clickedBudgetId}`, editedValues);
+      toast.success("Orçamento editado com sucesso");
+      setEditModalCard(false);
+    } catch (error) {
+      toast.error("Erro na edição do orçamento");
+    }
   };
 
   const deleteBudgetHistory = async (id: number | string) => {
@@ -169,7 +161,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
           await iBudgetApi.post<IBudgetOmitIdProps>("/budgets", newData);
           requestBudget();
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       };
       request();
@@ -179,6 +171,8 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   return (
     <BudgetContext.Provider
       value={{
+        editModalCard,
+        setEditModalCard,
         totalDays,
         fixedValue,
         variableValue,
@@ -190,8 +184,10 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
         deleteBudgetHistory,
         setOnModalFixedCost,
         setOnModalVariableCost,
+        setClickedBudgetId,
         addFixedValue,
         addVariableValue,
+        addEditedValue,
       }}
     >
       {children}

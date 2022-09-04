@@ -44,6 +44,14 @@ export const ConteinerCardBudgetHistory = styled.li`
     display: flex;
     gap: 10px;
 
+    & > button {
+      background-color: transparent;
+    }
+
+    & > button:hover {
+      color: rgba(var(--color-text-white));
+    }
+
     & > svg {
       width: 20px;
       height: 20px;
@@ -52,4 +60,3 @@ export const ConteinerCardBudgetHistory = styled.li`
     }
   }
 `;
-

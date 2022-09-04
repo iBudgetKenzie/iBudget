@@ -47,11 +47,11 @@ const Home = () => {
 
   return (
     <StyledBody>
-      <section className="logo-div">
+      <section className="logo-section">
         <img src={logo} alt="" />
         <p className="logo-paragraph">O orçamento que cabe no seu bolso</p>
       </section>
-      <section className="header">
+      <section className="header-section">
         <header>
           <button className="header-menu" onClick={handleHome}>
             Home
