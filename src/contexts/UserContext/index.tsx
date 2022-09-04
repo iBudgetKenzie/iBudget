@@ -69,7 +69,7 @@ interface IUserProviderData {
   onSubmitLogin: (loginFormData: ILoginForm) => void;
   onSubmitRegister: (registerFormData: IRegisterForm) => void;
   handleSignOut: () => void;
-  setBudgetHistory: (budgetHistory: IBudget[]) => void
+  setBudgetHistory: (budgetHistory: IBudget[]) => void;
 }
 
 export interface ILoginData {
@@ -111,7 +111,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
           );
           setUser(userResponse.data);
           setBudgetHistory(userResponse.data.budgets);
-          console.log(budgetHistory);
         } catch (error) {
           console.log("erro");
         }
@@ -119,8 +118,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     }
     loadUser();
   }, [navigate]);
-
-  console.log(user);
 
   const onSubmitLogin = async (loginFormData: ILoginForm) => {
     try {
