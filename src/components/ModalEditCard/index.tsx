@@ -49,8 +49,8 @@ export const ModalEditCard = () => {
                 placeholder="Atualize os dados aqui"
                 {...register("budget")}
               />
+              <button type="submit">Confirmar</button>
             </StyledModalEdit>
-            <button type="submit">Confirmar</button>
           </form>
         </ConteinerFormModal>
       </Modal>
