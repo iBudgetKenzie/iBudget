@@ -33,7 +33,7 @@ export const generatePdf = ({
     [
       `Nome do projeto: ${projectName}`,
       `N° do projeto: ${projectId}`,
-      `Orçamento: RS ${budget}`,
+      `Orçamento: ${budget}`,
       `Conclusão em: ${projectTime} dias`,
     ],
     2,

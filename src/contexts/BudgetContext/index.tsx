@@ -1,9 +1,12 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { inputsBase } from "../../components/InputsBase";
+import { IBudget } from "../UserContext/index";
+
 import { IGeneratePdfProps } from "../../services/generatePdf";
 // import { useUserContext } from "../UserContext/index";
 import iBudgetApi from "../../services/iBudgetApi";
 import { generatePdf } from "../../services/generatePdf";
+
 import { toast } from "react-toastify";
 import {
   IBudgetContext,
@@ -14,7 +17,7 @@ import {
 import { UserContext } from "../UserContext";
 
 export const BudgetContext = createContext<IBudgetContext>(
-  {} as IBudgetContext
+  {} as IBudgetContext,
 );
 
 export const useBudgetContext = (): IBudgetContext => {
@@ -43,13 +46,12 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   });
 
   const requestBudget = async () => {
-    const token: string | null = localStorage.getItem("@token");
     const id: string | null = localStorage.getItem("@id");
 
     if (typeof token === "string" && typeof id === "string") {
       try {
         iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`;
-        const userResponse = await iBudgetApi.get(
+        const userResponse = await iBudgetApi.get<IBudget>(
           `/users/${id}?_embed=budgets`
         );
         setBudgetHistory(userResponse.data.budgets);
@@ -63,7 +65,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     const array = Object.values(data).filter((elemnt) => !!elemnt);
     const reduceArray = array.reduce(
       (acc: number, current) => acc + Number(current),
-      0
+      0,
     );
     setFixedCost(reduceArray);
     setOnModalFixedCost(false);
@@ -72,7 +74,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     const array = Object.values(data).filter((elemnt) => !!elemnt);
     const reduceArray = array.reduce(
       (acc: number, current) => acc + Number(current),
-      0
+      0,
     );
     setVariableCost(reduceArray);
     setOnModalVariableCost(false);

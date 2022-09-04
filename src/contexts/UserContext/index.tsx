@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import iBudgetApi from "../../services/iBudgetApi";
 import userPng from "../../assets/img/user.png";
+
 import {
   IBudget,
   ILoginData,
@@ -122,6 +123,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   return (
     <UserContext.Provider
       value={{
+        setBudgetHistory,
         budgetHistory,
         setBudgetHistory,
         user,
