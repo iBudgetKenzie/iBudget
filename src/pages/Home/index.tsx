@@ -55,27 +55,12 @@ const Home = () => {
       exit={{ opacity: 0.3 }}
       transition={{ duration: 0.3 }}
     >
-      <section className="logo-div">
-        <motion.img
-          initial={{ y: -50, scale: 1, opacity: 0.5 }}
-          animate={{ y: 0, scale: 1, opacity: 1 }}
-          exit={{ y: 0, scale: 1, opacity: 0.5 }}
-          transition={{ duration: 0.3 }}
-          src={logo}
-          alt="iBudget Kenzie"
-        />
-        <motion.p
-          initial={{ y: -50, scale: 1, opacity: 0.5 }}
-          animate={{ y: 0, scale: 1, opacity: 1 }}
-          exit={{ y: 0, scale: 1, opacity: 0.5 }}
-          transition={{ duration: 0.3 }}
-          className="logo-paragraph"
-        >
-          O orçamento que cabe no seu bolso
-        </motion.p>
+      <section className="logo-section">
+        <img src={logo} alt="" />
+        <p className="logo-paragraph">O orçamento que cabe no seu bolso</p>
       </section>
-      <section className="header">
-        <motion.header>
+      <section className="header-section">
+        <header>
           <button className="header-menu" onClick={handleHome}>
             Home
           </button>

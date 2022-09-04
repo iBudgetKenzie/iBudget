@@ -11,17 +11,18 @@ export const StyledBody = styled.div`
     flex-direction: row;
   }
 
-  .logo-div {
+  .logo-section {
     width: 100%;
     height: 15%;
     padding: 50px;
 
-    background-color: rgb(30, 30, 30);
-    color: white;
+    background-color: rgba(var(--color-black));
+    color: rgba(var(--color-white));
 
     img {
       width: 100px;
       height: 100px;
+
       @media screen and (min-width: 700px) {
         width: 280px;
       }
@@ -31,11 +32,12 @@ export const StyledBody = styled.div`
     align-items: center;
 
     .logo-paragraph {
-      color: white;
+      color: rgba(var(--color-white));
       font-size: 14px;
       font-weight: bold;
+
       @media screen and (min-width: 700px) {
-        font-size: 20px;
+        font-size: 1.25rem;
       }
     }
 
@@ -48,27 +50,26 @@ export const StyledBody = styled.div`
     }
   }
 
-  .header {
+  .header-section {
     width: 100%;
     height: 85%;
-    background-color: rgb(122, 99, 255);
-
+    background-color: rgba(var(--color-purple));
     display: flex;
     flex-direction: column;
-    gap: 0px;
+    align-items: center;
 
     header {
       display: flex;
       justify-content: space-around;
       align-items: center;
-
+      width: 70%;
       height: 40px;
       padding: 20px;
     }
 
     .header-menu {
-      background-color: rgb(122, 99, 255);
-      color: white;
+      background-color: rgba(var(--color-purple));
+      color: rgba(var(--color-white));
     }
 
     @media screen and (min-width: 700px) {
@@ -84,7 +85,6 @@ export const StyledBody = styled.div`
   .content {
     width: 100%;
     height: 100%;
-
     display: flex;
     justify-content: center;
 

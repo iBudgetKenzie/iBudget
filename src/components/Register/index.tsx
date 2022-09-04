@@ -82,11 +82,7 @@ const Register = () => {
           <label htmlFor="">
             Nome de usuário: <span>*</span>
           </label>
-          <input
-            type="text"
-            placeholder="Ex: Username"
-            {...register("username")}
-          />
+          <input type="text" placeholder="Ex: Jao" {...register("username")} />
           <span className="span--error">{errors.username?.message}</span>
         </div>
 
@@ -96,7 +92,7 @@ const Register = () => {
           </label>
           <input
             type="email"
-            placeholder="Ex: jao@mail.com"
+            placeholder="Ex: joao@mail.com"
             {...register("email")}
           />
           <span className="span--error">{errors.email?.message}</span>
@@ -107,25 +103,33 @@ const Register = () => {
             <label htmlFor="">
               Senha: <span>*</span>
             </label>
-            <input type="password" {...register("password")} />
+            <input
+              type="password"
+              placeholder="Digite uma senha"
+              {...register("password")}
+            />
             <span className="span--error">{errors.password?.message}</span>
           </div>
           <div className="div--label">
             <label htmlFor="">
               Confirmar senha: <span>*</span>
             </label>
-            <input type="password" {...register("passwordConfirm")} />
+            <input
+              type="password"
+              placeholder="Confirme a senha"
+              {...register("passwordConfirm")}
+            />
             <span className="span--error">
               {errors.passwordConfirm?.message}
             </span>
           </div>
         </div>
 
-        <div className="div--label">
+        <div className="div--cargo">
           <label htmlFor="">Cargo:</label>
           <input
             type="text"
-            placeholder="Front-end"
+            placeholder="Ex: Front-end"
             {...register("position")}
           />
           <span></span>
@@ -160,7 +164,11 @@ const Register = () => {
           </div>
           <div className="div--label">
             <label htmlFor="">Imagem(URL):</label>
-            <input type="text" {...register("imageUrl")} />
+            <input
+              type="text"
+              placeholder="Ex: Link imagem"
+              {...register("imageUrl")}
+            />
           </div>
         </div>
         <button type="submit" className="register">

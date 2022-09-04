@@ -1,47 +1,76 @@
 import { motion } from "framer-motion";
 
 import { CardBudgetHistory } from "../CardBudgetHistory";
-import { IBudget } from "../../contexts/UserContext/index";
 import { useUserContext } from "../../contexts/UserContext/index";
-
 import { IoSearch } from "react-icons/io5";
-
 import { ContainerBudgetHistory, FilterBar } from "./style";
+import { IBudget } from "../../contexts/UserContext/interfaces";
+import { ChangeEvent, useState } from "react";
 
 export const BudgetHistory = () => {
   const { budgetHistory } = useUserContext();
+  const [filteredBudget, setFilteredBudget] = useState<IBudget[]>([]);
+
+  const filterProducts = (event: ChangeEvent<HTMLInputElement>) => {
+    const targetValue = event.target.value.toLowerCase();
+
+    const filterSearched = budgetHistory.filter((elem) =>
+      elem.projectName.toLowerCase().includes(targetValue)
+    );
+    setFilteredBudget(filterSearched);
+  };
 
   return (
     <ContainerBudgetHistory>
       <FilterBar>
         <h2>Histórico de orçamentos</h2>
         <div>
-          <input type="text" placeholder="Search..." />
+          <input
+            type="text"
+            placeholder="Search..."
+            onChange={(event) => filterProducts(event)}
+          />
           <span>
             <IoSearch />
           </span>
         </div>
       </FilterBar>
-
-      <motion.ul layout>
-        {budgetHistory && budgetHistory.length === 0 ? (
+      
+      {budgetHistory && budgetHistory.length === 0 ? (
+        <motion.ul layout>
           <p>Ops, não existe orçamento ainda aqui!</p>
-        ) : (
-          budgetHistory?.map(
-            ({ budget, projectName, id, projectTime }: IBudget) => {
-              return (
-                <CardBudgetHistory
-                  key={id}
-                  projectName={projectName}
-                  budget={budget}
-                  id={id}
-                  projectTime={projectTime}
-                />
-              );
-            }
-          )
-        )}
-      </motion.ul>
+        </ul>
+      ) : (
+        <motion.ul>
+          {filteredBudget.length > 0
+            ? filteredBudget?.map(
+                ({ budget, projectName, id, projectTime }: IBudget) => {
+                  return (
+                    <CardBudgetHistory
+                      key={id}
+                      projectName={projectName}
+                      budget={budget}
+                      id={id}
+                      projectTime={projectTime}
+                    />
+                  );
+                }
+              )
+            : budgetHistory?.map(
+                ({ budget, projectName, id, projectTime }: IBudget) => {
+                  return (
+                    <CardBudgetHistory
+                      key={id}
+                      projectName={projectName}
+                      budget={budget}
+                      id={id}
+                      projectTime={projectTime}
+                    />
+                  );
+                }
+              )}
+        </ul>
+      )}
     </ContainerBudgetHistory>
   );
 };

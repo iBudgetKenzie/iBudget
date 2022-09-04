@@ -2,14 +2,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FaRegEdit } from "react-icons/fa";
-
 import { useBudgetContext } from "../../contexts/BudgetContext/index";
-import { IBudgetOmitId } from "../../contexts/BudgetContext/index";
-
-import {
-  ContainerCreateBudget,
-} from "./styles";
+import { ContainerCreateBudget } from "./styles";
 import { Input } from "../Input";
+import { IBudgetOmitId } from "../../contexts/BudgetContext/interfaces";
 
 export const CreateBudget = () => {
   const {

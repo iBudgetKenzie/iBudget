@@ -9,9 +9,11 @@ import HeaderLogged from "../../components/HeaderLogged";
 import { BudgetHistory } from "../../components/BudgetHistory";
 
 import { MainConteiner } from "./styles";
+import { ModalEditCard } from "../../components/ModalEditCard";
 
 const Dashboard = () => {
-  const { onModalFixedCost, onModalVariableCost } = useContext(BudgetContext);
+  const { onModalFixedCost, onModalVariableCost, editModalCard } =
+    useContext(BudgetContext);
 
   return (
     <>
@@ -34,6 +36,7 @@ const Dashboard = () => {
 
         {onModalFixedCost && <ModalFixedCost />}
         {onModalVariableCost && <ModalVariableCost />}
+        {editModalCard && <ModalEditCard />}
       </main>
     </>
   );

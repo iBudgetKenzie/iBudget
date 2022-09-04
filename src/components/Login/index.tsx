@@ -55,7 +55,7 @@ const LoginModal = () => {
           <input type="password" {...register("password")} />
           <span>{errors.password?.message}</span>
           <p>
-            Não possui cadastro?{" "}
+            Ainda não possui cadastro?{" "}
             <button type="button" className="cadastro" onClick={toCadastro}>
               Clique aqui
             </button>
