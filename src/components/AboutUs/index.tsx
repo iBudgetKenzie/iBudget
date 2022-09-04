@@ -1,5 +1,4 @@
 import { IoLogoLinkedin, IoLogoGithub } from "react-icons/io";
-
 import { AboutUsDiv, EquipList, Dev } from "./styles";
 import alexandre from "../../assets/img/alexandre-borges-photo.png";
 import alvaro from "../../assets/img/alvaro-alencar-photo.jpg";
@@ -13,10 +12,11 @@ const AboutUs = () => {
     <>
       <AboutUsDiv>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-          impedit, excepturi sequi quae provident qui, in laudantium explicabo
-          corrupti obcaecati harum sit iste! Neque voluptatum ullam dolorem
-          atque, quis porro.
+          Este é o Projeto final Front-End do M3 da Kenzie Academy Brasil (turma
+          13). Queriamos agradecer a toda nossa turma e a equipe da Kenzie, em
+          especial ao facilitador Daniel Pereira e o nosso instrutor Gabriel
+          Tsunoda. Segue abaixo o time do grupo 3 que foram os responsáveis pela
+          idealização e desenvolvimento deste aplicativo.
         </p>
         <EquipList>
           <Dev>
