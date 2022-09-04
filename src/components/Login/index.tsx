@@ -11,7 +11,6 @@ interface IData {
 }
 
 const LoginModal = () => {
-
   const { onSubmitLogin, setIsRegister, setIsLogin } = useUserContext();
 
   const schema = yup.object().shape({
@@ -28,8 +27,8 @@ const LoginModal = () => {
   });
 
   const toCadastro = () => {
-    setIsRegister(true)
-    setIsLogin(false)
+    setIsRegister(true);
+    setIsLogin(false);
   };
 
   return (
@@ -48,9 +47,14 @@ const LoginModal = () => {
         <input type="password" {...register("password")} />
         <span>{errors.password?.message}</span>
         <p>
-          Não possui cadastro? <button type="button" className="cadastro" onClick={toCadastro}>Clique aqui</button>
+          Ainda não possui cadastro?{" "}
+          <button type="button" className="cadastro" onClick={toCadastro}>
+            Clique aqui
+          </button>
         </p>
-        <button type="submit" className="login">Entrar</button>
+        <button type="submit" className="login">
+          Entrar
+        </button>
       </form>
     </StyledLogin>
   );
