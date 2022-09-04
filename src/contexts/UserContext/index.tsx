@@ -125,7 +125,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       value={{
         setBudgetHistory,
         budgetHistory,
-        setBudgetHistory,
         user,
         setUser,
         isAuthenticated,

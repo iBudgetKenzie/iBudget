@@ -60,7 +60,7 @@ const Home = () => {
         <p className="logo-paragraph">O orçamento que cabe no seu bolso</p>
       </section>
       <section className="header-section">
-        <header>
+        <motion.header>
           <button className="header-menu" onClick={handleHome}>
             Home
           </button>

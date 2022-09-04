@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { inputsBase } from "../../components/InputsBase";
-import { IBudget } from "../UserContext/index";
+// import { IBudget } from "../UserContext/interfaces";
 
 import { IGeneratePdfProps } from "../../services/generatePdf";
 // import { useUserContext } from "../UserContext/index";
@@ -47,11 +47,12 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
 
   const requestBudget = async () => {
     const id: string | null = localStorage.getItem("@id");
+    const token: string | null = localStorage.getItem("@token");
 
     if (typeof token === "string" && typeof id === "string") {
       try {
         iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`;
-        const userResponse = await iBudgetApi.get<IBudget>(
+        const userResponse = await iBudgetApi.get(
           `/users/${id}?_embed=budgets`
         );
         setBudgetHistory(userResponse.data.budgets);
