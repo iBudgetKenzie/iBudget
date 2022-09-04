@@ -37,9 +37,9 @@ export const BudgetHistory = () => {
       </FilterBar>
       
       {budgetHistory && budgetHistory.length === 0 ? (
-        <motion.div layout>
+        <motion.ul layout>
           <p>Ops, não existe orçamento ainda aqui!</p>
-        </motion.div>
+        </motion.ul>
       ) : (
         <motion.ul>
           {filteredBudget.length > 0
