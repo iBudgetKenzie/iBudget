@@ -12,12 +12,12 @@ const AboutUs = () => {
     <>
       <AboutUsDiv>
         <p>
-          Este é o nosso Projeto final Front-End do M3 da Kenzie Academy Brasil
-          (turma 13). Nós do grupo 3 gostaríamos de agradecer a toda nossa turma
-          e a equipe da Kenzie, em especial ao facilitador Daniel Pereira e ao
-          nosso instrutor Gabriel Tsunoda. Segue abaixo o time responsável pela
-          idealização e desenvolvimento deste aplicativo. Aos que nos
-          prestigiaram fica o nosso muito obrigado!
+          Este é o nosso <strong>Projeto final Front-End do M3</strong> da
+          Kenzie Academy Brasil (turma 13). Nós do grupo 3 gostaríamos de
+          agradecer a toda nossa turma e a equipe da Kenzie, em especial ao
+          facilitador Daniel Pereira e ao nosso instrutor Gabriel Tsunoda. Segue
+          abaixo o time responsável pela idealização e desenvolvimento deste
+          aplicativo. Aos que nos prestigiaram fica o nosso muito obrigado!
         </p>
         <EquipList>
           <Dev>

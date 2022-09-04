@@ -8,8 +8,7 @@ export const AboutUsDiv = styled.div`
   padding: 40px;
 
   & > p {
-    max-width: 680px;
-    font-size: 1.2rem;
+    max-width: 670px;
     color: rgba(var(--color-white), 0.9);
   }
 `;
