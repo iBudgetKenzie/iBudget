@@ -4,6 +4,7 @@ export const ContainerCreateBudget = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 45px;
 
   width: 368px;
   max-height: 520px;
@@ -43,7 +44,7 @@ export const ContainerCreateBudget = styled.div`
     label {
       font-family: "Inter";
       font-style: normal;
-      font-weight: 400;
+      font-weight: 500;
       font-size: 12px;
       line-height: 15px;
 
@@ -69,7 +70,7 @@ export const ContainerCreateBudget = styled.div`
       line-height: 16px;
       display: flex;
       align-items: flex-end;
-      color: #786d6d;
+      color: rgba(var(--color-grey-1), 1);
     }
 
     & > div {
@@ -123,13 +124,11 @@ export const ContainerCreateBudget = styled.div`
 
       font-family: "Inter";
       font-style: normal;
-      font-weight: 400;
+      font-weight: 500;
       font-size: 14px;
       line-height: 17px;
 
-      color: aliceblue;
-
-      cursor: pointer;
+      color: rgba(var(--color-white), 1);
 
       &:hover {
         background-color: rgba(var(--color-purple-light), 1);
