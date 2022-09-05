@@ -1,5 +1,4 @@
 import { BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
-import { IconType } from "react-icons/lib";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { StyledContainer } from "./styles";
