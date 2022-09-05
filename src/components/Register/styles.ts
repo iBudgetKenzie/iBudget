@@ -5,7 +5,7 @@ export const StyledRegister = styled.div`
   color: black;
 
   height: 470px;
-  width: 350px;
+  width: 300px;
   left: -796px;
   top: -267px;
   border-radius: 7px;
@@ -19,7 +19,7 @@ export const StyledRegister = styled.div`
 
   margin-top: 4px;
 
-  /* position: relative; */
+  /* position: absolute; */
 
   @media screen and (min-width: 700px) {
     height: 500px;
