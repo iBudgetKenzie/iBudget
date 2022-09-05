@@ -7,7 +7,7 @@ export const StyledLogin = styled.div`
   height: 60%;
   width: 70%;
   border-radius: 7px;
-  padding: 20px 40px 40px;
+  padding: 20px 30px 40px;
 
   display: flex;
   flex-direction: column;
@@ -24,9 +24,8 @@ export const StyledLogin = styled.div`
   }
 
   @media screen and (min-width: 700px) {
-    height: 50%;
-    width: 50%;
-    margin-top: 0px;
+    height: 60%;
+    width: 58%;
 
     h4 {
       font-size: 1.25rem;
@@ -58,7 +57,7 @@ export const StyledLogin = styled.div`
     }
 
     span {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       color: rgba(var(--color-negative-pink));
     }
 
@@ -75,7 +74,7 @@ export const StyledLogin = styled.div`
     .login {
       width: 100%;
       height: 18%;
-      margin-top: 5px;
+      margin-top: 10px;
 
       border-radius: 8px;
       font-size: 1rem;

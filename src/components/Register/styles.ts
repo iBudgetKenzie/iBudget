@@ -9,20 +9,17 @@ export const StyledRegister = styled.div`
   left: -796px;
   top: -267px;
   border-radius: 7px;
-  padding: 40px;
+  padding: 20px 30px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-around; */
-  gap: 10px;
-
-  /* margin-top: 10px; */
-  /* position: relative; */
+  justify-content: space-around;
+  gap: 5px;
 
   @media screen and (min-width: 700px) {
-    height: 80%;
-    width: 50%;
+    height: 90%;
+    width: 58%;
     /* margin-bottom: -30px; */
     justify-content: center;
   }
@@ -32,24 +29,20 @@ export const StyledRegister = styled.div`
   }
 
   form {
-    /* max-height: 390px; */
-    /* padding: 0px; */
-
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    /* align-items: center; */
+    justify-content: center;
     gap: 10px;
 
     @media screen and (min-width: 700px) {
-      height: 90%;
+      height: 100%;
       width: 100%;
     }
 
     .div--label {
       display: flex;
       flex-direction: column;
-      /* gap: 1px; */
+      width: 100%;
     }
 
     label {
@@ -106,25 +99,31 @@ export const StyledRegister = styled.div`
     }
 
     .div--images {
-      margin-top: 10px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 10px;
+      padding: 5px;
 
       label {
-        font-size: 0.81rem;
+        font-size: 0.88rem;
+        padding: 5px;
+      }
+
+      input {
+        width: 100%;
       }
 
       .div--avatars {
+        margin-top: 5px;
         display: flex;
-        justify-content: space-between;
-        gap: 10px;
+        justify-content: space-around;
+        gap: 5px;
 
         .avatar {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
+          img {
+            width: 28px;
+            height: 30px;
+          }
 
           & :active {
             border: solid 2px rgb(var(--color-negative-pink), 2);
@@ -135,24 +134,13 @@ export const StyledRegister = styled.div`
             box-shadow: 0px 0px 5px 0px;
             border-radius: 50%;
           }
-
-          margin-top: 2px;
-
-          img {
-            width: 28px;
-            height: 30px;
-          }
         }
-      }
-
-      input {
-        width: 100%;
       }
     }
 
     .register {
-      margin-top: 20px;
-      min-height: 12%;
+      margin-top: 15px;
+      height: 10%;
       width: 100%;
       border-radius: 8px;
 
