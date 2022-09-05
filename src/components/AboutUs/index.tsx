@@ -22,7 +22,7 @@ const AboutUs = () => {
         <div className="text-container">
           <p>
             Este é o nosso <strong>Projeto final Front-End do M3</strong> da
-            Kenzie Academy Brasil (turma 13).
+            Kenzie Academy Brasil (turma 12).
           </p>
           <p>
             Nós do grupo 3 gostaríamos de agradecer a toda nossa turma e a
