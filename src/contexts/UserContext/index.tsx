@@ -2,9 +2,10 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AxiosError } from "axios";
+
 import iBudgetApi from "../../services/iBudgetApi";
 import userPng from "../../assets/img/user.png";
-
 import {
   IBudget,
   ILoginData,
@@ -50,7 +51,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
           setUser(userResponse.data);
           setBudgetHistory(userResponse.data.budgets);
         } catch (error) {
-          console.log("erro");
+          console.log(error);
         }
       }
     }
@@ -70,11 +71,15 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
       setUser(response.data.user);
       navigate("/dashboard");
-      toast.success("Login realizado com sucesso");
+      toast.success("Login realizado com sucesso!");
       setIsAuthenticated(true);
-    } catch (error) {
-      toast.error("Usuário não encontrado");
-      console.log(error);
+    } catch (err: unknown) {
+      const errors = err as AxiosError;
+      if (errors.response?.data === "Cannot find user")
+        toast.error("Usuário não encontrado");
+      if (errors.response?.data === "Incorrect password")
+        toast.error("Senha incorreta");
+      console.log(errors);
     }
   };
 
@@ -103,13 +108,18 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       cadastro.imageUrl = isImage;
     }
     try {
-      await iBudgetApi.post<ILoginData>("/register", cadastro);
-      toast.success("Cadastro realizado com sucesso");
+      await iBudgetApi.post("/register", cadastro);
+      toast.success("Cadastro realizado com sucesso!");
       setIsRegister(false);
       setIsLogin(true);
-    } catch (error) {
-      toast.error("Cadastro não realizado");
-      console.log(error);
+    } catch (err: unknown) {
+      const errors = err as AxiosError;
+      if (errors.response?.data === "Email already exists") {
+        toast.error("Email já cadastrado");
+      } else {
+        toast.error("Usuário não cadastrado");
+      }
+      console.log(err);
     }
   };
 
