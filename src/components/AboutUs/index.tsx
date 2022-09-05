@@ -19,14 +19,22 @@ const AboutUs = () => {
         exit={{ y: 50, scale: 1, opacity: 0.5 }}
         transition={{ duration: 0.3 }}
       >
-        <p>
-          Este é o nosso <strong>Projeto final Front-End do M3</strong> da
-          Kenzie Academy Brasil (turma 13). Nós do grupo 3 gostaríamos de
-          agradecer a toda nossa turma e a equipe da Kenzie, em especial ao
-          facilitador Daniel Pereira e ao nosso instrutor Gabriel Tsunoda. Segue
-          abaixo o time responsável pela idealização e desenvolvimento deste
-          aplicativo. Aos que nos prestigiaram fica o nosso muito obrigado!
-        </p>
+        <div className="text-container">
+          <p>
+            Este é o nosso <strong>Projeto final Front-End do M3</strong> da
+            Kenzie Academy Brasil (turma 13).
+          </p>
+          <p>
+            Nós do grupo 3 gostaríamos de agradecer a toda nossa turma e a
+            equipe da Kenzie, em especial ao facilitador Daniel Pereira e ao
+            nosso instrutor Gabriel Tsunoda.
+          </p>
+          <p>
+            Segue abaixo o time responsável pela idealização e desenvolvimento
+            deste aplicativo. Aos que nos prestigiaram fica o nosso muito
+            obrigado!
+          </p>
+        </div>
         <EquipList>
           <Dev>
             <figure>
