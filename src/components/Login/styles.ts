@@ -1,97 +1,90 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledLogin = styled.div`
-  background-color: rgba(var(--color-white));
-  color: rgba(var(--color-text-black));
+	background-color: rgba(var(--color-white));
+	color: rgba(var(--color-text-black));
+	height: 55%;
+	width: 90%;
+	border-radius: 7px;
+	padding: 20px 30px 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
 
-  height: 60%;
-  width: 70%;
-  border-radius: 7px;
-  padding: 20px 30px 40px;
+	h4 {
+		font-size: 20px;
+	}
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* margin: auto; */
-  gap: 20px;
+	@media screen and (min-width: 700px) {
+		max-height: 50%;
+		width: 90%;
 
-  /* margin-top: 70px; */
+		h4 {
+			font-size: 1.25rem;
+		}
+		@media screen and (min-width: 1000px) {
+			max-height: 50%;
+			width: 75%;
+		}
+		@media screen and (min-width: 1400px) {
+			width: 70%;
+		}
+		@media screen and (min-width: 2560px) {
+			width: 40%;
+		}
+	}
 
-  h4 {
-    font-size: 20px;
-    /* margin-bottom: 20px; */
-  }
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
 
-  @media screen and (min-width: 700px) {
-    height: 60%;
-    width: 58%;
+		@media screen and (min-width: 700px) {
+			height: 60%;
+			width: 100%;
+			justify-content: center;
+		}
 
-    h4 {
-      font-size: 1.25rem;
-    }
-  }
+		input {
+			width: 100%;
+			height: 15%;
+			border-radius: 5px;
+			padding: 10px;
+			border: solid 1px rgba(var(--color-purple));
+		}
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+		span {
+			font-size: 0.7rem;
+			color: rgba(var(--color-negative-pink));
+		}
 
-    @media screen and (min-width: 700px) {
-      height: 100%;
-      width: 100%;
-      justify-content: center;
-    }
+		p {
+			font-size: 0.88rem;
+			align-self: center;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
 
-    input {
-      width: 100%;
-      height: 15%;
-      border-radius: 5px;
-      padding: 10px;
+			@media screen and (min-width: 700px) {
+				flex-direction: row;
+			}
+		}
 
-      border: solid 1px rgba(var(--color-purple));
+		.cadastro {
+			background-color: transparent;
+			color: rgba(var(--color-purple));
+		}
 
-      /* @media screen and (min-width: 700px) {
-        height: 30px;
-      } */
-    }
-
-    span {
-      font-size: 0.7rem;
-      color: rgba(var(--color-negative-pink));
-    }
-
-    p {
-      font-size: 0.88rem;
-      align-self: center;
-    }
-
-    .cadastro {
-      background-color: transparent;
-      color: rgba(var(--color-purple));
-    }
-
-    .login {
-      width: 100%;
-      height: 18%;
-      margin-top: 10px;
-
-      border-radius: 8px;
-      font-size: 1rem;
-
-      color: rgba(var(--color-text-white));
-      background-color: rgba(var(--color-purple));
-
-      /* @media screen and (min-width: 700px) {
-        min-height: 35px;
-      } */
-    }
-  }
+		.login {
+			width: 100%;
+			height: 35px;
+			margin-top: 10px;
+			border-radius: 8px;
+			font-size: 1rem;
+			color: rgba(var(--color-text-white));
+			background-color: rgba(var(--color-purple));
+		}
+	}
 `;
-
-// export const StyledContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: 20px;
-// `;
