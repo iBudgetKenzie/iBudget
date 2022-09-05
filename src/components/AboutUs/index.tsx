@@ -1,6 +1,5 @@
 import { IoLogoLinkedin, IoLogoGithub } from "react-icons/io";
 import { motion } from "framer-motion";
-import { v4 as uuid } from "uuid";
 
 import { AboutUsDiv, EquipList, Dev } from "./styles";
 import alexandre from "../../assets/img/alexandre-borges-photo.png";
@@ -15,7 +14,6 @@ const AboutUs = () => {
     <>
       <AboutUsDiv
         as={motion.div}
-        key={uuid()}
         initial={{ y: -50, scale: 1, opacity: 0.5 }}
         animate={{ y: 0, scale: 1, opacity: 1 }}
         exit={{ y: 50, scale: 1, opacity: 0.5 }}
