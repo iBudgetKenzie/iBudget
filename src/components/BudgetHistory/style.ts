@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ContainerBudgetHistory = styled.div`
   background-color: rgba(var(--color-purple), 1);
   width: 37vw;
-  height: 74.5vh;
+  height: 79vh;
 
   & > ul {
     display: flex;

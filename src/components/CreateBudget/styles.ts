@@ -4,11 +4,10 @@ export const ContainerCreateBudget = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 45px;
 
-  width: 368px;
-  max-height: 520px;
-  padding: 21px 30px 30px 30px;
+  width: 28vw;
+  height: 79vh;
+  padding: 20px 30px 30px 30px;
   background-color: rgba(var(--color-white), 1);
 
   border: 1px solid rgba(var(--color-purple), 1);
@@ -20,17 +19,16 @@ export const ContainerCreateBudget = styled.div`
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
-
-    padding-bottom: 20px;
   }
 
   & > form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     width: 100%;
     height: 100%;
-    gap: 7px;
+    gap: 5px;
     background-color: rgba(var(--color-white), 1);
 
     border-radius: 9px;
@@ -54,14 +52,15 @@ export const ContainerCreateBudget = styled.div`
 
     span {
       color: rgba(var(--color-negative-pink), 1);
-      padding-left: 2px;
+      font-size: 0.7rem;
+      // erro aqui
     }
 
     input {
       height: 39px;
       border: 1px solid rgba(var(--color-purple), 1);
       border-radius: 5px;
-      padding-left: 6px;
+      padding: 10px;
 
       font-family: "Inter";
       font-style: normal;
@@ -76,19 +75,21 @@ export const ContainerCreateBudget = styled.div`
     & > div {
       display: flex;
       flex-direction: column;
-      gap: 9px;
+      gap: 10px;
 
       & > div {
         display: flex;
         justify-content: space-between;
-        height: 60px;
+        gap: 10px;
+        /* height: 70px; */
+        //erro aqui tb
 
         & > div {
-          width: 140px;
+          width: 100%;
           position: relative;
 
           & label {
-            padding-bottom: 5px;
+            margin-bottom: 5px;
           }
 
           & > input {
@@ -96,7 +97,7 @@ export const ContainerCreateBudget = styled.div`
             align-items: center;
 
             width: 100%;
-            padding: 0 6px;
+            padding: 10px;
           }
 
           & > svg {
@@ -118,14 +119,14 @@ export const ContainerCreateBudget = styled.div`
     & button {
       background-color: rgba(var(--color-purple), 1);
       border-radius: 8px;
-      height: 48px;
-      margin-top: 22px;
+      height: 12%;
+      margin-top: 20px;
       border: none;
 
       font-family: "Inter";
       font-style: normal;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 0.88rem;
       line-height: 17px;
 
       color: rgba(var(--color-white), 1);

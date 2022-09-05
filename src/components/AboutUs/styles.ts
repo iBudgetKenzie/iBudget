@@ -4,11 +4,10 @@ export const AboutUsDiv = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-
   padding: 40px;
 
   & > p {
-    max-width: 670px;
+    font-size: 0.88rem;
     color: rgba(var(--color-white), 0.9);
   }
 `;
