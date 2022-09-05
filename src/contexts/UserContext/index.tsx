@@ -74,6 +74,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       setIsAuthenticated(true);
     } catch (error) {
       toast.error("Usuário não encontrado");
+      console.log(error);
     }
   };
 
@@ -108,6 +109,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       setIsLogin(true);
     } catch (error) {
       toast.error("Cadastro não realizado");
+      console.log(error);
     }
   };
 
@@ -117,7 +119,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     setIsHome(true);
     localStorage.clear();
     navigate("/home");
-    window.location.reload();
   };
 
   return (
