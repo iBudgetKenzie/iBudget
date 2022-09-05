@@ -4,8 +4,8 @@ export const StyledRegister = styled.div`
   background-color: rgba(255, 255, 255, 1);
   color: black;
 
-  height: 450px;
-  width: 300px;
+  height: 470px;
+  max-width: 350px;
   left: -796px;
   top: -267px;
   border-radius: 7px;
@@ -127,6 +127,16 @@ export const StyledRegister = styled.div`
             width: 28px;
             height: 30px;
           };
+
+          & :active {
+            border: solid 2px rgb(var(--color-negative-pink), 2);
+            border-radius: 50%;
+          }
+
+          & :hover {
+            box-shadow: 0px 0px 5px 0px;
+            border-radius: 50%;
+          }
         };
       };
 
@@ -138,8 +148,8 @@ export const StyledRegister = styled.div`
     };
 
     .register {
-      height: 32px;
-      width: 250px;
+      height: ;
+      width: 100%;
       left: 41px;
       top: 520px;
       border-radius: 8px;
@@ -149,7 +159,7 @@ export const StyledRegister = styled.div`
 
       font-size: 14px;
 
-      margin-top: 10px;
+      /* margin-top: 10px; */
     };
   };
 `;
