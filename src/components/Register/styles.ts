@@ -5,7 +5,7 @@ export const StyledRegister = styled.div`
   color: black;
 
   height: 470px;
-  max-width: 350px;
+  width: 350px;
   left: -796px;
   top: -267px;
   border-radius: 7px;
@@ -14,10 +14,10 @@ export const StyledRegister = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  gap: 6px;
+  justify-content: space-evenly;
+  /* gap: 6px; */
 
-  margin-top: 10px;
+  margin-top: 4px;
 
   /* position: relative; */
 
@@ -39,7 +39,7 @@ export const StyledRegister = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    gap: 8px;
+    gap: 3px;
 
     @media screen and (min-width: 700px) {
       max-height: 490px;
@@ -50,6 +50,7 @@ export const StyledRegister = styled.div`
       display: flex;
       flex-direction: column;
       gap: 1px;
+      /* margin-bottom: 2px; */
     };
 
     label {
@@ -89,20 +90,12 @@ export const StyledRegister = styled.div`
       };
     };
 
-    .div--cargo {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap:2px;
-
-      margin-top: 3px;
-    }
-
+    
     .div--images {
       display: flex;
       justify-content: space-between;
       gap: 10px;
-
+      
       label {
         font-size: 13px;
       };
@@ -110,17 +103,17 @@ export const StyledRegister = styled.div`
       .div--label {
         gap: 6px;
       }
-
+      
       .div--avatars {
         display: flex;
         justify-content: space-around;
         gap: 10px;
-
+        
         .avatar {
           width: 30px;
           height: 30px;
           border-radius: 50%;
-
+          
           margin-top: 2px;
 
           img {
@@ -132,7 +125,7 @@ export const StyledRegister = styled.div`
             border: solid 2px rgb(var(--color-negative-pink), 2);
             border-radius: 50%;
           }
-
+          
           & :hover {
             box-shadow: 0px 0px 5px 0px;
             border-radius: 50%;
@@ -140,26 +133,38 @@ export const StyledRegister = styled.div`
         };
       };
 
+      
       input {
         width: 120px;
       };
-
+      
       margin-bottom: 1px;
     };
-
+    
     .register {
-      height: ;
+      height: 32px;
       width: 100%;
       left: 41px;
       top: 520px;
       border-radius: 8px;
-
+      
       background-color: rgba(var(--color-purple), 1);
       color: rgba(var(--color-white), 1);
-
+      
       font-size: 14px;
-
-      /* margin-top: 10px; */
+      
+      /* margin-top: 1px; */
     };
   };
+
+  .div--cargo {
+    width:100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:2px;
+
+    margin-top: 3px;
+  }
 `;

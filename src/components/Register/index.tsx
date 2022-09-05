@@ -132,7 +132,6 @@ const Register = () => {
             placeholder="Ex: Front-end"
             {...register("position")}
           />
-          <span></span>
         </div>
 
         <div className="div--images">
@@ -171,9 +170,11 @@ const Register = () => {
             />
           </div>
         </div>
-        <button type="submit" className="register">
-          Cadastrar
-        </button>
+        <div className="div--button">
+          <button type="submit" className="register">
+            Cadastrar
+          </button>
+        </div>
       </form>
     </StyledRegister>
   );
