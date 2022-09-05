@@ -1,153 +1,148 @@
 import styled from "styled-components";
 
 export const StyledRegister = styled.div`
-  background-color: rgba(var(--color-white), 1);
-  color: rgba(var(--color-text-black), 1);
+  background-color: rgba(255, 255, 255, 1);
+  color: black;
 
   height: 450px;
   width: 300px;
   left: -796px;
   top: -267px;
   border-radius: 7px;
-  padding: 20px 30px;
+  padding: 10px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  gap: 5px;
+  gap: 6px;
+
+  margin-top: 10px;
+
+  /* position: relative; */
 
   @media screen and (min-width: 700px) {
-    height: 90%;
-    width: 58%;
+    height: 500px;
+    width: 350px;
     /* margin-bottom: -30px; */
-    justify-content: center;
-  }
+    justify-content: space-evenly;
+  };
 
   h4 {
-    font-size: 1.25rem;
-  }
+    font-size: 20px;
+  };
 
   form {
+    max-height: 390px;
+    padding: 0px;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-around;
+    gap: 8px;
 
     @media screen and (min-width: 700px) {
-      height: 100%;
-      width: 100%;
-    }
+      max-height: 490px;
+      gap: 5px;
+    };
 
     .div--label {
       display: flex;
       flex-direction: column;
-      width: 100%;
-    }
+      /* gap: 1px; */
+    };
 
     label {
-      font-size: 0.88rem;
-    }
+      font-size: 14px;
+    };
 
     span {
       color: rgba(var(--color-negative-pink), 1);
-    }
+    };
 
     .span--error {
-      font-size: 0.81rem;
-      margin: 0;
-      padding: 0;
-    }
+      font-size: 13px;
+    };
 
     input {
-      width: 100%;
-      height: 80%;
-      padding: 10px;
+      height: 27px;
+      padding: 7px;
       border-radius: 5px;
-      border: 1px solid rgb(var(--color-purple), 2);
+      border: 1px solid rgb(var(--color-purple-light), 2);
 
       ::placeholder {
-        font-size: 0.88rem;
-      }
+        font-size: 14px;
+      };
 
-      /* @media screen and (min-width: 700px) {
-        height: 15%;
-      } */
-    }
+      @media screen and (min-width: 700px) {
+        height: 30px;
+      };
+    };
 
     .div--senhas {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       gap: 10px;
 
       input {
-        width: 100%;
-      }
-    }
+        width: 120px;
+      };
+    };
 
     .div--cargo {
       display: flex;
-      flex-direction: column;
-      /* align-items: center; */
-      justify-content: center;
-
-      input {
-        width: 100%;
-        height: 80%;
-      }
+      justify-content: space-between;
+      align-items: center;
     }
 
     .div--images {
       display: flex;
-      align-items: center;
+      justify-content: space-between;
       gap: 10px;
-      padding: 5px;
 
       label {
-        font-size: 0.88rem;
-        padding: 5px;
-      }
-
-      input {
-        width: 100%;
-      }
+        font-size: 13px;
+      };
 
       .div--avatars {
-        margin-top: 5px;
         display: flex;
         justify-content: space-around;
-        gap: 5px;
+        gap: 10px;
 
         .avatar {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+
+          margin-top: 2px;
+
           img {
             width: 28px;
             height: 30px;
-          }
+          };
+        };
+      };
 
-          & :active {
-            border: solid 2px rgb(var(--color-negative-pink), 2);
-            border-radius: 50%;
-          }
+      input {
+        width: 120px;
+      };
 
-          & :hover {
-            box-shadow: 0px 0px 5px 0px;
-            border-radius: 50%;
-          }
-        }
-      }
-    }
+      margin-bottom: 1px;
+    };
 
     .register {
-      margin-top: 15px;
-      height: 10%;
-      width: 100%;
+      height: 32px;
+      width: 250px;
+      left: 41px;
+      top: 520px;
       border-radius: 8px;
 
       background-color: rgba(var(--color-purple), 1);
       color: rgba(var(--color-white), 1);
 
-      font-size: 1rem;
-    }
-  }
+      font-size: 14px;
+
+      margin-top: 10px;
+    };
+  };
 `;
