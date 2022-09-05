@@ -53,7 +53,6 @@ export const ContainerCreateBudget = styled.div`
     span {
       color: rgba(var(--color-negative-pink), 1);
       font-size: 0.7rem;
-      // erro aqui
     }
 
     input {
@@ -82,7 +81,6 @@ export const ContainerCreateBudget = styled.div`
         justify-content: space-between;
         gap: 10px;
         /* height: 70px; */
-        //erro aqui tb
 
         & > div {
           width: 100%;
