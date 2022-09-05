@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { useUserContext } from "../../contexts/UserContext";
 import HomeComponent from "../../components/Home";
@@ -74,18 +74,13 @@ const Home = () => {
             Sobre nós
           </button>
         </motion.header>
-        <AnimatePresence>
-          <motion.div
-            className="content"
-            exit={{ x: "100vw" }}
-            transition={{ duration: 1 }}
-          >
-            {isHome && <HomeComponent />}
-            {isLogin && <LoginModal />}
-            {isRegister && <Register />}
-            {isSobre && <AboutUs />}
-          </motion.div>
-        </AnimatePresence>
+
+        <motion.div className="content">
+          {isHome && <HomeComponent />}
+          {isLogin && <LoginModal />}
+          {isRegister && <Register />}
+          {isSobre && <AboutUs />}
+        </motion.div>
       </section>
     </StyledBody>
   );

@@ -1,6 +1,6 @@
 import { MdOutlinePictureAsPdf } from "react-icons/md";
 import { GoTrashcan } from "react-icons/go";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import { ConteinerCardBudgetHistory } from "./style";
@@ -27,34 +27,32 @@ export const CardBudgetHistory = ({
   };
 
   return (
-    <AnimatePresence>
-      <ConteinerCardBudgetHistory
-          as={motion.li}
-          // layout
-          initial={{ x: -100 }}
-          animate={{ x: 0 }}
-          // exit={{ x: -100 }}
-          transition={{ duration: 0.1 }}
-      >
-        <h2>{projectName}</h2>
-        <span>Valor: {budget}</span>
-        <span ref={ref}>N°:{id}</span>
-        <div>
-          <button onClick={() => openEditModal(id)}>editar</button>
-          <MdOutlinePictureAsPdf
-            onClick={() => {
-              const newDate = {
-                projectName,
-                budget,
-                projectId: id,
-                projectTime,
-              };
-              generatePDF(newDate);
-            }}
-          />
-          <GoTrashcan onClick={() => deleteBudgetHistory(id)} />
-        </div>
-      </ConteinerCardBudgetHistory>
-    </AnimatePresence>
+    <ConteinerCardBudgetHistory
+      as={motion.li}
+      layout
+      initial={{ x: -100 }}
+      animate={{ x: 0 }}
+      exit={{ x: -100 }}
+      transition={{ duration: 0.3 }}
+    >
+      <h2>{projectName}</h2>
+      <span>Valor: {budget}</span>
+      <span ref={ref}>N°:{id}</span>
+      <div>
+        <button onClick={() => openEditModal(id)}>editar</button>
+        <MdOutlinePictureAsPdf
+          onClick={() => {
+            const newDate = {
+              projectName,
+              budget,
+              projectId: id,
+              projectTime,
+            };
+            generatePDF(newDate);
+          }}
+        />
+        <GoTrashcan onClick={() => deleteBudgetHistory(id)} />
+      </div>
+    </ConteinerCardBudgetHistory>
   );
 };

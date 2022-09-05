@@ -73,6 +73,11 @@ export const ContainerCreateBudget = styled.div`
       color: rgba(var(--color-grey-1), 1);
     }
 
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
     & > div {
       display: flex;
       flex-direction: column;

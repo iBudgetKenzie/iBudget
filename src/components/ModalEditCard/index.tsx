@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import {
@@ -20,7 +21,13 @@ export const ModalEditCard = () => {
 
   return (
     <ConteinerModalFixedCost>
-      <Modal>
+      <Modal
+        as={motion.div}
+        initial={{ y: -50, scale: 1, opacity: 0.7 }}
+        animate={{ y: 0, scale: 1, opacity: 1 }}
+        exit={{ y: 50, scale: 1, opacity: 0.7 }}
+        transition={{ duration: 0.3 }}
+      >
         <div>
           <h2>Editar orçamento</h2>
           <span onClick={() => setEditModalCard(false)}>X</span>
