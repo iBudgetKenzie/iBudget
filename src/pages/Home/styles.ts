@@ -5,6 +5,7 @@ export const StyledBody = styled.div`
   height: 100vh;
 
   display: flex;
+  justify-content: center;
   flex-direction: column-reverse;
 
   @media screen and (min-width: 700px) {
@@ -87,6 +88,8 @@ export const StyledBody = styled.div`
     height: 100%;
     display: flex;
     justify-content: center;
+
+    position: relative;
 
     @media screen and (min-width: 700px) {
       align-items: center;
