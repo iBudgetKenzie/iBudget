@@ -82,5 +82,14 @@ export const ConteinerFormModal = styled.div`
         background-color: rgba(var(--color-purple-light), 1);
       }
     }
+
+    & > input {
+      outline: none;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
   }
 `;

@@ -23,10 +23,16 @@ export const StyledModalEdit = styled.div`
 
     border-radius: 8px;
     border: 1px solid rgba(var(--color-purple));
+    outline: none;
 
     &::placeholder {
       color: rgba(var(--color-grey-1));
     }
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
   }
 
   button {
