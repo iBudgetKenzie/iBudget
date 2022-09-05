@@ -49,7 +49,7 @@ export const StyledRegister = styled.div`
     .div--label {
       display: flex;
       flex-direction: column;
-      /* gap: 1px; */
+      gap: 1px;
     };
 
     label {
@@ -93,6 +93,9 @@ export const StyledRegister = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap:2px;
+
+      margin-top: 3px;
     }
 
     .div--images {
@@ -103,6 +106,10 @@ export const StyledRegister = styled.div`
       label {
         font-size: 13px;
       };
+
+      .div--label {
+        gap: 6px;
+      }
 
       .div--avatars {
         display: flex;
