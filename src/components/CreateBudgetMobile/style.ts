@@ -9,6 +9,7 @@ export const ConteinerBudgetMobile = styled.section`
         text-align: right;
         color: rgba(var(--color-text-white), 1);
         text-decoration: underline;
+        cursor: pointer;
     }
 
     & > div {
