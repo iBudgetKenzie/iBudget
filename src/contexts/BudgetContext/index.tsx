@@ -17,7 +17,7 @@ import {
 import { UserContext } from "../UserContext";
 
 export const BudgetContext = createContext<IBudgetContext>(
-  {} as IBudgetContext,
+  {} as IBudgetContext
 );
 
 export const useBudgetContext = (): IBudgetContext => {
@@ -33,6 +33,9 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   const [onModalVariableCost, setOnModalVariableCost] = useState(false);
   const [editModalCard, setEditModalCard] = useState(false);
   const [clickedBudgetId, setClickedBudgetId] = useState<string | number>(0);
+  const [inputProjectName, setInputProjectName] = useState<string>("");
+  const [inputBudgetValue, setBudgetValue] = useState<string>("");
+  const [inputProjectTime, setProjectTime] = useState<number>(0);
 
   const { setBudgetHistory } = useContext(UserContext);
 
@@ -66,7 +69,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     const array = Object.values(data).filter((elemnt) => !!elemnt);
     const reduceArray = array.reduce(
       (acc: number, current) => acc + Number(current),
-      0,
+      0
     );
     setFixedCost(reduceArray);
     setOnModalFixedCost(false);
@@ -75,7 +78,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     const array = Object.values(data).filter((elemnt) => !!elemnt);
     const reduceArray = array.reduce(
       (acc: number, current) => acc + Number(current),
-      0,
+      0
     );
     setVariableCost(reduceArray);
     setOnModalVariableCost(false);
@@ -180,6 +183,12 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
         inputsBase,
         onModalFixedCost,
         onModalVariableCost,
+        inputProjectName,
+        setInputProjectName,
+        inputBudgetValue,
+        setBudgetValue,
+        inputProjectTime,
+        setProjectTime,
         generatePDF,
         sendBudget,
         deleteBudgetHistory,

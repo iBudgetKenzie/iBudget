@@ -17,7 +17,13 @@ interface IEditData {
 }
 
 export const ModalEditCard = () => {
-  const { addEditedValue, setEditModalCard } = useBudgetContext();
+  const {
+    addEditedValue,
+    setEditModalCard,
+    inputProjectName,
+    inputBudgetValue,
+    inputProjectTime,
+  } = useBudgetContext();
 
   const { register, handleSubmit } = useForm<IEditData>();
 
@@ -43,13 +49,15 @@ export const ModalEditCard = () => {
               <input
                 type="text"
                 id="value"
+                defaultValue={inputProjectName}
                 placeholder="Atualize os dados aqui"
                 {...register("projectName")}
               />
-              <label htmlFor="value">Conclusão em:</label>
+              <label htmlFor="value">Conclusão em (dias):</label>
               <input
                 type="text"
                 id="value"
+                defaultValue={inputProjectTime}
                 placeholder="Atualize os dados aqui"
                 {...register("projectTime")}
               />
@@ -57,6 +65,7 @@ export const ModalEditCard = () => {
               <input
                 type="text"
                 id="value"
+                defaultValue={inputBudgetValue}
                 placeholder="Atualize os dados aqui"
                 {...register("budget")}
               />

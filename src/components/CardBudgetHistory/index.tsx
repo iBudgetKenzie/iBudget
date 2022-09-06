@@ -20,12 +20,31 @@ export const CardBudgetHistory = ({
     deleteBudgetHistory,
     generatePDF,
     setEditModalCard,
+    setInputProjectName,
+    setBudgetValue,
+    setProjectTime,
   } = useBudgetContext();
   const ref = useRef<HTMLSpanElement>(null);
 
-  const openEditModal = (id: string | number) => {
+  const openEditModal = (
+    id: string | number,
+    projectName: string,
+    budget: string,
+    projectTime: number
+  ) => {
     setClickedBudgetId(id);
     setEditModalCard(true);
+    setInfosOnInputs(projectName, budget, projectTime);
+  };
+
+  const setInfosOnInputs = (
+    projectName: string,
+    budget: string,
+    projectTime: number
+  ) => {
+    setInputProjectName(projectName);
+    setBudgetValue(budget);
+    setProjectTime(projectTime);
   };
 
   return (
@@ -41,7 +60,11 @@ export const CardBudgetHistory = ({
       <span>Valor: {budget}</span>
       <span ref={ref}>N°:{id}</span>
       <div>
-        <button onClick={() => openEditModal(id)}><FaRegEdit/></button>
+        <button
+          onClick={() => openEditModal(id, projectName, budget, projectTime)}
+        >
+          <FaRegEdit />
+        </button>
         <GrDocumentPdf
           onClick={() => {
             const newDate = {

@@ -17,10 +17,10 @@ export interface IUser {
 
 export interface IBudget {
   projectName: string;
-  projectTime?: number;
+  projectTime: number;
   fixedCost?: number;
   variableCost?: number;
-  budget?: string;
+  budget: string;
   id: string | number;
   userId?: string | number | null;
 }

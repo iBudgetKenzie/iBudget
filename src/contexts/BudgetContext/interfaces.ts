@@ -27,17 +27,21 @@ export interface IBudgetContext {
   onModalFixedCost: boolean;
   onModalVariableCost: boolean;
   editModalCard: boolean;
-  // budgetHistory: IBudget[];
   inputsBase: IInputs[];
   sendBudget: (data: IBudgetOmitId) => void;
   addFixedValue: (data: any) => void;
   addVariableValue: (data: any) => void;
   addEditedValue: (data: any) => void;
   setOnModalFixedCost: (modalFixedValue: boolean) => void;
+  inputProjectName: string;
+  setInputProjectName: (string: string) => void;
+  inputBudgetValue: string;
+  setBudgetValue: (string: string) => void;
+  inputProjectTime: number;
+  setProjectTime: (number: number) => void;
   setOnModalVariableCost: (modalVariableValue: boolean) => void;
   setEditModalCard: (editModalCard: boolean) => void;
   setClickedBudgetId: (data: number | string) => void;
-  // setBudgetHistory: (budgetHistory: IBudget[]) => void;
   deleteBudgetHistory: (id: number | string) => Promise<void>;
   generatePDF: (date: IGeneratePdfProps) => void;
 }
