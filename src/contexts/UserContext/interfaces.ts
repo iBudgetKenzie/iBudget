@@ -20,7 +20,7 @@ export interface IBudget {
   projectTime: number;
   fixedCost?: number;
   variableCost?: number;
-  budget: string;
+  budget: number;
   id: string | number;
   userId?: string | number | null;
 }

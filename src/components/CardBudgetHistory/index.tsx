@@ -14,6 +14,11 @@ export const CardBudgetHistory = ({
   id,
   projectTime,
 }: IBudget) => {
+  const priceFormated = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+
   const {
     setClickedBudgetId,
     deleteBudgetHistory,
@@ -28,7 +33,7 @@ export const CardBudgetHistory = ({
   const openEditModal = (
     id: string | number,
     projectName: string,
-    budget: string,
+    budget: number,
     projectTime: number
   ) => {
     setClickedBudgetId(id);
@@ -38,7 +43,7 @@ export const CardBudgetHistory = ({
 
   const setInfosOnInputs = (
     projectName: string,
-    budget: string,
+    budget: number,
     projectTime: number
   ) => {
     setInputProjectName(projectName);
@@ -56,7 +61,7 @@ export const CardBudgetHistory = ({
       transition={{ duration: 0.3 }}
     >
       <h2>{projectName}</h2>
-      <span>Valor: {budget}</span>
+      <span>Valor: {priceFormated.format(budget)}</span>
       <span ref={ref}>N°:{id}</span>
       <div>
         <button

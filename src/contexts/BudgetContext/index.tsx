@@ -32,7 +32,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   const [editModalCard, setEditModalCard] = useState(false);
   const [clickedBudgetId, setClickedBudgetId] = useState<string | number>(0);
   const [inputProjectName, setInputProjectName] = useState<string>("");
-  const [inputBudgetValue, setBudgetValue] = useState<string>("");
+  const [inputBudgetValue, setBudgetValue] = useState<number>(0);
   const [inputProjectTime, setProjectTime] = useState<number>(0);
 
   const { setBudgetHistory } = useUserContext();
@@ -153,7 +153,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
         fixedCost: fixedValue,
         variableCost: variableValue,
         projectTime: days,
-        budget: priceFormated.format(finalBudget),
+        budget: finalBudget,
         userId: id,
         ...rest,
       };
