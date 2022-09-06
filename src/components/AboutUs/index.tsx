@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { IoLogoLinkedin, IoLogoGithub } from 'react-icons/io';
 import { motion } from 'framer-motion';
 
@@ -192,6 +193,8 @@ const AboutUs = () => {
 		</>
 	);
 =======
+=======
+>>>>>>> 1b313caf6b6bacd678b735908dbe7d2eeaa6cf2b
 import { motion } from "framer-motion";
 import { v4 as uuid } from "uuid";
 
@@ -292,7 +295,10 @@ const AboutUs = () => {
       </AboutUsDiv>
     </>
   );
+<<<<<<< HEAD
 >>>>>>> 49491ec937631f122c7b68aa6017e55d789e3642
+=======
+>>>>>>> 1b313caf6b6bacd678b735908dbe7d2eeaa6cf2b
 };
 
 export default AboutUs;
