@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { v4 as uuid } from "uuid";
 
 import Developer from "../Developer";
 
@@ -85,6 +86,7 @@ const AboutUs = () => {
         <EquipList>
           {Developers.map((developer) => (
             <Developer
+              key={uuid()}
               image={developer.image}
               name={developer.name}
               position={developer.position}
