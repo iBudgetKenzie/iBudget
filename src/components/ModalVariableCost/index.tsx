@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import { MoreExpenses } from "../MoreExpenses";
@@ -24,7 +25,9 @@ export const ModalVariableCost = () => {
       >
         <div>
           <h2>Custos variáveis</h2>
-          <span onClick={() => setOnModalVariableCost(false)}>X</span>
+          <span onClick={() => setOnModalVariableCost(false)}>
+            <IoIosCloseCircleOutline />
+          </span>
         </div>
         <ConteinerFormModal>
           <form onSubmit={handleSubmit(addVariableValue)}>

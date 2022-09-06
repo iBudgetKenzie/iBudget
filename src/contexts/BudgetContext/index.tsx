@@ -1,23 +1,21 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { inputsBase } from "../../components/InputsBase";
-// import { IBudget } from "../UserContext/interfaces";
+import { toast } from "react-toastify";
 
+import { inputsBase } from "../../components/InputsBase";
 import { IGeneratePdfProps } from "../../services/generatePdf";
-// import { useUserContext } from "../UserContext/index";
+import { useUserContext } from "../UserContext/index";
 import iBudgetApi from "../../services/iBudgetApi";
 import { generatePdf } from "../../services/generatePdf";
 
-import { toast } from "react-toastify";
 import {
   IBudgetContext,
   IBudgetOmitId,
   IBudgetOmitIdProps,
   IBudgetProvider,
 } from "./interfaces";
-import { UserContext } from "../UserContext";
 
 export const BudgetContext = createContext<IBudgetContext>(
-  {} as IBudgetContext,
+  {} as IBudgetContext
 );
 
 export const useBudgetContext = (): IBudgetContext => {
@@ -26,15 +24,20 @@ export const useBudgetContext = (): IBudgetContext => {
 };
 
 export const BudgetProvider = ({ children }: IBudgetProvider) => {
-  const [fixedValue, setFixedCost] = useState(0);
-  const [variableValue, setVariableCost] = useState(0);
+  const [fixedValue, setFixedCost] = useState<number | string>(0);
+  const [variableValue, setVariableCost] = useState<number | string>(0);
   const [totalDays, setTotalDays] = useState<string>("");
   const [onModalFixedCost, setOnModalFixedCost] = useState(false);
   const [onModalVariableCost, setOnModalVariableCost] = useState(false);
+  const [onHistoric, setOnHistoric] = useState(false);
+  const [onCreateBudget, setOnCreateBudget] = useState(true);
   const [editModalCard, setEditModalCard] = useState(false);
   const [clickedBudgetId, setClickedBudgetId] = useState<string | number>(0);
+  const [inputProjectName, setInputProjectName] = useState<string>("");
+  const [inputBudgetValue, setBudgetValue] = useState<number>(0);
+  const [inputProjectTime, setProjectTime] = useState<number>(0);
 
-  const { setBudgetHistory } = useContext(UserContext);
+  const { setBudgetHistory } = useUserContext();
 
   const priceFormated = new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -66,7 +69,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     const array = Object.values(data).filter((elemnt) => !!elemnt);
     const reduceArray = array.reduce(
       (acc: number, current) => acc + Number(current),
-      0,
+      0
     );
     setFixedCost(reduceArray);
     setOnModalFixedCost(false);
@@ -75,7 +78,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     const array = Object.values(data).filter((elemnt) => !!elemnt);
     const reduceArray = array.reduce(
       (acc: number, current) => acc + Number(current),
-      0,
+      0
     );
     setVariableCost(reduceArray);
     setOnModalVariableCost(false);
@@ -121,7 +124,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     } = data;
 
     if (startDate < endDate) {
-      const allValues = fixedValue + variableValue + estimatedSalary;
+      const allValues = Number(fixedValue) + Number(variableValue) + estimatedSalary;
       const weekHours = hoursDay * daysWeek;
       const monthHours = weekHours * 4;
       const hoursCost = allValues / monthHours;
@@ -152,7 +155,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
         fixedCost: fixedValue,
         variableCost: variableValue,
         projectTime: days,
-        budget: priceFormated.format(finalBudget),
+        budget: finalBudget,
         userId: id,
         ...rest,
       };
@@ -172,6 +175,10 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   return (
     <BudgetContext.Provider
       value={{
+        onCreateBudget,
+        setOnCreateBudget,
+        onHistoric,
+        setOnHistoric,
         editModalCard,
         setEditModalCard,
         totalDays,
@@ -180,6 +187,12 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
         inputsBase,
         onModalFixedCost,
         onModalVariableCost,
+        inputProjectName,
+        setInputProjectName,
+        inputBudgetValue,
+        setBudgetValue,
+        inputProjectTime,
+        setProjectTime,
         generatePDF,
         sendBudget,
         deleteBudgetHistory,

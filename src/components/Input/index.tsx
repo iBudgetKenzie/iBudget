@@ -1,4 +1,3 @@
-import { forwardRef } from "react";
 import { UseFormRegister } from "react-hook-form";
 import { IBudgetOmitId } from "../../contexts/BudgetContext/interfaces";
 interface InputProps {
@@ -12,24 +11,28 @@ interface InputProps {
     | "daysWeek"
     | "estimatedSalary"
     | "hoursDay";
-  value?: number;
+  value?: number | string;
   title: string;
   error: string | undefined;
   register: UseFormRegister<IBudgetOmitId>;
   placeholder?: string;
-  rest?: any;
 }
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ id, type, title, error, register, ...rest }) => {
-    return (
-      <>
-        <label htmlFor={id}>
-          {title} <span>*</span>
-        </label>
-        <input {...rest} id={id} {...register(id)} type={type} />
-        {error && <span>{error}</span>}
-      </>
-    );
-  }
-);
+export const Input = ({
+  id,
+  type,
+  title,
+  error,
+  register,
+  ...rest
+}: InputProps) => {
+  return (
+    <>
+      <label htmlFor={id}>
+        {title} <span>*</span>
+      </label>
+      <input {...rest} id={id} {...register(id)} type={type} />
+      {error && <span>Preencha corretamente</span>}
+    </>
+  );
+};

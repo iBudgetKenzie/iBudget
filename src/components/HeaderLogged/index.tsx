@@ -18,7 +18,7 @@ const HeaderL = () => {
     >
       <img src={logo} alt="Logo ibudget" />
       <div>
-        <p>Olá, {user.username}!</p>s
+        <p>Olá, {user.username}!</p>
         <img src={user.imageUrl} alt="" />
         <button type="button" onClick={handleSignOut}>
           Sair

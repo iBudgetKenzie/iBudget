@@ -52,6 +52,8 @@ export const BudgetHistory = () => {
                       budget={budget}
                       id={id}
                       projectTime={projectTime}
+                      fixedCost=""
+                      variableCost=""
                     />
                   );
                 }
@@ -65,6 +67,8 @@ export const BudgetHistory = () => {
                       budget={budget}
                       id={id}
                       projectTime={projectTime}
+                      fixedCost=""
+                      variableCost=""
                     />
                   );
                 }

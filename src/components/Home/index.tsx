@@ -1,5 +1,5 @@
 import { BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { StyledContainer } from "./styles";
 
@@ -12,7 +12,7 @@ const HomeComponent = () => {
       exit={{ y: 0, scale: 1, opacity: 0.5 }}
       transition={{ duration: 0.3 }}
     >
-      <h1>Bem Vindo.</h1>
+      <h1>Bem Vindo(a).</h1>
       <div className="main-text">
         <p>
           Dificuldades em gerar orçamentos mais precisos e profissionais para
@@ -27,7 +27,7 @@ const HomeComponent = () => {
       <div className="main-contact">
         <div className="contacts">
           <p>iBudget@mail.com</p>
-          <p>(21)55-9999-6675</p>
+          <p>(99) 99-9999-9999</p>
         </div>
         <div className="redes">
           <a href="https://pt-br.facebook.com" target="_blank" rel="noreferrer">

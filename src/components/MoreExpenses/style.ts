@@ -6,7 +6,7 @@ export const InputMoreExpenses = styled.div`
   gap: 8px;
 
   & > label {
-    font-family: "Inter";
+    font-family: var(--font-forms-base);
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -18,7 +18,7 @@ export const InputMoreExpenses = styled.div`
     background-color: rgba(var(--color-purple-light), 0.1);
     border-radius: 5px;
 
-    font-family: "Inter";
+    font-family: var(--font-forms-base);
     font-style: normal;
     font-weight: 300;
     font-size: 14px;
