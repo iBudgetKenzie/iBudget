@@ -66,9 +66,9 @@ export const CreateBudget = () => {
             <div>
               <Input
                 title="Custo fixo:"
-                type="number"
+                type="text"
                 id="fixedCost"
-                value={fixedValue}
+                value={fixedValue === 0 ? "0" : fixedValue}
                 register={register}
                 error={errors.fixedCost?.message}
               />
@@ -82,9 +82,9 @@ export const CreateBudget = () => {
             <div>
               <Input
                 title="Custo variável:"
-                type="number"
+                type="text"
                 id="variableCost"
-                value={variableValue}
+                value={variableValue === 0 ? "0" : variableValue}
                 register={register}
                 error={errors.variableCost?.message}
               />

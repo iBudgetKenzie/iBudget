@@ -24,8 +24,8 @@ export const useBudgetContext = (): IBudgetContext => {
 };
 
 export const BudgetProvider = ({ children }: IBudgetProvider) => {
-  const [fixedValue, setFixedCost] = useState(0);
-  const [variableValue, setVariableCost] = useState(0);
+  const [fixedValue, setFixedCost] = useState<number | string>(0);
+  const [variableValue, setVariableCost] = useState<number | string>(0);
   const [totalDays, setTotalDays] = useState<string>("");
   const [onModalFixedCost, setOnModalFixedCost] = useState(false);
   const [onModalVariableCost, setOnModalVariableCost] = useState(false);
@@ -124,7 +124,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     } = data;
 
     if (startDate < endDate) {
-      const allValues = fixedValue + variableValue + estimatedSalary;
+      const allValues = Number(fixedValue) + Number(variableValue) + estimatedSalary;
       const weekHours = hoursDay * daysWeek;
       const monthHours = weekHours * 4;
       const hoursCost = allValues / monthHours;
@@ -141,8 +141,9 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
       const dayStartDate = Number(newStartDate[2]);
 
       const days =
-        ((yearEndDate * 365) - (yearStartDate * 365)) +
-        ((mouthEndDate * 30) - (mouthStartDate * 30)) +
+        yearEndDate * 365 -
+        yearStartDate * 365 +
+        (mouthEndDate * 30 - mouthStartDate * 30) +
         (dayEndDate - dayStartDate);
 
       const deadLine = days * hoursDay;

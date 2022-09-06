@@ -22,8 +22,8 @@ export interface IBudgetProvider {
 
 export interface IBudgetContext {
   totalDays: string;
-  fixedValue: number;
-  variableValue: number;
+  fixedValue: number | string;
+  variableValue: number | string;
   onModalFixedCost: boolean;
   onModalVariableCost: boolean;
   editModalCard: boolean;

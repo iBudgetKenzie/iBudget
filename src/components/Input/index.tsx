@@ -11,7 +11,7 @@ interface InputProps {
     | "daysWeek"
     | "estimatedSalary"
     | "hoursDay";
-  value?: number;
+  value?: number | string;
   title: string;
   error: string | undefined;
   register: UseFormRegister<IBudgetOmitId>;

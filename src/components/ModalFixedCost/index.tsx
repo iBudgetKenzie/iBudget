@@ -43,7 +43,7 @@ export const ModalFixedCost = () => {
                 </MoreExpenses>
               );
             })}
-            <button type="submit">Enviar</button>
+            <button type="submit">Calcular custos</button>
           </form>
         </ConteinerFormModal>
       </Modal>
