@@ -6,7 +6,7 @@ export const ContainerCreateBudget = styled.div`
   align-items: center;
 
   width: 28vw;
-  height: 79vh;
+  max-height: 77vh;
   padding: 20px 30px 30px 30px;
   background-color: rgba(var(--color-white), 1);
 
@@ -14,11 +14,13 @@ export const ContainerCreateBudget = styled.div`
   border-radius: 8px;
 
   & h1 {
-    font-family: "Inter";
+    font-family: var(--font-forms-base);
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
+
+    padding-bottom: 12px;
   }
 
   & > form {
@@ -28,7 +30,7 @@ export const ContainerCreateBudget = styled.div`
 
     width: 100%;
     height: 100%;
-    gap: 5px;
+    gap: 8px;
     background-color: rgba(var(--color-white), 1);
 
     border-radius: 9px;
@@ -40,7 +42,7 @@ export const ContainerCreateBudget = styled.div`
     }
 
     label {
-      font-family: "Inter";
+      font-family: var(--font-forms-base);
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
@@ -61,7 +63,7 @@ export const ContainerCreateBudget = styled.div`
       border-radius: 5px;
       padding: 10px;
 
-      font-family: "Inter";
+      font-family: var(--font-forms-base);
       font-style: normal;
       font-weight: 300;
       font-size: 13px;
@@ -79,13 +81,12 @@ export const ContainerCreateBudget = styled.div`
     & > div {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
 
       & > div {
         display: flex;
         justify-content: space-between;
         gap: 10px;
-        /* height: 70px; */
 
         & > div {
           width: 100%;
@@ -112,8 +113,8 @@ export const ContainerCreateBudget = styled.div`
             cursor: pointer;
           }
 
-          @media (max-width: 375px) {
-            width: 46%;
+          @media (max-width: 385px) {
+            width: 48%;
           }
         }
       }
@@ -122,11 +123,11 @@ export const ContainerCreateBudget = styled.div`
     & button {
       background-color: rgba(var(--color-purple), 1);
       border-radius: 8px;
-      height: 12%;
+      height: 45px;
       margin-top: 20px;
       border: none;
 
-      font-family: "Inter";
+      font-family: var(--font-forms-base);
       font-style: normal;
       font-weight: 500;
       font-size: 0.88rem;

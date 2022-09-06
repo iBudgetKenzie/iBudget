@@ -11,6 +11,10 @@ export const ConteinerModalVariableCost = styled.div`
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.25);
+
+  @media (max-width: 520px) {
+    padding: 0px 5% 0px 5%;
+  }
 `;
 
 export const Modal = styled.div`
@@ -33,7 +37,7 @@ export const Modal = styled.div`
     position: relative;
 
     & > h2 {
-      font-family: "Inter";
+      font-family: var(--font-forms-base);
       font-style: normal;
       font-weight: 700;
       font-size: 22px;
@@ -45,11 +49,15 @@ export const Modal = styled.div`
 
       right: 0;
 
-      font-family: "Inter";
+      font-family: var(--font-forms-base);
       font-weight: 600;
       font-size: 21px;
       cursor: pointer;
     }
+  }
+
+  @media (max-width: 520px) {
+    width: 100%;
   }
 `;
 
@@ -58,7 +66,7 @@ export const ConteinerFormModal = styled.div`
   height: 100%;
 
   & > form {
-    height: 22rem;
+    height: 21.5rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -69,7 +77,7 @@ export const ConteinerFormModal = styled.div`
       width: 100%;
       background-color: rgba(var(--color-purple), 1);
 
-      font-family: "Inter";
+      font-family: var(--font-forms-base);
       font-style: normal;
       font-weight: 400;
       font-size: 14px;

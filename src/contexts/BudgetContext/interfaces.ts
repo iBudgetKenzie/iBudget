@@ -27,7 +27,8 @@ export interface IBudgetContext {
   onModalFixedCost: boolean;
   onModalVariableCost: boolean;
   editModalCard: boolean;
-  // budgetHistory: IBudget[];
+  onCreateBudget: boolean;
+  onHistoric: boolean;
   inputsBase: IInputs[];
   sendBudget: (data: IBudgetOmitId) => void;
   addFixedValue: (data: any) => void;
@@ -37,9 +38,10 @@ export interface IBudgetContext {
   setOnModalVariableCost: (modalVariableValue: boolean) => void;
   setEditModalCard: (editModalCard: boolean) => void;
   setClickedBudgetId: (data: number | string) => void;
-  // setBudgetHistory: (budgetHistory: IBudget[]) => void;
+  setOnHistoric: (onHistoric: boolean) => void;
   deleteBudgetHistory: (id: number | string) => Promise<void>;
   generatePDF: (date: IGeneratePdfProps) => void;
+  setOnCreateBudget: (createBudget: boolean) => void;
 }
 
 export interface IFixedCost {
