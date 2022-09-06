@@ -21,7 +21,6 @@ export const DeveloperStyled = styled.li`
     img {
       width: 90%;
       height: 100%;
-      border-radius: 100%;
       object-fit: cover;
     }
   }
@@ -74,6 +73,7 @@ export const DeveloperStyled = styled.li`
       img {
         width: 50%;
         height: 100%;
+        border-radius: 100%;
       }
     }
   }

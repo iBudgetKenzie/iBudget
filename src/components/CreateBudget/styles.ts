@@ -12,6 +12,7 @@ export const ContainerCreateBudget = styled.div`
 
   border: 1px solid rgba(var(--color-purple), 1);
   border-radius: 8px;
+  overflow-y: auto;
 
   overflow-y: auto;
   &::-webkit-scrollbar {
