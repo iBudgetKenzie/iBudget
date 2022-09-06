@@ -6,6 +6,8 @@ export const ContainerBudgetHistory = styled.div`
   height: 79vh;
   border: 1px solid rgba(var(--color-purple), 1);
 
+  padding-bottom: 8px;
+
   & > ul {
     display: flex;
     flex-direction: column;
@@ -37,6 +39,10 @@ export const ContainerBudgetHistory = styled.div`
     scrollbar-width: thin;
     scrollbar-color: rgba(var(--color-grey-2), 1) rgba(var(--color-grey-1), 1);
   }
+
+  @media (max-width: 1023px) {
+    border: none;
+  }
 `;
 
 export const FilterBar = styled.div`
@@ -54,32 +60,55 @@ export const FilterBar = styled.div`
     outline: 0;
   }
 
-  & > h2 {
-    padding-top: 5px;
-    font-family: var(--font-forms-base);
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 19px;
+  div:first-child {
+    width: 100%;
     display: flex;
-    color: rgba(var(--color-text-white), 1);
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
 
-    @media (max-width: 1023px) {
-      position: absolute;
-      bottom: 0;
-      width: calc(100% - 140px);
+    & > h2 {
+      margin-top: 15px;
+      padding-top: 5px;
+      font-family: var(--font-forms-base);
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 19px;
+      display: flex;
+      color: rgba(var(--color-text-white), 1);
+    }
+
+    & > h2 + h2 {
+      padding-left: 2px;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 16px;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 377px) {
+      h2:first-child {
+        margin-bottom: 15px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      h2:first-child {
+        padding-bottom: 3.7rem;
+      }
+
+      & > h2 + h2 {
+        display: none;
+      }
     }
   }
 
-  & > div {
+  div:last-child {
     display: flex;
     align-items: center;
     position: relative;
 
-    width: 40%;
+    width: 75%;
     height: 30px;
 
     @media (max-width: 1023px) {

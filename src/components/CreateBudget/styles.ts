@@ -13,6 +13,23 @@ export const ContainerCreateBudget = styled.div`
   border: 1px solid rgba(var(--color-purple), 1);
   border-radius: 8px;
 
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgba(var(--color-white), 1);
+    border-radius: 0px 8px 8px 0px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--color-grey-1), 1);
+    border-radius: 6px;
+    border: 3px solid rgba(var(--color-white), 1);
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--color-grey-2), 1) rgba(var(--color-grey-1), 1);
+
   & h1 {
     font-family: var(--font-forms-base);
     font-style: normal;
@@ -143,5 +160,9 @@ export const ContainerCreateBudget = styled.div`
 
   @media (max-width: 375px) {
     width: 100vw;
+  }
+
+  @media (max-width: 1023px) {
+    border: none;
   }
 `;
