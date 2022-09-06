@@ -29,6 +29,8 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   const [totalDays, setTotalDays] = useState<string>("");
   const [onModalFixedCost, setOnModalFixedCost] = useState(false);
   const [onModalVariableCost, setOnModalVariableCost] = useState(false);
+  const [onHistoric, setOnHistoric] = useState(false);
+  const [onCreateBudget, setOnCreateBudget] = useState(true);
   const [editModalCard, setEditModalCard] = useState(false);
   const [clickedBudgetId, setClickedBudgetId] = useState<string | number>(0);
   const [inputProjectName, setInputProjectName] = useState<string>("");
@@ -139,9 +141,8 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
       const dayStartDate = Number(newStartDate[2]);
 
       const days =
-        yearEndDate * 365 -
-        yearStartDate * 365 +
-        (mouthEndDate * 30 - mouthStartDate * 30) +
+        ((yearEndDate * 365) - (yearStartDate * 365)) +
+        ((mouthEndDate * 30) - (mouthStartDate * 30)) +
         (dayEndDate - dayStartDate);
 
       const deadLine = days * hoursDay;
@@ -173,6 +174,10 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   return (
     <BudgetContext.Provider
       value={{
+        onCreateBudget,
+        setOnCreateBudget,
+        onHistoric,
+        setOnHistoric,
         editModalCard,
         setEditModalCard,
         totalDays,

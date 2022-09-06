@@ -29,7 +29,7 @@ export const CreateBudget = () => {
     daysWeek: yup.number().required("Dias por semana necessária"),
     startDate: yup.string().required("Data de início necessária"),
     endDate: yup.string().required("Data de término necessária"),
-    estimatedSalary: yup.number(),
+    estimatedSalary: yup.number().typeError("O campo só aceita números"),
   });
 
   const {
