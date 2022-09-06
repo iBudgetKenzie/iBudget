@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ConteinerHistoryMobile = styled.section`
-    width: 60vh;
+    width: 60vw;
     padding-top: 21px;
         
     & > h2 {

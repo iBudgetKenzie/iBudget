@@ -6,7 +6,7 @@ import { useBudgetContext } from "../../contexts/BudgetContext";
 import { MoreExpenses } from "../MoreExpenses";
 import { IInputs } from "../InputsBase";
 
-import { ConteinerModalFixedCost, Modal, ConteinerFormModal } from "./style";
+import { ConteinerModal, Modal, ConteinerFormModal } from "./style";
 
 export const ModalFixedCost = () => {
   const { setOnModalFixedCost, addFixedValue, inputsBase } = useBudgetContext();
@@ -14,7 +14,7 @@ export const ModalFixedCost = () => {
   const { register, handleSubmit } = useForm();
 
   return (
-    <ConteinerModalFixedCost>
+    <ConteinerModal>
       <Modal
         as={motion.div}
         initial={{ y: -50, scale: 1, opacity: 0.7 }}
@@ -47,6 +47,6 @@ export const ModalFixedCost = () => {
           </form>
         </ConteinerFormModal>
       </Modal>
-    </ConteinerModalFixedCost>
+    </ConteinerModal>
   );
 };
