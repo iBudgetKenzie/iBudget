@@ -73,6 +73,7 @@ export const DeveloperStyled = styled.li`
       img {
         width: 50%;
         height: 100%;
+        border-radius: 100%;
       }
     }
   }
