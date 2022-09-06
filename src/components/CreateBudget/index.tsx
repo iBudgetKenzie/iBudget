@@ -6,6 +6,7 @@ import { useBudgetContext } from "../../contexts/BudgetContext/index";
 import { ContainerCreateBudget } from "./styles";
 import { Input } from "../Input";
 import { IBudgetOmitId } from "../../contexts/BudgetContext/interfaces";
+import { toast } from "react-toastify";
 
 export const CreateBudget = () => {
   const {
@@ -36,10 +37,16 @@ export const CreateBudget = () => {
     resolver: yupResolver(formSchema),
   });
 
+  const onError = () => {
+    toast.error("Dados do orçamento incorretos", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
+
   return (
     <ContainerCreateBudget>
       <h1>Preencha os dados</h1>
-      <form onSubmit={handleSubmit(sendBudget)}>
+      <form onSubmit={handleSubmit(sendBudget, onError)}>
         <label htmlFor="projectName">
           Nome do projeto: <span>*</span>
         </label>

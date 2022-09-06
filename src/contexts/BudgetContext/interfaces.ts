@@ -35,6 +35,12 @@ export interface IBudgetContext {
   addVariableValue: (data: any) => void;
   addEditedValue: (data: any) => void;
   setOnModalFixedCost: (modalFixedValue: boolean) => void;
+  inputProjectName: string;
+  setInputProjectName: (string: string) => void;
+  inputBudgetValue: number;
+  setBudgetValue: (number: number) => void;
+  inputProjectTime: number;
+  setProjectTime: (number: number) => void;
   setOnModalVariableCost: (modalVariableValue: boolean) => void;
   setEditModalCard: (editModalCard: boolean) => void;
   setClickedBudgetId: (data: number | string) => void;

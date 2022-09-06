@@ -1,153 +1,173 @@
 import styled from "styled-components";
 
 export const StyledRegister = styled.div`
-  background-color: rgba(var(--color-white), 1);
-  color: rgba(var(--color-text-black), 1);
+  background-color: rgba(var(--color-white),1);
+  color: black;
 
-  height: 450px;
+  height: 470px;
   width: 300px;
   left: -796px;
   top: -267px;
   border-radius: 7px;
-  padding: 20px 30px;
+  padding: 10px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  gap: 5px;
+  justify-content: space-evenly;
 
+  margin-top: 4px;
+
+  position: absolute;
+  z-index: 100;
+  top: auto;
+  left: auto;
+  
+  
   @media screen and (min-width: 700px) {
-    height: 90%;
-    width: 58%;
-    /* margin-bottom: -30px; */
-    justify-content: center;
-  }
+    height: 500px;
+    width: 350px;
+    justify-content: space-evenly;
+  };
+
 
   h4 {
-    font-size: 1.25rem;
-  }
+    font-size: 20px;
+  };
 
   form {
+    max-height: 390px;
+    padding: 0px;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-around;
+    gap: 3px;
 
     @media screen and (min-width: 700px) {
-      height: 100%;
-      width: 100%;
-    }
+      max-height: 490px;
+      gap: 5px;
+    };
 
     .div--label {
       display: flex;
       flex-direction: column;
-      width: 100%;
-    }
+      gap: 1px;
+      /* margin-bottom: 2px; */
+    };
 
     label {
-      font-size: 0.88rem;
-    }
+      font-size: 14px;
+    };
 
     span {
       color: rgba(var(--color-negative-pink), 1);
-    }
+    };
 
     .span--error {
-      font-size: 0.81rem;
-      margin: 0;
-      padding: 0;
-    }
+      font-size: 13px;
+    };
 
     input {
-      width: 100%;
-      height: 80%;
-      padding: 10px;
+      height: 27px;
+      padding: 7px;
       border-radius: 5px;
-      border: 1px solid rgb(var(--color-purple), 2);
+      border: 1px solid rgb(var(--color-purple-light), 2);
 
       ::placeholder {
-        font-size: 0.88rem;
-      }
+        font-size: 14px;
+      };
 
-      /* @media screen and (min-width: 700px) {
-        height: 15%;
-      } */
-    }
+      @media screen and (min-width: 700px) {
+        height: 30px;
+      };
+    };
 
     .div--senhas {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       gap: 10px;
 
       input {
-        width: 100%;
-      }
-    }
+        width: 120px;
+      };
+    };
 
-    .div--cargo {
-      display: flex;
-      flex-direction: column;
-      /* align-items: center; */
-      justify-content: center;
-
-      input {
-        width: 100%;
-        height: 80%;
-      }
-    }
-
+    
     .div--images {
       display: flex;
-      align-items: center;
+      justify-content: space-between;
       gap: 10px;
-      padding: 5px;
-
+      
       label {
-        font-size: 0.88rem;
-        padding: 5px;
-      }
+        font-size: 13px;
+      };
 
-      input {
-        width: 100%;
+      .div--label {
+        gap: 6px;
       }
-
+      
       .div--avatars {
-        margin-top: 5px;
         display: flex;
         justify-content: space-around;
-        gap: 5px;
-
+        gap: 10px;
+        
         .avatar {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          
+          margin-top: 2px;
+
           img {
             width: 28px;
             height: 30px;
-          }
+          };
 
           & :active {
             border: solid 2px rgb(var(--color-negative-pink), 2);
             border-radius: 50%;
           }
-
+          
           & :hover {
             box-shadow: 0px 0px 5px 0px;
             border-radius: 50%;
           }
-        }
-      }
-    }
+        };
+      };
 
+      
+      input {
+        width: 120px;
+      };
+      
+      margin-bottom: 1px;
+    };
+    
     .register {
-      margin-top: 15px;
-      height: 10%;
+      height: 32px;
       width: 100%;
+      left: 41px;
+      top: 520px;
       border-radius: 8px;
-
+      
       background-color: rgba(var(--color-purple), 1);
       color: rgba(var(--color-white), 1);
+      
+      font-size: 14px;
+      
+      /* margin-top: 1px; */
+    };
+  };
 
-      font-size: 1rem;
-    }
+  .div--cargo {
+    width:100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:2px;
+
+    margin-top: 3px;
   }
 `;
