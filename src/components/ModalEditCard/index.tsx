@@ -4,7 +4,7 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import {
-  ConteinerModalFixedCost,
+  ConteinerModal,
   Modal,
   ConteinerFormModal,
 } from "../ModalFixedCost/style";
@@ -28,7 +28,7 @@ export const ModalEditCard = () => {
   const { register, handleSubmit } = useForm<IEditData>();
 
   return (
-    <ConteinerModalFixedCost>
+    <ConteinerModal>
       <Modal
         as={motion.div}
         initial={{ y: -50, scale: 1, opacity: 0.7 }}
@@ -74,6 +74,6 @@ export const ModalEditCard = () => {
           </form>
         </ConteinerFormModal>
       </Modal>
-    </ConteinerModalFixedCost>
+    </ConteinerModal>
   );
 };

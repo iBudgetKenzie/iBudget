@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ConteinerModalFixedCost = styled.div`
+export const ConteinerModal = styled.div`
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -67,6 +67,7 @@ export const ConteinerFormModal = styled.div`
 
   & > form {
     height: 21.5rem;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

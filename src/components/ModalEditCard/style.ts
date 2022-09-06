@@ -13,7 +13,7 @@ export const StyledModalEdit = styled.div`
   }
 
   input {
-    width: 420px;
+    width: 100%;
     height: 50px;
 
     padding: 10px;

@@ -16,6 +16,8 @@ export const ConteinerCardBudgetHistory = styled.li`
   justify-content: center;
   gap: 4px;
 
+  padding-right: 7rem;
+
   span {
     font-family: var(--font-forms-base);
     font-style: normal;
@@ -23,6 +25,10 @@ export const ConteinerCardBudgetHistory = styled.li`
     font-size: 12px;
     line-height: 15px;
     color: rgba(var(--color-grey-2), 1);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   & > h2 {
@@ -31,6 +37,10 @@ export const ConteinerCardBudgetHistory = styled.li`
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   & > span + span {
