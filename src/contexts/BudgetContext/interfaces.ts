@@ -22,24 +22,32 @@ export interface IBudgetProvider {
 
 export interface IBudgetContext {
   totalDays: string;
-  fixedValue: number;
-  variableValue: number;
+  fixedValue: number | string;
+  variableValue: number | string;
   onModalFixedCost: boolean;
   onModalVariableCost: boolean;
   editModalCard: boolean;
-  // budgetHistory: IBudget[];
+  onCreateBudget: boolean;
+  onHistoric: boolean;
   inputsBase: IInputs[];
   sendBudget: (data: IBudgetOmitId) => void;
   addFixedValue: (data: any) => void;
   addVariableValue: (data: any) => void;
   addEditedValue: (data: any) => void;
   setOnModalFixedCost: (modalFixedValue: boolean) => void;
+  inputProjectName: string;
+  setInputProjectName: (string: string) => void;
+  inputBudgetValue: number;
+  setBudgetValue: (number: number) => void;
+  inputProjectTime: number;
+  setProjectTime: (number: number) => void;
   setOnModalVariableCost: (modalVariableValue: boolean) => void;
   setEditModalCard: (editModalCard: boolean) => void;
   setClickedBudgetId: (data: number | string) => void;
-  // setBudgetHistory: (budgetHistory: IBudget[]) => void;
+  setOnHistoric: (onHistoric: boolean) => void;
   deleteBudgetHistory: (id: number | string) => Promise<void>;
   generatePDF: (date: IGeneratePdfProps) => void;
+  setOnCreateBudget: (createBudget: boolean) => void;
 }
 
 export interface IFixedCost {

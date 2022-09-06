@@ -1,4 +1,3 @@
-import { forwardRef } from "react";
 import { UseFormRegister } from "react-hook-form";
 import { IBudgetOmitId } from "../../contexts/BudgetContext/interfaces";
 interface InputProps {
@@ -12,7 +11,7 @@ interface InputProps {
     | "daysWeek"
     | "estimatedSalary"
     | "hoursDay";
-  value?: number;
+  value?: number | string;
   title: string;
   error: string | undefined;
   register: UseFormRegister<IBudgetOmitId>;

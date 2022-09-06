@@ -20,13 +20,16 @@ export const CreateBudget = () => {
 
   const formSchema = yup.object().shape({
     projectName: yup.string().required("Necessário nome do projeto"),
-    fixedCost: yup.number().required("Custos fixos necessário"),
-    variableValue: yup.number(),
+    fixedCost: yup
+      .number()
+      .moreThan(0, "Apenas valores acima de 0")
+      .required("Custos fixos necessários"),
+    variableValue: yup.number().moreThan(0, "Apenas valores acima de 0"),
     hoursDay: yup.number().required("Horas trabalhadas por dia necessária"),
     daysWeek: yup.number().required("Dias por semana necessária"),
     startDate: yup.string().required("Data de início necessária"),
     endDate: yup.string().required("Data de término necessária"),
-    estimatedSalary: yup.number(),
+    estimatedSalary: yup.number().typeError("O campo só aceita números"),
   });
 
   const {
@@ -63,9 +66,9 @@ export const CreateBudget = () => {
             <div>
               <Input
                 title="Custo fixo:"
-                type="number"
+                type="text"
                 id="fixedCost"
-                value={fixedValue}
+                value={fixedValue === 0 ? "0" : fixedValue}
                 register={register}
                 error={errors.fixedCost?.message}
               />
@@ -79,9 +82,9 @@ export const CreateBudget = () => {
             <div>
               <Input
                 title="Custo variável:"
-                type="number"
+                type="text"
                 id="variableCost"
-                value={variableValue}
+                value={variableValue === 0 ? "0" : variableValue}
                 register={register}
                 error={errors.variableCost?.message}
               />
