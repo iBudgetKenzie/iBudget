@@ -3,8 +3,9 @@ import styled from 'styled-components';
 export const StyledLogin = styled.div`
 	background-color: rgba(var(--color-white));
 	color: rgba(var(--color-text-black));
-	height: 55%;
+	height: 50%;
 	width: 90%;
+	position: fixed;
 	border-radius: 7px;
 	padding: 20px 30px 40px;
 	display: flex;
@@ -18,18 +19,19 @@ export const StyledLogin = styled.div`
 	}
 
 	@media screen and (min-width: 700px) {
-		max-height: 50%;
+		height: 60%;
 		width: 90%;
+		position: relative;
 
 		h4 {
 			font-size: 1.25rem;
 		}
 		@media screen and (min-width: 1000px) {
 			max-height: 50%;
-			width: 75%;
+			width: 65%;
 		}
 		@media screen and (min-width: 1400px) {
-			width: 70%;
+			width: 60%;
 		}
 		@media screen and (min-width: 2560px) {
 			width: 40%;
@@ -42,7 +44,7 @@ export const StyledLogin = styled.div`
 		gap: 10px;
 
 		@media screen and (min-width: 700px) {
-			height: 60%;
+			height: 80%;
 			width: 100%;
 			justify-content: center;
 		}
@@ -60,21 +62,17 @@ export const StyledLogin = styled.div`
 			color: rgba(var(--color-negative-pink));
 		}
 
-		p {
-			font-size: 0.88rem;
-			align-self: center;
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
-
-			@media screen and (min-width: 700px) {
-				flex-direction: row;
-			}
-		}
-
 		.cadastro {
 			background-color: transparent;
-			color: rgba(var(--color-purple));
+			color: rgba(var(--color-grey-1));
+			font-weight: 400;
+			align-self: center;
+			font-family: var(--font-menu-base);
+			font-size: 0.88rem;
+			cursor: pointer;
+			:hover {
+				text-decoration: 2px underline;
+			}
 		}
 
 		.login {
@@ -83,6 +81,7 @@ export const StyledLogin = styled.div`
 			margin-top: 10px;
 			border-radius: 8px;
 			font-size: 1rem;
+			font-family: var(--font-forms-base);
 			color: rgba(var(--color-text-white));
 			background-color: rgba(var(--color-purple));
 		}

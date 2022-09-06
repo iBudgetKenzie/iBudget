@@ -53,12 +53,11 @@ const LoginModal = () => {
 				<label htmlFor="">Senha:</label>
 				<input type="password" {...register('password')} />
 				<span>{errors.password?.message}</span>
-				<p>
-					Ainda não possui cadastro?{' '}
-					<button type="button" className="cadastro" onClick={toCadastro}>
-						Clique aqui
-					</button>
-				</p>
+
+				<button type="button" className="cadastro" onClick={toCadastro}>
+					Ainda não possui cadastro?
+				</button>
+
 				<button type="submit" className="login">
 					Entrar
 				</button>

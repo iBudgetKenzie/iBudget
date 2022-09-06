@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const StyledBody = styled.div`
 	width: 100vw;
 	height: 100vh;
-
 	display: flex;
 	flex-direction: column-reverse;
 
@@ -13,9 +12,8 @@ export const StyledBody = styled.div`
 
 	.logo-section {
 		width: 100%;
-		height: 15%;
+		height: 55%;
 		padding: 50px;
-
 		background-color: rgba(var(--color-black));
 		color: rgba(var(--color-white));
 
@@ -61,15 +59,24 @@ export const StyledBody = styled.div`
 		header {
 			display: flex;
 			justify-content: space-around;
-			align-items: center;
+			align-items: flex-start;
 			width: 100%;
-			height: 50px;
+
+			height: 40%;
 			padding: 20px;
+			@media screen and (min-width: 700px) {
+				height: 50px;
+			}
 		}
 
 		.header-menu {
 			background-color: rgba(var(--color-purple));
 			color: rgba(var(--color-white));
+			font-family: var(--font-menu-base);
+			font-weight: 300;
+			:hover {
+				text-decoration: underline;
+			}
 		}
 
 		@media screen and (min-width: 700px) {
