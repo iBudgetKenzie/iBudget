@@ -6,7 +6,7 @@ import qrcode from "../assets/img/qrcode.png";
 export interface IGeneratePdfProps {
   projectName: string;
   projectId: string | number;
-  budget: string | number | undefined;
+  budget: number;
   projectTime: string | number | undefined;
 }
 
@@ -16,6 +16,11 @@ export const generatePdf = ({
   budget,
   projectTime,
 }: IGeneratePdfProps) => {
+  const brlFormated = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+
   const doc = new jsPDF({
     unit: "cm",
   });
@@ -33,8 +38,10 @@ export const generatePdf = ({
     [
       `Nome do projeto: ${projectName}`,
       `N° do projeto: ${projectId}`,
-      `Orçamento: ${budget}`,
-      `Conclusão em: ${projectTime} dias`,
+      `Orçamento: ${brlFormated.format(budget)}`,
+      projectTime === "1" || projectTime === 1
+        ? `Conclusão em: ${projectTime} dia`
+        : `Conclusão em: ${projectTime} dias`,
     ],
     2,
     8
