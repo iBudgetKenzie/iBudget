@@ -17,19 +17,23 @@ interface InputProps {
   error: string | undefined;
   register: UseFormRegister<IBudgetOmitId>;
   placeholder?: string;
-  rest?: any;
 }
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ id, type, title, error, register, ...rest }) => {
-    return (
-      <>
-        <label htmlFor={id}>
-          {title} <span>*</span>
-        </label>
-        <input {...rest} id={id} {...register(id)} type={type} />
-        {error && <span>{error}</span>}
-      </>
-    );
-  }
-);
+export const Input = ({
+  id,
+  type,
+  title,
+  error,
+  register,
+  ...rest
+}: InputProps) => {
+  return (
+    <>
+      <label htmlFor={id}>
+        {title} <span>*</span>
+      </label>
+      <input {...rest} id={id} {...register(id)} type={type} />
+      {error && <span>Preencha corretamente</span>}
+    </>
+  );
+};

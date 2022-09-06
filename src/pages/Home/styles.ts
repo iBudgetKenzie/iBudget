@@ -6,9 +6,15 @@ export const StyledBody = styled.div`
 	display: flex;
 	flex-direction: column-reverse;
 
+<<<<<<< HEAD
 	@media screen and (min-width: 700px) {
 		flex-direction: row;
 	}
+=======
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+>>>>>>> 49491ec937631f122c7b68aa6017e55d789e3642
 
 	.logo-section {
 		width: 100%;
@@ -102,8 +108,17 @@ export const StyledBody = styled.div`
 		display: flex;
 		justify-content: center;
 
+<<<<<<< HEAD
 		@media screen and (min-width: 700px) {
 			align-items: center;
 		}
 	}
+=======
+    position: relative;
+
+    @media screen and (min-width: 700px) {
+      align-items: center;
+    }
+  }
+>>>>>>> 49491ec937631f122c7b68aa6017e55d789e3642
 `;

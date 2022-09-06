@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledRegister = styled.div`
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(var(--color-white),1);
   color: black;
 
   height: 470px;
@@ -15,18 +15,21 @@ export const StyledRegister = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  /* gap: 6px; */
 
   margin-top: 4px;
 
-  /* position: absolute; */
-
+  position: absolute;
+  z-index: 100;
+  top: auto;
+  left: auto;
+  
+  
   @media screen and (min-width: 700px) {
     height: 500px;
     width: 350px;
-    /* margin-bottom: -30px; */
     justify-content: space-evenly;
   };
+
 
   h4 {
     font-size: 20px;

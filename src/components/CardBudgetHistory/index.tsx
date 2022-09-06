@@ -1,11 +1,13 @@
-import { MdOutlinePictureAsPdf } from "react-icons/md";
+// import { MdOutlinePictureAsPdf } from "react-icons/md";
 import { GoTrashcan } from "react-icons/go";
+import { GrDocumentPdf } from "react-icons/gr";
 import { motion } from "framer-motion";
 
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import { ConteinerCardBudgetHistory } from "./style";
 import { useRef } from "react";
 import { IBudget } from "../../contexts/UserContext/interfaces";
+import { FaRegEdit } from "react-icons/fa";
 
 export const CardBudgetHistory = ({
   projectName,
@@ -39,8 +41,8 @@ export const CardBudgetHistory = ({
       <span>Valor: {budget}</span>
       <span ref={ref}>N°:{id}</span>
       <div>
-        <button onClick={() => openEditModal(id)}>editar</button>
-        <MdOutlinePictureAsPdf
+        <button onClick={() => openEditModal(id)}><FaRegEdit/></button>
+        <GrDocumentPdf
           onClick={() => {
             const newDate = {
               projectName,

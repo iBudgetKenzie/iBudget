@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import {
   ConteinerModalFixedCost,
@@ -30,7 +32,9 @@ export const ModalEditCard = () => {
       >
         <div>
           <h2>Editar orçamento</h2>
-          <span onClick={() => setEditModalCard(false)}>X</span>
+          <span onClick={() => setEditModalCard(false)}>
+            <IoIosCloseCircleOutline />
+          </span>
         </div>
         <ConteinerFormModal>
           <form onSubmit={handleSubmit(addEditedValue)}>
