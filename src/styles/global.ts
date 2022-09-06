@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -32,6 +32,7 @@ const GlobalStyle = createGlobalStyle`
 
     --font-forms-base: 'Inter', sans-serif;
     --font-menu-base: 'Montserrat', sans-serif;
+    font-family: var(--font-forms-base);
 
     }
 
