@@ -17,16 +17,16 @@ export const ConteinerCardBudgetHistory = styled.li`
   gap: 4px;
 
   span {
-    font-family: "Inter";
+    font-family: var(--font-forms-base);
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
-    color: #474545;
+    color: rgba(var(--color-grey-2), 1);
   }
 
   & > h2 {
-    font-family: "Inter";
+    font-family: var(--font-forms-base);
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -35,7 +35,7 @@ export const ConteinerCardBudgetHistory = styled.li`
 
   & > span + span {
     font-weight: 200;
-    color: #524e4e;
+    color: rgba(var(--color-grey-1), 1);
   }
 
   & > div {
