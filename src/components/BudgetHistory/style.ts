@@ -77,6 +77,7 @@ export const FilterBar = styled.div`
       line-height: 19px;
       display: flex;
       color: rgba(var(--color-text-white), 1);
+      cursor: pointer;
     }
 
     & > h2 + h2 {
