@@ -1,20 +1,18 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { inputsBase } from "../../components/InputsBase";
-// import { IBudget } from "../UserContext/interfaces";
+import { toast } from "react-toastify";
 
+import { inputsBase } from "../../components/InputsBase";
 import { IGeneratePdfProps } from "../../services/generatePdf";
-// import { useUserContext } from "../UserContext/index";
+import { useUserContext } from "../UserContext/index";
 import iBudgetApi from "../../services/iBudgetApi";
 import { generatePdf } from "../../services/generatePdf";
 
-import { toast } from "react-toastify";
 import {
   IBudgetContext,
   IBudgetOmitId,
   IBudgetOmitIdProps,
   IBudgetProvider,
 } from "./interfaces";
-import { UserContext } from "../UserContext";
 
 export const BudgetContext = createContext<IBudgetContext>(
   {} as IBudgetContext
@@ -37,7 +35,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   const [inputBudgetValue, setBudgetValue] = useState<string>("");
   const [inputProjectTime, setProjectTime] = useState<number>(0);
 
-  const { setBudgetHistory } = useContext(UserContext);
+  const { setBudgetHistory } = useUserContext();
 
   const priceFormated = new Intl.NumberFormat("pt-BR", {
     style: "currency",
