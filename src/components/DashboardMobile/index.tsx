@@ -1,18 +1,18 @@
 import { motion } from "framer-motion";
 
-import { ModalFixedCost } from "../../components/ModalFixedCost";
-import { ModalVariableCost } from "../../components/ModalVariableCost";
+import { ModalFixedCost } from "../ModalFixedCost";
+import { ModalVariableCost } from "../ModalVariableCost";
 // import { CreateBudget } from "../../components/CreateBudget";
-import HeaderLogged from "../../components/HeaderLogged";
+import HeaderLogged from "../HeaderLogged";
 import { useBudgetContext } from "../../contexts/BudgetContext";
-import { ModalEditCard } from "../../components/ModalEditCard";
+import { ModalEditCard } from "../ModalEditCard";
 // import { BudgetHistory } from "../BudgetHistory";
 import { BudgetHistoryMobile } from "../BudgetHistoryMobile";
-import { CreateBudgetMobile } from "../CreateBudgetMobile/index"
+import { CreateBudgetMobile } from "../CreateBudgetMobile/index";
 
 import { MainConteinerMobile } from "./style";
 
-export const DeshboardMobile = () => {
+export const DashboardMobile = () => {
   const {
     onModalFixedCost,
     onModalVariableCost,
@@ -30,11 +30,7 @@ export const DeshboardMobile = () => {
           exit={{ scale: 0.8, opacity: 0.5 }}
           transition={{ duration: 0.3 }}
         >
-          {onCreateBudget ? (
-            <CreateBudgetMobile />
-          ) : (
-            <BudgetHistoryMobile />
-          )}
+          {onCreateBudget ? <CreateBudgetMobile /> : <BudgetHistoryMobile />}
         </MainConteinerMobile>
 
         {onModalFixedCost && <ModalFixedCost />}
