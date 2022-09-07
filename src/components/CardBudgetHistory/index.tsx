@@ -64,11 +64,9 @@ export const CardBudgetHistory = ({
       <span>Valor: {priceFormated.format(budget)}</span>
       <span ref={ref}>N°:{id}</span>
       <div>
-        <button
+        <FaRegEdit
           onClick={() => openEditModal(id, projectName, budget, projectTime)}
-        >
-          <FaRegEdit />
-        </button>
+        />
         <GrDocumentPdf
           onClick={() => {
             const newDate = {
