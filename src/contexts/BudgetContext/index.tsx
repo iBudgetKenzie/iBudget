@@ -71,7 +71,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
       (acc: number, current) => acc + Number(current),
       0
     );
-    setFixedCost(Number(fixedValue) + reduceArray);
+    setFixedCost(reduceArray);
     setOnModalFixedCost(false);
   };
   const addVariableValue = (data: any): void => {
@@ -80,7 +80,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
       (acc: number, current) => acc + Number(current),
       0
     );
-    setVariableCost(Number(variableValue) + reduceArray);
+    setVariableCost(Number(reduceArray);
     setOnModalVariableCost(false);
   };
 
