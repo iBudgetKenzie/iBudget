@@ -21,11 +21,9 @@ export const CreateBudget = () => {
 
   const formSchema = yup.object().shape({
     projectName: yup.string().required("Necessário nome do projeto"),
-    fixedCost: yup
-      .number()
-      .moreThan(0, "Apenas valores acima de 0"),
-      // .required("Custos fixos necessários"),
-    variableCost: yup.number().moreThan(0, "Apenas valores acima de 0"),
+    // fixedCost: yup.number().moreThan(0, "Apenas valores acima de 0"),
+    // .required("Custos fixos necessários"),
+    // variableCost: yup.number().moreThan(0, "Apenas valores acima de 0"),
     hoursDay: yup.number().required("Horas trabalhadas por dia necessária"),
     daysWeek: yup.number().required("Dias por semana necessária"),
     startDate: yup.string().required("Data de início necessária"),
