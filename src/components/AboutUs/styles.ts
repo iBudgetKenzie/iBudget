@@ -64,7 +64,7 @@ export const EquipList = styled.ul`
   }
 
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
 
   &::-webkit-scrollbar-thumb {
