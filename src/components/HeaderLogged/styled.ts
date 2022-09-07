@@ -7,8 +7,6 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
 
-  /* margin-bottom:2rem; */
-
   background-color: rgba(var(--color-purple-dark), 1);
 
   & img {
@@ -26,13 +24,13 @@ export const Header = styled.header`
   }
 
   div {
-    width: 300px;
+    width: 250px;
 
     color: rgba(var(--color-purple-dark), 1);
 
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     gap: 1rem;
 
     @media (min-width: 320px) {

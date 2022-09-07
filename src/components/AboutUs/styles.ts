@@ -3,22 +3,32 @@ import styled from "styled-components";
 export const AboutUsDiv = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 50px 40px;
+  align-items: center;
+  gap: 25px;
+
+  width: 100%;
+  height: 90%;
 
   .text-container {
     width: 100%;
+    max-width: 90vw;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
+
+    @media (min-width: 768px) {
+      & {
+        width: 90%;
+      }
+    }
 
     p {
-      font-size: 1rem;
+      font-size: 0.88rem;
       color: rgba(var(--color-white), 0.9);
 
       @media (min-width: 1024px) {
         & {
-          font-size: 0.88rem;
+          font-size: 1rem;
         }
       }
     }
@@ -27,8 +37,7 @@ export const AboutUsDiv = styled.div`
 
 export const EquipList = styled.ul`
   width: 100%;
-  height: 90%;
-  min-height: 120px;
+  height: 28vh;
   overflow-y: auto;
 
   display: flex;
@@ -39,22 +48,17 @@ export const EquipList = styled.ul`
   @media (min-width: 375px) {
     & {
       padding: 0 3%;
+      height: 40vh;
     }
   }
 
-  @media (min-width: 768px) {
-    & {
-      padding: 5% 10% 0 0;
-      max-width: 700px;
-      max-height: 400px;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-    }
-  }
-
-  @media (min-width: 1024px) {
+  @media (min-width: 650px) {
     & {
       padding: 0;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      height: 50vh;
       gap: 10px;
     }
   }

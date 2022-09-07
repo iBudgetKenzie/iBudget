@@ -6,11 +6,11 @@ import HeaderLogged from "../../components/HeaderLogged";
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import { ModalEditCard } from "../../components/ModalEditCard";
 import { BudgetHistoryMobile } from "../BudgetHistoryMobile";
-import { CreateBudgetMobile } from "../CreateBudgetMobile/index"
+import { CreateBudgetMobile } from "../CreateBudgetMobile/index";
 
 import { MainConteinerMobile } from "./style";
 
-export const DeshboardMobile = () => {
+export const DashboardMobile = () => {
   const {
     onModalFixedCost,
     onModalVariableCost,

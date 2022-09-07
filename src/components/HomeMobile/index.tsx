@@ -1,19 +1,13 @@
 import { motion } from "framer-motion";
-
-import { useUserContext } from "../../contexts/UserContext";
-import HomeComponent from "../../components/Home";
-import LoginModal from "../../components/Login";
-import Register from "../../components/Register";
-import AboutUs from "../../components/AboutUs";
-import HomeMobile from "../../components/HomeMobile";
-import { useWindowSize } from "../../hooks/useWindowSize";
-
-import { StyledBody } from "./styles";
 import logo from "../../assets/img/logo.svg";
+import { useUserContext } from "../../contexts/UserContext";
+import AboutUs from "../AboutUs";
+import HomeComponent from "../Home";
+import LoginModal from "../Login";
+import Register from "../Register";
+import { StyledBodyMobile } from "./style";
 
-const Home = () => {
-  const [, width] = useWindowSize();
-  
+const HomeMobile = () => {
   const {
     isHome,
     isLogin,
@@ -50,19 +44,14 @@ const Home = () => {
     setIsRegister(false);
     setIsSobre(true);
   };
-
-  return width > 768 ? (
-    <StyledBody
+  return (
+    <StyledBodyMobile
       as={motion.div}
       initial={{ opacity: 0.3 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0.3 }}
       transition={{ duration: 0.3 }}
     >
-      <section className="logo-section">
-        <img src={logo} alt="" />
-        <p className="logo-paragraph">O orçamento que cabe no seu bolso</p>
-      </section>
       <section className="header-section">
         <motion.header>
           <button className="header-menu" onClick={handleHome}>
@@ -86,10 +75,11 @@ const Home = () => {
           {isSobre && <AboutUs />}
         </motion.div>
       </section>
-    </StyledBody>
-  ) : (
-    <HomeMobile />
+      <footer>
+        <img src={logo} alt="" />
+      </footer>
+    </StyledBodyMobile>
   );
 };
 
-export default Home;
+export default HomeMobile;

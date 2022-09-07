@@ -6,16 +6,18 @@ import { CreateBudget } from "../../components/CreateBudget";
 import HeaderLogged from "../../components/HeaderLogged";
 import { BudgetHistory } from "../../components/BudgetHistory";
 import { useBudgetContext } from "../../contexts/BudgetContext";
-import { DeshboardMobile } from "../../components/DeshboardMobile/index"
+import { DashboardMobile } from "../../components/DashboardMobile/index";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 import { MainConteiner } from "./styles";
 import { ModalEditCard } from "../../components/ModalEditCard";
 
 const Dashboard = () => {
   const { onModalFixedCost, onModalVariableCost, editModalCard } =
-  useBudgetContext();
+    useBudgetContext();
+  const [, width] = useWindowSize();
 
-  return window.innerWidth > 1023 ? (
+  return width > 1023 ? (
     <>
       <HeaderLogged />
       <main>
@@ -42,8 +44,8 @@ const Dashboard = () => {
       </main>
     </>
   ) : (
-    <DeshboardMobile />
-  )
+    <DashboardMobile />
+  );
 };
 
 export default Dashboard;

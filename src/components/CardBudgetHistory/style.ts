@@ -54,19 +54,15 @@ export const ConteinerCardBudgetHistory = styled.li`
     display: flex;
     gap: 10px;
 
-    & > button {
+    & > svg {
+      width: 20px;
+      height: 20px;
       background-color: transparent;
+      cursor: pointer;
     }
 
     & > button:hover {
       color: rgba(var(--color-text-white));
-    }
-
-    & > svg {
-      width: 20px;
-      height: 20px;
-
-      cursor: pointer;
     }
   }
 `;

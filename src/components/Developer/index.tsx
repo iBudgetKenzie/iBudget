@@ -26,14 +26,14 @@ const Developer = ({
       <div>
         <p className="dev-name">{name}</p>
         <p className="dev-job">{position}</p>
-        <div>
+        <span>
           <a href={linkedin} target="_blank" rel="noreferrer">
             <IoLogoLinkedin />
           </a>
           <a href={github} target="_blank" rel="noreferrer">
             <IoLogoGithub />
           </a>
-        </div>
+        </span>
       </div>
     </DeveloperStyled>
   );
