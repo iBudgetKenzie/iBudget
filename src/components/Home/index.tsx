@@ -19,8 +19,8 @@ const HomeComponent = () => {
           seus clientes?
         </p>
         <p>
-          Com o iBudget você tem orçamentos pré-definidos e personalizados para
-          seus projetos na palma da sua mão!
+          Cadastrando no iBudget você terá orçamentos pré-definidos e 100%
+          personalizados para seus projetos na palma da sua mão!
         </p>
       </div>
 

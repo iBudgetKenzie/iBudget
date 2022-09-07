@@ -41,40 +41,28 @@ export const DeveloperStyled = styled.li`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 650px) {
     & {
       flex-direction: column;
-      height: 100%;
-    }
-
-    & > figure {
-      width: 100%;
-      height: 100%;
-
-      img {
-        width: 50%;
-        height: 100%;
-      }
-    }
-  }
-
-  @media (min-width: 1024px) {
-    & {
-      flex-direction: column;
-      padding: 5px;
+      padding: 10px;
       width: 30%;
-      min-height: 180px;
+      height: 50%;
     }
 
     & > figure {
       width: 100%;
-      height: 60%;
+      height: 100%;
 
       img {
         width: 50%;
         height: 100%;
         border-radius: 100%;
       }
+    }
+
+    & > div > p:nth-child(1) {
+      font-size: 0.88rem;
+      font-weight: 500;
     }
   }
 
