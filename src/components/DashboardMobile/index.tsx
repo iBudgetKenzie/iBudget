@@ -1,8 +1,8 @@
 // import { motion } from "framer-motion";
 
 import { ModalFixedCost } from "../ModalFixedCost";
-import { ModalVariableCost } from "../../components/ModalVariableCost";
-import HeaderLogged from "../../components/HeaderLogged";
+import { ModalVariableCost } from "../ModalVariableCost";
+import HeaderLogged from "../HeaderLogged";
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import { ModalEditCard } from "../../components/ModalEditCard";
 import { BudgetHistoryMobile } from "../BudgetHistoryMobile";
