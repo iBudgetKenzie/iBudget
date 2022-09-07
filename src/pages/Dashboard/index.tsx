@@ -7,6 +7,7 @@ import HeaderLogged from "../../components/HeaderLogged";
 import { BudgetHistory } from "../../components/BudgetHistory";
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import { DashboardMobile } from "../../components/DashboardMobile/index";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 import { MainConteiner } from "./styles";
 import { ModalEditCard } from "../../components/ModalEditCard";
@@ -14,8 +15,9 @@ import { ModalEditCard } from "../../components/ModalEditCard";
 const Dashboard = () => {
   const { onModalFixedCost, onModalVariableCost, editModalCard } =
     useBudgetContext();
+  const [, width] = useWindowSize();
 
-  return window.innerWidth > 1023 ? (
+  return width > 1023 ? (
     <>
       <HeaderLogged />
       <main>

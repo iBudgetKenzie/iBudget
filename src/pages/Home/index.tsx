@@ -1,14 +1,19 @@
 import { motion } from "framer-motion";
+
 import { useUserContext } from "../../contexts/UserContext";
 import HomeComponent from "../../components/Home";
 import LoginModal from "../../components/Login";
 import Register from "../../components/Register";
 import AboutUs from "../../components/AboutUs";
 import HomeMobile from "../../components/HomeMobile";
+import { useWindowSize } from "../../hooks/useWindowSize";
+
 import { StyledBody } from "./styles";
 import logo from "../../assets/img/logo.svg";
 
 const Home = () => {
+  const [, width] = useWindowSize();
+  
   const {
     isHome,
     isLogin,
@@ -46,7 +51,7 @@ const Home = () => {
     setIsSobre(true);
   };
 
-  return window.innerWidth > 768 ? (
+  return width > 768 ? (
     <StyledBody
       as={motion.div}
       initial={{ opacity: 0.3 }}
