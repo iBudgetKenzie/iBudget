@@ -14,6 +14,19 @@ export const StyledLogin = styled.div`
   justify-content: center;
   gap: 20px;
 
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgba(var(--color-white), 1);
+    border-radius: 0px 8px 8px 0px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--color-grey-1), 1);
+    border-radius: 6px;
+    border: 3px solid rgba(var(--color-white), 1);
+  }
+
   background-color: rgba(var(--color-white));
   color: rgba(var(--color-text-black));
   overflow-y: auto;
