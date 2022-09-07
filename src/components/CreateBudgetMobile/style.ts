@@ -1,22 +1,23 @@
 import styled from "styled-components";
 
 export const ConteinerBudgetMobile = styled.section`
-    width: 60vw;
-    padding-top: 21px;
-        
-    & > h2 {
-        padding-bottom: 5px;
-        text-align: right;
-        color: rgba(var(--color-text-white), 1);
-        text-decoration: underline;
-        cursor: pointer;
-    }
+  width: 60vw;
+  padding-top: 21px;
 
-    & > div {
-        width: 100%;
-    }
+  & > h2 {
+    font-size: 0.88rem;
+    padding-bottom: 5px;
+    text-align: right;
+    color: rgba(var(--color-text-white), 1);
+    text-decoration: underline;
+    cursor: pointer;
+  }
 
-    @media (max-width: 610px) {
-        width: 100%;
-    } 
-`
+  & > div {
+    width: 100%;
+  }
+
+  @media (max-width: 610px) {
+    width: 100%;
+  }
+`;

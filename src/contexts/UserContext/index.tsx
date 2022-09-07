@@ -100,13 +100,18 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
       cadastro.username = capitalLetter;
     }
+
     if (registerFormData.imageUrl === "" && isImage === "") {
       cadastro.imageUrl = userPng;
-    } else if (!registerFormData.imageUrl?.includes("http")) {
+    } else if (!registerFormData.imageUrl?.includes("http") && isImage === "") {
       cadastro.imageUrl = userPng;
     } else if (registerFormData.imageUrl === "" && isImage !== "") {
+      console.log(isImage);
       cadastro.imageUrl = isImage;
     }
+
+    console.log(cadastro);
+
     try {
       await iBudgetApi.post("/register", cadastro);
       toast.success("Cadastro realizado com sucesso!");

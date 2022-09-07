@@ -39,7 +39,7 @@ export const ContainerBudgetHistory = styled.div`
       background-color: rgba(var(--color-white), 1);
       border-radius: 0px 8px 8px 0px;
     }
-    
+
     &::-webkit-scrollbar-thumb {
       background-color: rgba(var(--color-grey-1), 1);
       border-radius: 6px;
@@ -79,27 +79,30 @@ export const FilterBar = styled.div`
 
     & > h2 {
       margin-top: 15px;
-      padding-top: 5px;
+      display: flex;
+      align-items: flex-end;
+      font-size: 1.12rem;
+      font-weight: 600;
+      line-height: 19px;
       font-family: var(--font-forms-base);
       font-style: normal;
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 19px;
       display: flex;
       color: rgba(var(--color-text-white), 1);
       cursor: pointer;
     }
 
     & > h2 + h2 {
-      padding-left: 2px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0;
       white-space: nowrap;
-      font-size: 16px;
+      font-size: 0.88rem;
       text-decoration: underline;
     }
 
     @media (max-width: 377px) {
       h2:first-child {
-        margin-bottom: 15px;
+        font-size: 0.88rem;
       }
     }
 

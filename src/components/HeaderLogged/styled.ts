@@ -19,6 +19,7 @@ export const Header = styled.header`
     @media (min-width: 320px) {
       & {
         margin-left: 1rem;
+        width: 6.5rem;
       }
     }
   }
@@ -30,13 +31,14 @@ export const Header = styled.header`
 
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    gap: 1rem;
+    justify-content: flex-end;
+    padding-right: 12px;
+    gap: 5px;
 
-    @media (min-width: 320px) {
+    @media (min-width: 400px) {
       & {
-        gap: 5px;
-        margin-left: -1rem;
+        gap: 1rem;
+        /* margin-left: -1rem; */
       }
     }
 
@@ -44,12 +46,14 @@ export const Header = styled.header`
       font-family: "Inter";
       font-style: normal;
       font-weight: 450;
-      font-size: 14px;
+      font-size: 0.75rem;
       line-height: 17px;
 
       color: rgba(var(--color-white), 1);
 
-      margin-right: -30px;
+      @media (min-width: 475px) {
+        font-size: 0.88rem;
+      }
     }
 
     img {
@@ -71,12 +75,16 @@ export const Header = styled.header`
       font-family: "Inter";
       font-style: normal;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 0.75rem;
       line-height: 17px;
 
       color: rgba(var(--color-purple-light), 1);
 
       cursor: pointer;
+
+      @media (min-width: 475px) {
+        font-size: 0.88rem;
+      }
     }
   }
 `;

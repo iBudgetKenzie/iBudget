@@ -88,7 +88,7 @@ export const ContainerCreateBudget = styled.div`
       line-height: 16px;
       display: flex;
       align-items: flex-end;
-      color: rgba(var(--color-grey-1), 1);
+      color: rgba(var(--color-text-black), 1);
     }
 
     input::-webkit-outer-spin-button,
