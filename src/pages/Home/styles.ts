@@ -1,17 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledBody = styled.div`
-
   width: 100vw;
   height: 100vh;
 
   display: flex;
-  justify-content: center;
-  flex-direction: column-reverse;
-
-  @media screen and (min-width: 700px) {
-    flex-direction: row;
-  }
+  flex-direction: row;
 
   .logo-section {
     width: 100%;
@@ -62,16 +56,16 @@ export const StyledBody = styled.div`
 
     header {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
-      width: 70%;
-      height: 40px;
-      padding: 20px;
+      width: 100%;
+      height: 10vh;
     }
 
     .header-menu {
-      background-color: rgba(var(--color-purple));
+      background-color: transparent;
       color: rgba(var(--color-white));
+      font-size: 1rem;
     }
 
     @media screen and (min-width: 700px) {
@@ -80,6 +74,12 @@ export const StyledBody = styled.div`
 
       header {
         justify-content: space-evenly;
+      }
+    }
+
+    @media screen and (min-width: 1700px) {
+      .header-menu {
+        font-size: 1.2rem;
       }
     }
   }
