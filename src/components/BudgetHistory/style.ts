@@ -20,25 +20,22 @@ export const ContainerBudgetHistory = styled.div`
     padding: 30px 20px;
 
     overflow-y: auto;
-
     &::-webkit-scrollbar {
-      width: 12px;
+    width: 10px;
     }
-
     &::-webkit-scrollbar-track {
-      background-color: rgba(var(--color-grey-1), 1);
+      background-color: rgba(var(--color-white), 1);
       border-radius: 0px 8px 8px 0px;
     }
-
     &::-webkit-scrollbar-thumb {
-      background-color: rgba(var(--color-grey-2), 1);
+      background-color: rgba(var(--color-grey-1), 1);
       border-radius: 6px;
-      border: 3px solid rgba(var(--color-grey-1), 1);
+      border: 3px solid rgba(var(--color-white), 1);
     }
 
     scrollbar-width: thin;
     scrollbar-color: rgba(var(--color-grey-2), 1) rgba(var(--color-grey-1), 1);
-  }
+    }
 
   @media (max-width: 1023px) {
     border: none;
