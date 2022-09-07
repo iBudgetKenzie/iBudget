@@ -8,7 +8,7 @@ export const ContainerBudgetHistory = styled.div`
 
   padding-bottom: 8px;
 
-  & > ul {
+  & > div + div {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -20,6 +20,16 @@ export const ContainerBudgetHistory = styled.div`
     padding: 30px 20px;
 
     overflow-y: auto;
+
+    & > span {
+      width: 100%;
+      text-align: center;
+    }
+
+    & > p {
+      width: 100%;
+      word-wrap: break-word;
+    }
 
     &::-webkit-scrollbar {
       width: 12px;
