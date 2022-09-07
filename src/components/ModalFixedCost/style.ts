@@ -10,7 +10,7 @@ export const ConteinerModal = styled.div`
   align-items: center;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.6);
 
   @media (max-width: 520px) {
     padding: 0px 5% 0px 5%;
