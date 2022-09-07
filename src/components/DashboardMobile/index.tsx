@@ -2,7 +2,7 @@ import { ModalFixedCost } from "../ModalFixedCost";
 import { ModalVariableCost } from "../ModalVariableCost";
 import HeaderLogged from "../HeaderLogged";
 import { useBudgetContext } from "../../contexts/BudgetContext";
-import { ModalEditCard } from "../../components/ModalEditCard";
+import { ModalEditCard } from "../ModalEditCard";
 import { BudgetHistoryMobile } from "../BudgetHistoryMobile";
 import { CreateBudgetMobile } from "../CreateBudgetMobile/index";
 
