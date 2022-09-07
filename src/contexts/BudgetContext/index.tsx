@@ -71,7 +71,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
       (acc: number, current) => acc + Number(current),
       0
     );
-    setFixedCost(reduceArray);
+    setFixedCost(Number(reduceArray));
     setOnModalFixedCost(false);
   };
   const addVariableValue = (data: any): void => {
