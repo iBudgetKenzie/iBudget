@@ -13,6 +13,8 @@ export const BudgetHistory = () => {
   const { budgetHistory } = useUserContext();
   const [searchValue, setSearchValue] = useState<string>("");
 
+  budgetHistory.sort((a, b) => Number(b.id) - Number(a.id));
+
   const normalize = (str: string): string => {
     return str
       .normalize("NFD")
