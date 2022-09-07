@@ -51,7 +51,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
           setUser(userResponse.data);
           setBudgetHistory(userResponse.data.budgets);
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       }
     }
@@ -79,7 +79,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         toast.error("Usuário não encontrado");
       if (errors.response?.data === "Incorrect password")
         toast.error("Senha incorreta");
-      console.log(errors);
     }
   };
 
@@ -106,11 +105,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     } else if (!registerFormData.imageUrl?.includes("http") && isImage === "") {
       cadastro.imageUrl = userPng;
     } else if (registerFormData.imageUrl === "" && isImage !== "") {
-      console.log(isImage);
       cadastro.imageUrl = isImage;
     }
-
-    console.log(cadastro);
 
     try {
       await iBudgetApi.post("/register", cadastro);
@@ -124,7 +120,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       } else {
         toast.error("Usuário não cadastrado");
       }
-      console.log(err);
     }
   };
 
