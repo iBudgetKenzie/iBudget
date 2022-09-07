@@ -1,5 +1,3 @@
-// import { motion } from "framer-motion";
-
 import { ModalFixedCost } from "../ModalFixedCost";
 import { ModalVariableCost } from "../ModalVariableCost";
 import HeaderLogged from "../HeaderLogged";
