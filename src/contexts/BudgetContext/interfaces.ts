@@ -21,6 +21,9 @@ export interface IBudgetProvider {
 }
 
 export interface IBudgetContext {
+  setFixedCost: (value: number | string) => void;
+  setVariableCost: (value: number | string) => void;
+  setTotalDays: (string: string) => void;
   totalDays: string;
   fixedValue: number | string;
   variableValue: number | string;

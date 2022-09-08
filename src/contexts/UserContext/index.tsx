@@ -37,24 +37,25 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const [budgetHistory, setBudgetHistory] = useState<IBudget[]>([]);
   const navigate = useNavigate();
 
-  useEffect((): void => {
-    async function loadUser() {
-      const token: string | null = localStorage.getItem("@token");
-      const id: string | null = localStorage.getItem("@id");
+  async function loadUser() {
+    const token: string | null = localStorage.getItem("@token");
+    const id: string | null = localStorage.getItem("@id");
 
-      if (typeof token === "string" && typeof id === "string") {
-        try {
-          iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`;
-          const userResponse = await iBudgetApi.get(
-            `/users/${id}?_embed=budgets`
-          );
-          setUser(userResponse.data);
-          setBudgetHistory(userResponse.data.budgets);
-        } catch (error) {
-          console.error(error);
-        }
+    if (typeof token === "string" && typeof id === "string") {
+      try {
+        iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`;
+        const userResponse = await iBudgetApi.get(
+          `/users/${id}?_embed=budgets`
+        );
+        setUser(userResponse.data);
+        setBudgetHistory(userResponse.data.budgets);
+      } catch (error) {
+        console.error(error);
       }
     }
+  }
+
+  useEffect((): void => {
     loadUser();
   }, [navigate]);
 

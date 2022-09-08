@@ -27,7 +27,7 @@ export const useBudgetContext = (): IBudgetContext => {
 export const BudgetProvider = ({ children }: IBudgetProvider) => {
   const [fixedValue, setFixedCost] = useState<number | string>(0);
   const [variableValue, setVariableCost] = useState<number | string>(0);
-  const [totalDays, setTotalDays] = useState<string>("");
+  const [totalDays, setTotalDays] = useState<string>("-");
   const [onModalFixedCost, setOnModalFixedCost] = useState(false);
   const [onModalVariableCost, setOnModalVariableCost] = useState(false);
   const [onHistoric, setOnHistoric] = useState(false);
@@ -61,7 +61,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
         );
         setBudgetHistory(userResponse.data.budgets);
       } catch (error) {
-        console.error("Erro Request Budget");
+        console.error("Erro na requisição dos orçamentos.");
       }
     }
   };
@@ -96,6 +96,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
 
     try {
       await iBudgetApi.patch(`/budgets/${clickedBudgetId}`, editedValues);
+      requestBudget();
       toast.success("Orçamento editado com sucesso");
       setEditModalCard(false);
     } catch (error) {
@@ -125,7 +126,8 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
     } = data;
 
     if (startDate < endDate) {
-      const allValues = Number(fixedValue) + Number(variableValue) + estimatedSalary;
+      const allValues =
+        Number(fixedValue) + Number(variableValue) + estimatedSalary;
       const weekHours = hoursDay * daysWeek;
       const monthHours = weekHours * 4;
       const hoursCost = allValues / monthHours;
@@ -176,6 +178,9 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   return (
     <BudgetContext.Provider
       value={{
+        setFixedCost,
+        setVariableCost,
+        setTotalDays,
         onCreateBudget,
         setOnCreateBudget,
         onHistoric,
