@@ -47,16 +47,17 @@ export const DeveloperStyled = styled.li`
       padding: 10px;
       width: 30%;
       height: 50%;
+      min-height: 150px;
     }
 
     & > figure {
-      width: 100%;
+      width: 90%;
       height: 100%;
 
       img {
         width: 50%;
         height: 100%;
-        border-radius: 100%;
+        border-radius: 80%;
       }
     }
 

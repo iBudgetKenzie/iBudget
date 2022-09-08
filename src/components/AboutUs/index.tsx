@@ -5,7 +5,7 @@ import Developer from "../Developer";
 
 import { AboutUsDiv, EquipList } from "./styles";
 import alexandre from "../../assets/img/alexandre-borges-photo.png";
-import alvaro from "../../assets/img/alvaro-alencar-photo.jpg";
+import alvaro from "../../assets/img/alvaro-alencar-photo.jpeg";
 import gabriel from "../../assets/img/gabriel-alencar-photo.jpg";
 import gabriella from "../../assets/img/gabriella-terra-photo.png";
 import victor from "../../assets/img/victor-avila-photo.png";
