@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useState, useEffect, useContext } from "react";
 import { toast } from "react-toastify";
 
@@ -46,7 +47,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
 
   useEffect(() => {
     requestBudget();
-  });
+  }, []);
 
   const requestBudget = async () => {
     const id: string | null = localStorage.getItem("@id");
