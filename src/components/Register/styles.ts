@@ -9,11 +9,12 @@ export const StyledRegister = styled.div`
   width: 100%;
   max-width: 350px;
   border-radius: 7px;
+  padding-top: 30px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -85,6 +86,10 @@ export const StyledRegister = styled.div`
           height: 5vh;
         }
       }
+
+      span {
+        font-size: 12px;
+      }
     }
 
     label {
@@ -113,16 +118,31 @@ export const StyledRegister = styled.div`
       width: 100%;
       display: flex;
       align-items: center;
+      flex-direction: column;
       justify-content: space-between;
-      font-size: 0.9rem;
+      font-size: 0.81rem;
+      gap: 2px;
+
+      &::placeholder {
+          font-size: 0.81rem;
+        }
+
+      & > label {
+        width: 100%;
+        text-align: flex-start;
+      }
 
       input {
-        width: 48%;
-        height: 100%;
+        width: 100%;
+        height: 30px;
         padding: 5px;
 
         border-radius: 5px;
         border: 1px solid rgb(var(--color-purple), 1);
+
+        @media screen and (min-width: 1700px) {
+          height: 5vh;
+        }
       }
     }
 
@@ -136,11 +156,18 @@ export const StyledRegister = styled.div`
 
       .div--label {
         gap: 10px;
-        width: 50%;
+        width: 130px;
 
         label {
           font-size: 0.77rem;
         }
+      }
+
+      p {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .div--avatars {
@@ -180,6 +207,12 @@ export const StyledRegister = styled.div`
       font-family: var(--font-forms-base);
       color: rgba(var(--color-text-white));
       background-color: rgba(var(--color-purple));
+    }
+  }
+
+  .div--button {
+    button {
+      max-height: 50px;
     }
   }
 `;

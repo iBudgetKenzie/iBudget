@@ -39,7 +39,7 @@ const Register = () => {
     passwordConfirm: yup
       .string()
       .oneOf([yup.ref("password")], "Senhas não conferem")
-      .required("Confirmação obrigatória!"),
+      .required("Confirmação obrigatória"),
     position: yup.string(),
     imageUrl: yup.string(),
   });
@@ -72,7 +72,7 @@ const Register = () => {
           </label>
           <input
             type="text"
-            placeholder="Ex: João Gomes"
+            placeholder="Seu nome aqui"
             {...register("name")}
           />
           <span className="span--error">{errors.name?.message}</span>
@@ -80,11 +80,11 @@ const Register = () => {
 
         <div className="div--label">
           <label htmlFor="">
-            Nome de usuário (máx 12 digitos): <span>*</span>
+            Username (máx 12 digitos): <span>*</span>
           </label>
           <input
             type="text"
-            placeholder="Ex: Jao"
+            placeholder="Seu username aqui"
             {...register("username")}
             maxLength={12}
           />
@@ -97,7 +97,7 @@ const Register = () => {
           </label>
           <input
             type="email"
-            placeholder="Ex: joao@mail.com"
+            placeholder="Seu e-mail aqui"
             {...register("email")}
           />
           <span className="span--error">{errors.email?.message}</span>
@@ -166,8 +166,9 @@ const Register = () => {
               </button>
             </div>
           </div>
+          <p>ou</p>
           <div className="div--label">
-            <label htmlFor="">Imagem(URL):</label>
+            <label htmlFor="">Imagem (URL):</label>
             <input
               type="text"
               placeholder="Ex: Link imagem"
