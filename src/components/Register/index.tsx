@@ -80,9 +80,14 @@ const Register = () => {
 
         <div className="div--label">
           <label htmlFor="">
-            Nome de usuário: <span>*</span>
+            Nome de usuário (máx 12 digitos): <span>*</span>
           </label>
-          <input type="text" placeholder="Ex: Jao" {...register("username")} />
+          <input
+            type="text"
+            placeholder="Ex: Jao"
+            {...register("username")}
+            maxLength={12}
+          />
           <span className="span--error">{errors.username?.message}</span>
         </div>
 
