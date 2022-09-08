@@ -9,9 +9,10 @@ export const StyledLogin = styled.div`
   border-radius: 7px;
   padding: 20px;
 
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 20px;
 
   &::-webkit-scrollbar {
@@ -33,7 +34,7 @@ export const StyledLogin = styled.div`
 
   @media (min-width: 1700px) {
     & {
-      max-height: 550px;
+      max-height: 500px;
       max-width: 450px;
     }
   }
@@ -89,6 +90,7 @@ export const StyledLogin = styled.div`
     .login {
       width: 100%;
       height: 8vh;
+      min-height: 3rem;
       margin-top: 10px;
       border-radius: 8px;
       font-size: 1rem;
