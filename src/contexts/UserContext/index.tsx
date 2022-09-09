@@ -76,10 +76,14 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       setIsAuthenticated(true);
     } catch (err: unknown) {
       const errors = err as AxiosError;
-      if (errors.response?.data === "Cannot find user")
+      if (errors.response?.data === "Cannot find user") {
         toast.error("Usuário não encontrado");
-      if (errors.response?.data === "Incorrect password")
+      } else if (errors.response?.data === "Incorrect password") {
         toast.error("Senha incorreta");
+      } else {
+        console.error(errors.response?.data || errors.response)
+        toast.error("Algo deu errado. Tente novamente mais tarde.");
+      }
     }
   };
 
