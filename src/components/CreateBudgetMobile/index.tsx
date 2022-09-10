@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import { CreateBudget } from "../CreateBudget";
 
@@ -21,7 +22,12 @@ export const CreateBudgetMobile = () => {
   };
 
   return (
-    <ConteinerBudgetMobile>
+    <ConteinerBudgetMobile
+      as={motion.section}
+      initial={{ x: "-50vw" }}
+      animate={{ x: 0 }}
+      transition={{ duration: 0.3 }}
+    >
       <h2
         onClick={() => {
           handleClick();
