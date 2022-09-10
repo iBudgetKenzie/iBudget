@@ -4,14 +4,27 @@ import { CreateBudget } from "../CreateBudget";
 import { ConteinerBudgetMobile } from "./style";
 
 export const CreateBudgetMobile = () => {
-  const { setOnCreateBudget, setOnHistoric } = useBudgetContext();
+  const {
+    setOnCreateBudget,
+    setOnHistoric,
+    setFixedCost,
+    setVariableCost,
+    setTotalDays,
+  } = useBudgetContext();
+
+  const handleClick = (): void => {
+    setOnHistoric(true);
+    setOnCreateBudget(false);
+    setFixedCost(0);
+    setVariableCost(0);
+    setTotalDays("-");
+  };
 
   return (
     <ConteinerBudgetMobile>
       <h2
         onClick={() => {
-          setOnHistoric(true);
-          setOnCreateBudget(false);
+          handleClick();
         }}
       >
         Histórico
