@@ -6,7 +6,11 @@ import { useBudgetContext } from "../../contexts/BudgetContext";
 import { MoreExpenses } from "../MoreExpenses";
 import { IInputs } from "../InputsBase";
 
-import { ConteinerModal, Modal, ConteinerFormModal } from "../ModalFixedCost/style"
+import {
+  ConteinerModal,
+  Modal,
+  ConteinerFormModal,
+} from "../ModalFixedCost/style";
 
 export const ModalVariableCost = () => {
   const { setOnModalVariableCost, addVariableValue, inputsBase } =
@@ -14,8 +18,18 @@ export const ModalVariableCost = () => {
 
   const { register, handleSubmit } = useForm();
 
+  const handleOutsideClick = (event: React.SyntheticEvent) => {
+    const targetId = (event.target as HTMLDivElement).id;
+    if (targetId === "modalVariableCost") {
+      setOnModalVariableCost(false);
+    }
+  };
+
   return (
-    <ConteinerModal>
+    <ConteinerModal
+      id="modalVariableCost"
+      onClick={(event) => handleOutsideClick(event)}
+    >
       <Modal
         as={motion.div}
         initial={{ y: -50, scale: 1, opacity: 0.7 }}

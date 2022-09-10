@@ -27,8 +27,18 @@ export const ModalEditCard = () => {
 
   const { register, handleSubmit } = useForm<IEditData>();
 
+  const handleOutsideClick = (event: React.SyntheticEvent) => {
+    const targetId = (event.target as HTMLDivElement).id;
+    if (targetId === "modalEditCard") {
+      setEditModalCard(false);
+    }
+  };
+
   return (
-    <ConteinerModal>
+    <ConteinerModal
+      id="modalEditCard"
+      onClick={(event) => handleOutsideClick(event)}
+    >
       <Modal
         as={motion.div}
         initial={{ y: -50, scale: 1, opacity: 0.7 }}

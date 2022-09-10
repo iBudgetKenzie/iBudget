@@ -13,8 +13,18 @@ export const ModalFixedCost = () => {
 
   const { register, handleSubmit } = useForm();
 
+  const handleOutsideClick = (event: React.SyntheticEvent) => {
+    const targetId = (event.target as HTMLDivElement).id;
+    if (targetId === "modalFixedCost") {
+      setOnModalFixedCost(false);
+    }
+  };
+
   return (
-    <ConteinerModal>
+    <ConteinerModal
+      id="modalFixedCost"
+      onClick={(event) => handleOutsideClick(event)}
+    >
       <Modal
         as={motion.div}
         initial={{ y: -50, scale: 1, opacity: 0.7 }}
