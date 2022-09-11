@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { ModalFixedCost } from "../../components/ModalFixedCost";
 import { ModalVariableCost } from "../../components/ModalVariableCost";
@@ -38,9 +38,11 @@ const Dashboard = () => {
           </section>
         </MainConteiner>
 
-        {onModalFixedCost && <ModalFixedCost />}
-        {onModalVariableCost && <ModalVariableCost />}
-        {editModalCard && <ModalEditCard />}
+        <AnimatePresence>
+          {onModalFixedCost && <ModalFixedCost />}
+          {onModalVariableCost && <ModalVariableCost />}
+          {editModalCard && <ModalEditCard />}
+        </AnimatePresence>
       </main>
     </>
   ) : (
