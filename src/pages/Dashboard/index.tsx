@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { ModalFixedCost } from "../../components/ModalFixedCost";
 import { ModalVariableCost } from "../../components/ModalVariableCost";
 import { CreateBudget } from "../../components/CreateBudget";
-import HeaderLogged from "../../components/HeaderLogged";
+import { HeaderLogged } from "../../components/HeaderLogged";
 import { BudgetHistory } from "../../components/BudgetHistory";
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import { DashboardMobile } from "../../components/DashboardMobile/index";
@@ -38,9 +38,11 @@ const Dashboard = () => {
           </section>
         </MainConteiner>
 
-        {onModalFixedCost && <ModalFixedCost />}
-        {onModalVariableCost && <ModalVariableCost />}
-        {editModalCard && <ModalEditCard />}
+        <AnimatePresence>
+          {onModalFixedCost && <ModalFixedCost />}
+          {onModalVariableCost && <ModalVariableCost />}
+          {editModalCard && <ModalEditCard />}
+        </AnimatePresence>
       </main>
     </>
   ) : (

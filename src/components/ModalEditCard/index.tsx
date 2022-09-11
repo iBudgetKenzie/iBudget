@@ -41,10 +41,10 @@ export const ModalEditCard = () => {
     >
       <Modal
         as={motion.div}
-        initial={{ y: -50, scale: 1, opacity: 0.7 }}
-        animate={{ y: 0, scale: 1, opacity: 1 }}
-        exit={{ y: 50, scale: 1, opacity: 0.7 }}
-        transition={{ duration: 0.3 }}
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -50, opacity: 0 }}
+        transition={{ duration: 0.2 }}
       >
         <div>
           <h2>Editar orçamento</h2>
