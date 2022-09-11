@@ -6,7 +6,7 @@ import { useUserContext } from "../../contexts/UserContext";
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import { Header } from "./styled";
 
-const HeaderL = () => {
+export const HeaderLogged = () => {
   const { user, handleSignOut } = useUserContext();
   const { setFixedCost, setVariableCost, setTotalDays } = useBudgetContext();
 
@@ -36,5 +36,3 @@ const HeaderL = () => {
     </Header>
   );
 };
-
-export default HeaderL;

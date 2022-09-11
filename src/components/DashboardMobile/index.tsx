@@ -1,8 +1,10 @@
+import { AnimatePresence } from "framer-motion";
+
+import { HeaderLogged } from "../HeaderLogged";
+import { ModalEditCard } from "../ModalEditCard";
 import { ModalFixedCost } from "../ModalFixedCost";
 import { ModalVariableCost } from "../ModalVariableCost";
-import HeaderLogged from "../HeaderLogged";
 import { useBudgetContext } from "../../contexts/BudgetContext";
-import { ModalEditCard } from "../ModalEditCard";
 import { BudgetHistoryMobile } from "../BudgetHistoryMobile";
 import { CreateBudgetMobile } from "../CreateBudgetMobile/index";
 
@@ -20,16 +22,14 @@ export const DashboardMobile = () => {
       <HeaderLogged />
       <main>
         <MainConteinerMobile>
-          {onCreateBudget ? (
-            <CreateBudgetMobile />
-          ) : (
-            <BudgetHistoryMobile />
-          )}
+          {onCreateBudget ? <CreateBudgetMobile /> : <BudgetHistoryMobile />}
         </MainConteinerMobile>
 
-        {onModalFixedCost && <ModalFixedCost />}
-        {onModalVariableCost && <ModalVariableCost />}
-        {editModalCard && <ModalEditCard />}
+        <AnimatePresence>
+          {onModalFixedCost && <ModalFixedCost />}
+          {onModalVariableCost && <ModalVariableCost />}
+          {editModalCard && <ModalEditCard />}
+        </AnimatePresence>
       </main>
     </>
   );
