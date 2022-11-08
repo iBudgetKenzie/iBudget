@@ -3,6 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { UserProvider } from "./contexts/UserContext";
 import { BudgetProvider } from "./contexts/BudgetContext";
+import { CostumerProvider } from "./contexts/CostumerContext";
 
 import GlobalStyle from "./styles/global";
 import Routes from "./Routes/index";
@@ -10,25 +11,27 @@ import Routes from "./Routes/index";
 function App() {
   return (
     <>
-      <UserProvider>
-        <BudgetProvider>
-          <GlobalStyle />
-          <ToastContainer
-            position="bottom-right"
-            hideProgressBar={true}
-            newestOnTop={false}
-            pauseOnFocusLoss
-            autoClose={3000}
-            theme={"dark"}
-            pauseOnHover
-            closeOnClick
-            rtl={false}
-            draggable
-            limit={2}
-          />
-          <Routes />
-        </BudgetProvider>
-      </UserProvider>
+      <CostumerProvider>
+        <UserProvider>
+          <BudgetProvider>
+            <GlobalStyle />
+            <ToastContainer
+              position="bottom-right"
+              hideProgressBar={true}
+              newestOnTop={false}
+              pauseOnFocusLoss
+              autoClose={3000}
+              theme={"dark"}
+              pauseOnHover
+              closeOnClick
+              rtl={false}
+              draggable
+              limit={2}
+            />
+            <Routes />
+          </BudgetProvider>
+        </UserProvider>
+      </CostumerProvider>
     </>
   );
 }
