@@ -71,7 +71,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       localStorage.setItem("@id", JSON.stringify(response.data.user.id));
 
       setUser(response.data.user);
-      navigate("/dashboard");
+      navigate("/dashboard/customers");
       toast.success("Login realizado com sucesso!");
       setIsAuthenticated(true);
     } catch (err: unknown) {

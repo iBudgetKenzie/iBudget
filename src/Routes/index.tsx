@@ -12,7 +12,7 @@ const RoutesMain = () => {
     <Routes>
       <Route path="/home" element={<Home />} />
       <Route
-        path="/dashboard"
+        path="/dashboard/customers"
         element={
           isAuthenticated ? (
             <Dashboard />
