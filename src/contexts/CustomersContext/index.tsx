@@ -24,14 +24,14 @@ export const CustomerProvider = ({ children }: ICustomerProvider) => {
 
   const listCustomers = async (): Promise<void> => {
     const token = localStorage.getItem('Token')
-    const customerResponse = await iBudgetApi.get<ICreateCustomer[]>('/customers', {
+    const customerResponse = await iBudgetApi.get('/customers', {
         headers : {
           Authorization: `Bearer: ${token}`
         }
       })
       .then(res => res)
       .catch(error => console.log(error))
-      setCustomerList(customerResponse)
+      // setCustomerList(customerResponse)
   }
 
     
