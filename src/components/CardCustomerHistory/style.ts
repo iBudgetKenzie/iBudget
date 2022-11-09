@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ConteinerCardBudgetHistory = styled.li`
+export const ConteinerCardCustomerHistory = styled.li`
   height: 89px;
 
   border: 1px solid rgba(var(--color-purple), 1);

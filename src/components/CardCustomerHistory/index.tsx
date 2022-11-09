@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import { IBudget } from "../../contexts/UserContext/interfaces";
-import { ConteinerCardBudgetHistory } from "./style";
+import { ConteinerCardCustomerHistory } from "./style";
 
-export const CardBudgetHistory = ({
+export const CardCustomerHistory = ({
   projectName,
   budget,
   id,
@@ -52,7 +52,7 @@ export const CardBudgetHistory = ({
   };
 
   return (
-    <ConteinerCardBudgetHistory
+    <ConteinerCardCustomerHistory
       as={motion.li}
       layout
       initial={{ x: -100 }}
@@ -80,6 +80,6 @@ export const CardBudgetHistory = ({
         />
         <GoTrashcan onClick={() => deleteBudgetHistory(id)} />
       </div>
-    </ConteinerCardBudgetHistory>
+    </ConteinerCardCustomerHistory>
   );
 };

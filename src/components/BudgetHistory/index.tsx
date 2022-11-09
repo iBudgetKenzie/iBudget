@@ -10,10 +10,10 @@ import { useBudgetContext } from "../../contexts/BudgetContext";
 
 export const BudgetHistory = () => {
   const { setOnHistoric, setOnCreateBudget } = useBudgetContext();
-  const { budgetHistory } = useUserContext();
+  const { customersHistory } = useUserContext();
   const [searchValue, setSearchValue] = useState<string>("");
 
-  budgetHistory.sort((a, b) => Number(b.id) - Number(a.id));
+  customersHistory.sort((a, b) => Number(b.id) - Number(a.id));
 
   const normalize = (str: string): string => {
     return str
@@ -25,7 +25,7 @@ export const BudgetHistory = () => {
 
   const filteredBudgets =
     searchValue.length > 0
-      ? budgetHistory.filter((elem) => {
+      ? customersHistory.filter((elem) => {
           const normalizedSearch = normalize(searchValue);
           const normalizedProjectName = normalize(elem.projectName);
 
@@ -82,8 +82,8 @@ export const BudgetHistory = () => {
               Nada encontrado para: <strong>{searchValue}</strong>
             </p>
           )
-        ) : budgetHistory.length > 0 ? (
-          budgetHistory.map(
+        ) : customersHistory.length > 0 ? (
+          customersHistory.map(
             ({ budget, projectName, id, projectTime }: IBudget) => {
               return (
                 <CardBudgetHistory
