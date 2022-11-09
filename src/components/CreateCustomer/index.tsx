@@ -52,31 +52,32 @@ export const CreateCustomer = () => {
         />
         <span>{errors.email?.message}</span>
 
-        <DivCompanyContact>
-          <div>
-            <label htmlFor="isCompany">
-              Nome do projeto: <span>*</span>
-            </label>
-            <input
-              type="checkbox"
-              id="isCompany"
-              placeholder="Ex: Projeto1"
-              {...register("isCompany")}
-            />
-            <span>{errors.isCompany?.message}</span>
-          </div>
-
-          <div>
-            <label htmlFor="contact">Contato:</label>
-            <input
-              type="text"
-              id="contact"
-              placeholder="Ex: Projeto1"
-              {...register("contact")}
-            />
-            <span>{errors.contact?.message}</span>
-          </div>
-        </DivCompanyContact>
+        <div>
+          <DivCompanyContact>
+            <div>
+              <label htmlFor="isCompany">
+                É uma empresa?
+              </label>
+              <input
+                type="checkbox"
+                id="isCompany"
+                placeholder="Ex: Projeto1"
+                {...register("isCompany")}
+              />
+              <span>{errors.isCompany?.message}</span>
+            </div>
+            <div>
+              <label htmlFor="contact">Contato:</label>
+              <input
+                type="text"
+                id="contact"
+                placeholder="Ex: Projeto1"
+                {...register("contact")}
+              />
+              <span>{errors.contact?.message}</span>
+            </div>
+          </DivCompanyContact>
+        </div>
 
         <button type="submit">Criar cliente</button>
       </form>
