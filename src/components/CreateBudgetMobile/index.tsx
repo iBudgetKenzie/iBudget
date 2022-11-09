@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useBudgetContext } from "../../contexts/BudgetContext";
 import { CreateBudget } from "../CreateBudget";
 
-import { ConteinerBudgetMobile } from "./style";
+import { ConteinerCreateMobile } from "./style";
 
 export const CreateBudgetMobile = () => {
   const {
@@ -22,7 +22,7 @@ export const CreateBudgetMobile = () => {
   };
 
   return (
-    <ConteinerBudgetMobile
+    <ConteinerCreateMobile
       as={motion.section}
       initial={{ x: "-50vw" }}
       animate={{ x: 0 }}
@@ -36,6 +36,6 @@ export const CreateBudgetMobile = () => {
         Histórico
       </h2>
       <CreateBudget />
-    </ConteinerBudgetMobile>
+    </ConteinerCreateMobile>
   );
 };
