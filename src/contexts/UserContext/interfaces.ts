@@ -72,6 +72,10 @@ export interface IUserProviderData {
 }
 
 export interface ILoginData {
-  accessToken: string;
+  token: string;
   user: IUser;
+}
+
+export interface IMessageError {
+  message: string;
 }
