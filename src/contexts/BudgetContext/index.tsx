@@ -38,7 +38,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
   const [inputBudgetValue, setBudgetValue] = useState<number>(0);
   const [inputProjectTime, setProjectTime] = useState<number>(0);
 
-  const { setBudgetHistory } = useUserContext();
+  const { setCustomersHistory } = useUserContext();
 
   const priceFormated = new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -59,7 +59,7 @@ export const BudgetProvider = ({ children }: IBudgetProvider) => {
         const userResponse = await iBudgetApi.get(
           `/users/${id}?_embed=budgets`
         );
-        setBudgetHistory(userResponse.data.budgets);
+        setCustomersHistory(userResponse.data.budgets);
       } catch (error) {
         console.error("Erro na requisição dos orçamentos.");
       }

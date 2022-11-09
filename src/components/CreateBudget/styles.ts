@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerCreateBudget = styled.div`
+export const ContainerCreate = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

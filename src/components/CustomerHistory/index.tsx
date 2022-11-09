@@ -1,15 +1,13 @@
 import { motion } from "framer-motion";
 
-import { CardBudgetHistory } from "../CardBudgetHistory";
+import { CardCustomerHistory } from "../CardCustomerHistory";
 import { useUserContext } from "../../contexts/UserContext/index";
 import { IoSearch } from "react-icons/io5";
-import { ContainerBudgetHistory, FilterBar } from "./style";
+import { ContainerCustomertHistory, FilterBar } from "./style";
 import { IBudget } from "../../contexts/UserContext/interfaces";
 import { useState } from "react";
-import { useBudgetContext } from "../../contexts/BudgetContext";
 
-export const BudgetHistory = () => {
-  const { setOnHistoric, setOnCreateBudget } = useBudgetContext();
+export const CustomerHistory = () => {
   const { customersHistory } = useUserContext();
   const [searchValue, setSearchValue] = useState<string>("");
 
@@ -23,7 +21,7 @@ export const BudgetHistory = () => {
       .trim();
   };
 
-  const filteredBudgets =
+  const filteredCustomers =
     searchValue.length > 0
       ? customersHistory.filter((elem) => {
           const normalizedSearch = normalize(searchValue);
@@ -34,17 +32,14 @@ export const BudgetHistory = () => {
       : [];
 
   return (
-    <ContainerBudgetHistory>
+    <ContainerCustomertHistory>
       <FilterBar>
         <div>
-          <h2>Histórico de orçamentos</h2>
+          <h2>Histórico de clientes</h2>
           <h2
-            onClick={() => {
-              setOnHistoric(false);
-              setOnCreateBudget(true);
-            }}
+            onClick={() => {}}
           >
-            Gerar orçamento
+            Criar Cliente
           </h2>
         </div>
         <div>
@@ -61,11 +56,11 @@ export const BudgetHistory = () => {
 
       <motion.div>
         {searchValue.length > 0 ? (
-          filteredBudgets.length > 0 ? (
-            filteredBudgets.map(
+          filteredCustomers.length > 0 ? (
+            filteredCustomers.map(
               ({ budget, projectName, id, projectTime }: IBudget) => {
                 return (
-                  <CardBudgetHistory
+                  <CardCustomerHistory
                     key={id}
                     projectName={projectName}
                     budget={budget}
@@ -82,11 +77,11 @@ export const BudgetHistory = () => {
               Nada encontrado para: <strong>{searchValue}</strong>
             </p>
           )
-        ) : customersHistory.length > 0 ? (
-          customersHistory.map(
+        ) : filteredCustomers.length > 0 ? (
+          filteredCustomers.map(
             ({ budget, projectName, id, projectTime }: IBudget) => {
               return (
-                <CardBudgetHistory
+                <CardCustomerHistory
                   key={id}
                   projectName={projectName}
                   budget={budget}
@@ -102,6 +97,6 @@ export const BudgetHistory = () => {
           <span>Nenhum orçamento criado até o momento</span>
         )}
       </motion.div>
-    </ContainerBudgetHistory>
+    </ContainerCustomertHistory>
   );
 };

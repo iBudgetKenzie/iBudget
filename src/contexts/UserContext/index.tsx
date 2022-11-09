@@ -34,7 +34,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
   const [isSobre, setIsSobre] = useState<boolean>(false);
   const [isImage, setIsImage] = useState<string>("");
-  const [budgetHistory, setBudgetHistory] = useState<IBudget[]>([]);
+  const [customersHistory, setCustomersHistory] = useState<IBudget[]>([]);
   const navigate = useNavigate();
 
   async function loadUser() {
@@ -48,7 +48,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
           `/users/${id}?_embed=budgets`
         );
         setUser(userResponse.data);
-        setBudgetHistory(userResponse.data.budgets);
+        setCustomersHistory(userResponse.data.budgets);
       } catch (error) {
         console.error(error);
       }
@@ -71,7 +71,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       localStorage.setItem("@id", JSON.stringify(response.data.user.id));
 
       setUser(response.data.user);
-      navigate("/dashboard");
+      navigate("/dashboard/customers");
       toast.success("Login realizado com sucesso!");
       setIsAuthenticated(true);
     } catch (err: unknown) {
@@ -139,8 +139,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   return (
     <UserContext.Provider
       value={{
-        setBudgetHistory,
-        budgetHistory,
+        setCustomersHistory,
+        customersHistory,
         user,
         setUser,
         isAuthenticated,
