@@ -1,17 +1,17 @@
 import { AnimatePresence, motion } from "framer-motion";
 
-import { ModalFixedCost } from "../ModalFixedCost/index";
-import { ModalVariableCost } from "../ModalVariableCost/index";
-import { ModalEditCard } from "../ModalEditCard/index";
-import { useBudgetContext } from "../../contexts/BudgetContext";
-import { CreateBudget } from '../CreateBudget/index';
-import { BudgetHistory } from '../BudgetHistory/index';
+// import { ModalFixedCost } from "../ModalFixedCost/index";
+// import { ModalVariableCost } from "../ModalVariableCost/index";
+// import { ModalEditCard } from "../ModalEditCard/index";
+// import { useBudgetContext } from "../../contexts/BudgetContext";
 
 import { MainConteiner } from "./style";
+import { CreateCustomer } from "../CreateCustomer";
+import { CustomerHistory } from '../CustomerHistory/index';
 
 export const DashboardCustomers = () => {
-  const { onModalFixedCost, onModalVariableCost, editModalCard } =
-    useBudgetContext();
+  // const { onModalFixedCost, onModalVariableCost, editModalCard } =
+  //   useBudgetContext();
 
   return (
     <main>
@@ -24,18 +24,18 @@ export const DashboardCustomers = () => {
       >
         <section>
           <div>
-            <CreateBudget />
+            <CreateCustomer />
           </div>
         </section>
         <section>
-          <BudgetHistory />
+          <CustomerHistory />
         </section>
       </MainConteiner>
 
       <AnimatePresence>
-        {onModalFixedCost && <ModalFixedCost />}
+        {/* {onModalFixedCost && <ModalFixedCost />}
         {onModalVariableCost && <ModalVariableCost />}
-        {editModalCard && <ModalEditCard />}
+        {editModalCard && <ModalEditCard />} */}
       </AnimatePresence>
     </main>
   );

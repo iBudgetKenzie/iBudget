@@ -1,4 +1,8 @@
-import { createContext, useContext } from 'react';
+import { 
+    createContext, 
+    useContext, 
+    useState 
+} from 'react';
 import { ICustomerContext, ICustomerProvider } from './interfaces';
 
 const CustomerContext = createContext<ICustomerContext>(
@@ -12,8 +16,14 @@ export const useCustomerContext = () => {
 
 export const CustomerProvider = ({ children }: ICustomerProvider) => {
 
+    const sendCustomer = () => {
+
+    }
+
     return (
-        <CustomerContext.Provider value={{}}>
+        <CustomerContext.Provider value={{
+            sendCustomer
+        }}>
             { children }
         </CustomerContext.Provider>
     )
