@@ -1,40 +1,38 @@
 import { motion } from "framer-motion";
 
-// import { CardBudgetHistory } from "../CardBudgetHistory";
-// import { useUserContext } from "../../contexts/UserContext/index";
+import { CardCustomerHistory } from "../CardCustomerHistory";
+import { useUserContext } from "../../contexts/UserContext/index";
 import { IoSearch } from "react-icons/io5";
-import { ContainerBudgetHistory, FilterBar } from "./style";
-// import { IBudget } from "../../contexts/UserContext/interfaces";
-// import { useState } from "react";
-// import { useBudgetContext } from "../../contexts/BudgetContext";
+import { ContainerCustomertHistory, FilterBar } from "./style";
+import { IBudget } from "../../contexts/UserContext/interfaces";
+import { useState } from "react";
 
 export const CustomerHistory = () => {
-  // const { setOnHistoric, setOnCreateBudget } = useBudgetContext();
-  // const { budgetHistory } = useUserContext();
-  // const [searchValue, setSearchValue] = useState<string>("");
+  const { customersHistory } = useUserContext();
+  const [searchValue, setSearchValue] = useState<string>("");
 
-  // budgetHistory.sort((a, b) => Number(b.id) - Number(a.id));
+  customersHistory.sort((a, b) => Number(b.id) - Number(a.id));
 
-  // const normalize = (str: string): string => {
-  //   return str
-  //     .normalize("NFD")
-  //     .replace(/[\u0300-\u036f]/g, "")
-  //     .toLowerCase()
-  //     .trim();
-  // };
+  const normalize = (str: string): string => {
+    return str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim();
+  };
 
-  // const filteredCustomers =
-  //   searchValue.length > 0
-  //     ? budgetHistory.filter((elem) => {
-  //         const normalizedSearch = normalize(searchValue);
-  //         const normalizedProjectName = normalize(elem.projectName);
+  const filteredCustomers =
+    searchValue.length > 0
+      ? customersHistory.filter((elem) => {
+          const normalizedSearch = normalize(searchValue);
+          const normalizedProjectName = normalize(elem.projectName);
 
-  //         return normalizedProjectName.includes(normalizedSearch);
-  //       })
-  //     : [];
+          return normalizedProjectName.includes(normalizedSearch);
+        })
+      : [];
 
   return (
-    <ContainerBudgetHistory>
+    <ContainerCustomertHistory>
       <FilterBar>
         <div>
           <h2>Histórico de clientes</h2>
@@ -48,7 +46,7 @@ export const CustomerHistory = () => {
           <input
             type="text"
             placeholder="Search..."
-            // onChange={(event) => setSearchValue(event.target.value)}
+            onChange={(event) => setSearchValue(event.target.value)}
           />
           <span>
             <IoSearch />
@@ -57,12 +55,12 @@ export const CustomerHistory = () => {
       </FilterBar>
 
       <motion.div>
-        {/* {searchValue.length > 0 ? (
+        {searchValue.length > 0 ? (
           filteredCustomers.length > 0 ? (
             filteredCustomers.map(
               ({ budget, projectName, id, projectTime }: IBudget) => {
                 return (
-                  <CardBudgetHistory
+                  <CardCustomerHistory
                     key={id}
                     projectName={projectName}
                     budget={budget}
@@ -83,7 +81,7 @@ export const CustomerHistory = () => {
           filteredCustomers.map(
             ({ budget, projectName, id, projectTime }: IBudget) => {
               return (
-                <CardBudgetHistory
+                <CardCustomerHistory
                   key={id}
                   projectName={projectName}
                   budget={budget}
@@ -97,8 +95,8 @@ export const CustomerHistory = () => {
           )
         ) : (
           <span>Nenhum orçamento criado até o momento</span>
-        )} */}
+        )}
       </motion.div>
-    </ContainerBudgetHistory>
+    </ContainerCustomertHistory>
   );
 };

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ConteinerBudgetMobile = styled.section`
+export const ConteinerCreateMobile = styled.section`
   width: 60vw;
   padding-top: 21px;
 

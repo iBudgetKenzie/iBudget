@@ -35,8 +35,9 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
   const [isSobre, setIsSobre] = useState<boolean>(false);
   const [isImage, setIsImage] = useState<string>("");
-  const [budgetHistory, setBudgetHistory] = useState<IBudget[]>([]);
   const [onModalUserInfo, setOnModalUserInfo] = useState<boolean>(false);
+  const [customersHistory, setCustomersHistory] = useState<IBudget[]>([]);
+  
   const navigate = useNavigate();
 
   const handleEditUserInfo = async (data: IEditUser) => {
@@ -58,7 +59,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
           `/users/${id}?_embed=budgets`
         );
         setUser(userResponse.data);
-        setBudgetHistory(userResponse.data.budgets);
+        setCustomersHistory(userResponse.data.budgets);
       } catch (error) {
         console.error(error);
       }
@@ -149,8 +150,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   return (
     <UserContext.Provider
       value={{
-        setBudgetHistory,
-        budgetHistory,
+        setCustomersHistory,
+        customersHistory,
         user,
         setUser,
         isAuthenticated,

@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { useBudgetContext } from "../../contexts/BudgetContext";
-import { CreateBudget } from "../CreateBudget";
 
-import { ConteinerCreateMobile } from "./style";
+import { ConteinerCreateMobile } from "../CreateBudgetMobile/style";
+import { CreateCustomer } from '../CreateCustomer/index';
 
-export const CreateBudgetMobile = () => {
+export const CreateCustomerMobile = () => {
   const {
     setOnCreateBudget,
     setOnHistoric,
@@ -35,7 +35,7 @@ export const CreateBudgetMobile = () => {
       >
         Histórico
       </h2>
-      <CreateBudget />
+      <CreateCustomer />
     </ConteinerCreateMobile>
   );
 };

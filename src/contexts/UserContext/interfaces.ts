@@ -46,7 +46,7 @@ export interface IRegisterForm {
 }
 
 export interface IUserProviderData {
-  budgetHistory: IBudget[];
+  customersHistory: IBudget[];
   user: IUser;
   isAuthenticated: boolean;
   isHome: boolean;
@@ -63,7 +63,7 @@ export interface IUserProviderData {
   setIsSobre: (isSobre: boolean) => void;
   setIsRegister: (isRegister: boolean) => void;
   setIsImage: (isImage: string) => void;
-  setBudgetHistory: (budgetHistory: IBudget[]) => void;
+  setCustomersHistory: (budgetHistory: IBudget[]) => void;
   onSubmitLogin: (loginFormData: ILoginForm) => void;
   onSubmitRegister: (registerFormData: IRegisterForm) => void;
   handleSignOut: () => void;
