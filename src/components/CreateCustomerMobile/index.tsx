@@ -1,25 +1,14 @@
 import { motion } from "framer-motion";
-import { useBudgetContext } from "../../contexts/BudgetContext";
 
 import { ConteinerCreateMobile } from "../CreateBudgetMobile/style";
 import { CreateCustomer } from '../CreateCustomer/index';
+import { useCustomerContext } from '../../contexts/CustomersContext/index';
 
 export const CreateCustomerMobile = () => {
-  const {
-    setOnCreateBudget,
-    setOnHistoric,
-    setFixedCost,
-    setVariableCost,
-    setTotalDays,
-  } = useBudgetContext();
-
-  const handleClick = (): void => {
-    setOnHistoric(true);
-    setOnCreateBudget(false);
-    setFixedCost(0);
-    setVariableCost(0);
-    setTotalDays("-");
-  };
+  const { 
+    setOnCreateCustomer,
+    onCreateCustomer 
+  } = useCustomerContext();
 
   return (
     <ConteinerCreateMobile
@@ -29,9 +18,7 @@ export const CreateCustomerMobile = () => {
       transition={{ duration: 0.3 }}
     >
       <h2
-        onClick={() => {
-          handleClick();
-        }}
+        onClick={() => setOnCreateCustomer(!onCreateCustomer)}
       >
         Histórico
       </h2>

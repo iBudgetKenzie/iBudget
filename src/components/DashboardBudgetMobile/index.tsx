@@ -10,7 +10,7 @@ import { CreateBudgetMobile } from "../CreateBudgetMobile/index";
 
 import { MainConteinerMobile } from "./style";
 
-export const DashboardMobile = () => {
+export const DashboardBudgetMobile = () => {
   const {
     onModalFixedCost,
     onModalVariableCost,

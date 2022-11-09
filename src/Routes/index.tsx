@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "../pages/Home";
 import Dashboard from "../pages/Dashboard";
 import { useUserContext } from "../contexts/UserContext";
+import { DashboardCustomers } from "../components/DashboardCustomers";
 
 const RoutesMain = () => {
   const { isAuthenticated } = useUserContext();
@@ -23,6 +24,7 @@ const RoutesMain = () => {
           )
         }
       />
+      <Route path="/dashboard/customer/budgets" element={<DashboardCustomers />} />
       <Route path="*" element={<Navigate to="/home" />} />
     </Routes>
   );

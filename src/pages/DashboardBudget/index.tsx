@@ -1,8 +1,8 @@
 import { HeaderLogged } from "../../components/HeaderLogged";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
-import { DashboardCustomers } from "../../components/DashboardCustomers";
-import { DashboardCustomerMobile } from '../../components/DashboardCustomerMobile/index';
+import { DashboardBudget } from '../../components/DashboardBudget/index';
+import { DashboardBudgetMobile } from '../../components/DashboardBudgetMobile/index';
 
 const Dashboard = () => {
   const [, width] = useWindowSize();
@@ -10,10 +10,10 @@ const Dashboard = () => {
   return width > 1023 ? (
     <>
       <HeaderLogged />
-      <DashboardCustomers />
+      <DashboardBudget />
     </>
   ) : (
-    <DashboardCustomerMobile />
+    <DashboardBudgetMobile />
   );
 };
 
