@@ -6,8 +6,14 @@ import { IoSearch } from "react-icons/io5";
 import { ContainerCustomertHistory, FilterBar } from "./style";
 import { IBudget } from "../../contexts/UserContext/interfaces";
 import { useState } from "react";
+import { useCustomerContext } from '../../contexts/CustomersContext/index';
 
 export const CustomerHistory = () => {
+  const { 
+    setOnCreateCustomer,
+    onCreateCustomer 
+  } = useCustomerContext();
+
   const { customersHistory } = useUserContext();
   const [searchValue, setSearchValue] = useState<string>("");
 
@@ -37,7 +43,7 @@ export const CustomerHistory = () => {
         <div>
           <h2>Histórico de clientes</h2>
           <h2
-            onClick={() => {}}
+            onClick={() => setOnCreateCustomer(!onCreateCustomer)}
           >
             Criar Cliente
           </h2>
