@@ -2,6 +2,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import jwtDecode from "jwt-decode";
 import { AxiosError } from "axios";
 
 import iBudgetApi from "../../services/iBudgetApi";
@@ -15,7 +16,8 @@ import {
   IUserProviderData,
   IUserProviderProps,
   IEditUser,
-  IMessageError
+  IMessageError,
+  IDecode
 } from "./interfaces";
 
 export const UserContext = createContext<IUserProviderData>(
@@ -51,16 +53,17 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   async function loadUser() {
     const token: string | null = localStorage.getItem("@token");
-    const id: string | null = localStorage.getItem("@id");
+    const id = jwtDecode<IDecode>(token as string).sub;
 
-    if (typeof token === "string" && typeof id === "string") {
+    if (typeof token === "string") {
       try {
         iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`;
         const userResponse = await iBudgetApi.get(
           `/users/${id}`
         );
+        
         setUser(userResponse.data);
-        setCustomersHistory(userResponse.data.budgets);
+        setCustomersHistory(userResponse.data.customers);
       } catch (error) {
         console.error(error);
       }
@@ -77,9 +80,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         "/login",
         loginFormData
       );
-      console.log(response)
       localStorage.clear();
-
       localStorage.setItem("@token", response.data.token);
    
       navigate("/dashboard/customers");
@@ -90,9 +91,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       const messageError = (errors.response?.data as IMessageError).message;
       
       if (messageError === "Invalid user or password") {
-        toast.error("Usuário não encontrado");
-      } else if (errors.response?.data === "Incorrect password") {
-        toast.error("Senha incorreta");
+        toast.error("Email ou senha Incorretos");
       } else {
         console.error(errors.response?.data || errors.response);
         toast.error("Algo deu errado. Tente novamente mais tarde.");
@@ -101,7 +100,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   };
 
   const onSubmitRegister = async (registerFormData: IRegisterForm) => {
-    console.log(registerFormData)
     const cadastro = {
       name: registerFormData.name,
       username: registerFormData.username,
