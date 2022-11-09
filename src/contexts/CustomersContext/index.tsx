@@ -10,6 +10,9 @@ export const useCustomerContext = () => {
 };
 
 export const CustomerProvider = ({ children }: ICustomerProvider) => {
+  const [customersList, setCustomerList] = useState<ICreateCustomer[]>([]);
+  const [onCreateCustomer, setOnCreateCustomer] = useState<boolean>(true);
+
   const sendCustomer = async () => {
     const token = localStorage.getItem('Token')
     const createCustomer = await iBudgetApi.post('/customers',
@@ -20,7 +23,6 @@ export const CustomerProvider = ({ children }: ICustomerProvider) => {
       })
   };
 
-  const [customersList, setCustomerList] = useState<ICreateCustomer[]>([])
 
   const listCustomers = async (): Promise<void> => {
     const token = localStorage.getItem('Token')
@@ -39,6 +41,8 @@ export const CustomerProvider = ({ children }: ICustomerProvider) => {
     <CustomerContext.Provider
       value={{
         sendCustomer,
+        onCreateCustomer,
+        setOnCreateCustomer
       }}
     >
       {children}

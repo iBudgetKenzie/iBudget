@@ -14,4 +14,6 @@ export interface ICustomerProvider {
 
 export interface ICustomerContext {
     sendCustomer: (data: ICreateCustomer) => void;
+    onCreateCustomer: boolean;
+    setOnCreateCustomer: (onCreateCustomer: boolean) => void;
 }
