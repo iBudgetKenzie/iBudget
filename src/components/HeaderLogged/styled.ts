@@ -24,7 +24,7 @@ export const Header = styled.header`
     }
   }
 
-  div {
+  & > div {
     width: 250px;
 
     color: rgba(var(--color-purple-dark), 1);
@@ -38,7 +38,6 @@ export const Header = styled.header`
     @media (min-width: 400px) {
       & {
         gap: 1rem;
-        /* margin-left: -1rem; */
       }
     }
 
@@ -51,6 +50,12 @@ export const Header = styled.header`
 
       color: rgba(var(--color-white), 1);
 
+      &:hover,
+      &:focus {
+        opacity: 0.5;
+        cursor: pointer;
+      }
+      
       @media (min-width: 475px) {
         font-size: 0.88rem;
       }
@@ -61,8 +66,14 @@ export const Header = styled.header`
       height: 40px;
       margin-left: 0px;
       margin-top: 0px;
-
+      cursor: pointer;
       border-radius: 50px;
+
+      &:hover,
+      &:focus {
+        opacity: 0.5;
+        cursor: pointer;
+      }
     }
 
     button {

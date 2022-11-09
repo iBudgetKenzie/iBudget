@@ -27,6 +27,14 @@ export interface IBudget {
 
 export interface ILoginForm {}
 
+export interface IEditUser {
+  name?: string;
+  username?: string;
+  password?: string;
+  position?: string;
+  imageUrl?: string;
+}
+
 export interface IRegisterForm {
   name: string;
   username: string;
@@ -46,6 +54,8 @@ export interface IUserProviderData {
   isRegister: boolean;
   isSobre: boolean;
   isImage: string;
+  onModalUserInfo: boolean;
+  setOnModalUserInfo: (boolean: boolean) => void;
   setUser: (user: IUser) => void;
   setIsAuthenticated: (isAuthenticated: boolean) => void;
   setIsHome: (isHome: boolean) => void;
@@ -57,6 +67,8 @@ export interface IUserProviderData {
   onSubmitLogin: (loginFormData: ILoginForm) => void;
   onSubmitRegister: (registerFormData: IRegisterForm) => void;
   handleSignOut: () => void;
+  handleEditUserInfo: (data: IEditUser) => void;
+  handleDeleteUser: () => void;
 }
 
 export interface ILoginData {
