@@ -14,6 +14,7 @@ import {
   IUser,
   IUserProviderData,
   IUserProviderProps,
+  IEditUser,
 } from "./interfaces";
 
 export const UserContext = createContext<IUserProviderData>(
@@ -35,7 +36,16 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const [isSobre, setIsSobre] = useState<boolean>(false);
   const [isImage, setIsImage] = useState<string>("");
   const [budgetHistory, setBudgetHistory] = useState<IBudget[]>([]);
+  const [onModalUserInfo, setOnModalUserInfo] = useState<boolean>(false);
   const navigate = useNavigate();
+
+  const handleEditUserInfo = async (data: IEditUser) => {
+    console.log(data);
+  };
+
+  const handleDeleteUser = async () => {
+    console.log(user.id);
+  };
 
   async function loadUser() {
     const token: string | null = localStorage.getItem("@token");
@@ -81,7 +91,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       } else if (errors.response?.data === "Incorrect password") {
         toast.error("Senha incorreta");
       } else {
-        console.error(errors.response?.data || errors.response)
+        console.error(errors.response?.data || errors.response);
         toast.error("Algo deu errado. Tente novamente mais tarde.");
       }
     }
@@ -151,6 +161,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         setIsLogin,
         isRegister,
         setIsRegister,
+        onModalUserInfo,
+        setOnModalUserInfo,
         isSobre,
         setIsSobre,
         isImage,
@@ -158,6 +170,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         onSubmitLogin,
         onSubmitRegister,
         handleSignOut,
+        handleEditUserInfo,
+        handleDeleteUser,
       }}
     >
       {children}

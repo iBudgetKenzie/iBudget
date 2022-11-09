@@ -4,14 +4,18 @@ import { ModalFixedCost } from "../ModalFixedCost/index";
 import { ModalVariableCost } from "../ModalVariableCost/index";
 import { ModalEditCard } from "../ModalEditCard/index";
 import { useBudgetContext } from "../../contexts/BudgetContext";
-import { CreateBudget } from '../CreateBudget/index';
-import { BudgetHistory } from '../BudgetHistory/index';
+import { CreateBudget } from "../CreateBudget/index";
+import { BudgetHistory } from "../BudgetHistory/index";
 
 import { MainConteiner } from "./style";
+import ModalUserInfo from "../ModalUserInfo";
+import { useUserContext } from "../../contexts/UserContext";
 
 export const DashboardBudget = () => {
   const { onModalFixedCost, onModalVariableCost, editModalCard } =
     useBudgetContext();
+
+  const { onModalUserInfo } = useUserContext();
 
   return (
     <main>
@@ -36,6 +40,7 @@ export const DashboardBudget = () => {
         {onModalFixedCost && <ModalFixedCost />}
         {onModalVariableCost && <ModalVariableCost />}
         {editModalCard && <ModalEditCard />}
+        {/* {onModalUserInfo && <ModalUserInfo />} */}
       </AnimatePresence>
     </main>
   );
