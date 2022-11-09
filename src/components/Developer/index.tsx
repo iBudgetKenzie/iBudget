@@ -1,5 +1,6 @@
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io";
 
+
 import { DeveloperStyled } from "./styles";
 
 interface IDeveloperProps {
@@ -17,6 +18,7 @@ const Developer = ({
   linkedin,
   github,
 }: IDeveloperProps) => {
+
   return (
     <DeveloperStyled>
       <figure>
