@@ -15,6 +15,7 @@ import {
   IUserProviderData,
   IUserProviderProps,
   IEditUser,
+  IMessageError
 } from "./interfaces";
 
 export const UserContext = createContext<IUserProviderData>(
@@ -56,7 +57,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       try {
         iBudgetApi.defaults.headers.common.authorization = `Bearer ${token}`;
         const userResponse = await iBudgetApi.get(
-          `/users/${id}?_embed=budgets`
+          `/users/${id}`
         );
         setUser(userResponse.data);
         setCustomersHistory(userResponse.data.budgets);
@@ -76,18 +77,19 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         "/login",
         loginFormData
       );
+      console.log(response)
       localStorage.clear();
 
-      localStorage.setItem("@token", response.data.accessToken);
-      localStorage.setItem("@id", JSON.stringify(response.data.user.id));
-
-      setUser(response.data.user);
+      localStorage.setItem("@token", response.data.token);
+   
       navigate("/dashboard/customers");
       toast.success("Login realizado com sucesso!");
       setIsAuthenticated(true);
     } catch (err: unknown) {
       const errors = err as AxiosError;
-      if (errors.response?.data === "Cannot find user") {
+      const messageError = (errors.response?.data as IMessageError).message;
+      
+      if (messageError === "Invalid user or password") {
         toast.error("Usuário não encontrado");
       } else if (errors.response?.data === "Incorrect password") {
         toast.error("Senha incorreta");
@@ -99,6 +101,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   };
 
   const onSubmitRegister = async (registerFormData: IRegisterForm) => {
+    console.log(registerFormData)
     const cadastro = {
       name: registerFormData.name,
       username: registerFormData.username,
@@ -125,7 +128,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     }
 
     try {
-      await iBudgetApi.post("/register", cadastro);
+      await iBudgetApi.post("/users", cadastro);
       toast.success("Cadastro realizado com sucesso!");
       setIsRegister(false);
       setIsLogin(true);

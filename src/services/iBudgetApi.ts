@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const iBudgetApi = axios.create({
-  baseURL: "https://api-ibudget.herokuapp.com/",
+  baseURL: "https://api-ibudget.herokuapp.com",
   timeout: 10000,
 });
 
