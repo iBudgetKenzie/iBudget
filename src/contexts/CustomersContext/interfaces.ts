@@ -5,6 +5,7 @@ export interface ICreateCustomer {
     isCompany: boolean;
     email: string;
     contact: string;
+    userId: string;
 }
 
 export interface ICustomerProvider {
