@@ -1,8 +1,8 @@
 import { HeaderLogged } from "../../components/HeaderLogged";
-import { DashboardMobile } from "../../components/DashboardMobile/index";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
 import { DashboardCustomers } from "../../components/DashboardCustomers";
+import { DashboardCustomerMobile } from '../../components/DashboardCustomerMobile/index';
 
 const Dashboard = () => {
   const [, width] = useWindowSize();
@@ -13,7 +13,7 @@ const Dashboard = () => {
       <DashboardCustomers />
     </>
   ) : (
-    <DashboardMobile />
+    <DashboardCustomerMobile />
   );
 };
 
