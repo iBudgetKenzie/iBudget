@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FaRegEdit } from "react-icons/fa";
 import { useBudgetContext } from "../../contexts/BudgetContext/index";
-import { ContainerCreateBudget } from "./styles";
+import { ContainerCreate } from "./styles"
 import { Input } from "../Input";
 import { IBudgetOmitId } from "../../contexts/BudgetContext/interfaces";
 import { toast } from "react-toastify";
@@ -42,7 +42,7 @@ export const CreateBudget = () => {
   };
 
   return (
-    <ContainerCreateBudget>
+    <ContainerCreate>
       <h1>Preencha os dados</h1>
       <form onSubmit={handleSubmit(sendBudget, onError)}>
         <label htmlFor="projectName">
@@ -158,6 +158,6 @@ export const CreateBudget = () => {
 
         <button type="submit">Gerar Orçamento</button>
       </form>
-    </ContainerCreateBudget>
+    </ContainerCreate>
   );
 };

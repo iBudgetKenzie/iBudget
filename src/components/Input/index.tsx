@@ -1,5 +1,6 @@
 import { UseFormRegister } from "react-hook-form";
 import { IBudgetOmitId } from "../../contexts/BudgetContext/interfaces";
+
 interface InputProps {
   type: string;
   id:
