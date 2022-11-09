@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerBudgetHistory = styled.div`
+export const ContainerCustomertHistory = styled.div`
   background-color: rgba(var(--color-purple), 1);
   width: 38.5vw;
   height: 79vh;
